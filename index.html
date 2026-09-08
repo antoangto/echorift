@@ -13,20 +13,21 @@
 :root{
   --bg:#05080d;
   --bg2:#080d14;
-  --panel:rgba(10,18,27,.72);
-  --line:rgba(170,220,255,.13);
+  --panel:rgba(9,16,24,.78);
+  --panel2:rgba(12,21,30,.7);
+  --line:rgba(170,220,255,.12);
   --line2:rgba(170,220,255,.28);
-  --text:#dce8f0;
-  --muted:#708391;
+  --text:#dbe8ef;
+  --muted:#718591;
+  --muted2:#506773;
   --blue:#a8dcff;
-  --blue2:#6abfff;
-  --danger:#b8838b;
-  --gold:#c3aa73;
+  --blue2:#69bfff;
+  --gold:#c4aa70;
+  --green:#86b7a0;
+  --danger:#a97982;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html{
   scroll-behavior:smooth;
@@ -35,17 +36,16 @@ html{
 
 body{
   margin:0;
-  background:
-    radial-gradient(circle at 50% 10%,rgba(64,126,170,.08),transparent 35%),
-    var(--bg);
   color:var(--text);
   font-family:'Noto Sans KR',sans-serif;
   font-weight:300;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(74,142,185,.08),transparent 32%),
+    var(--bg);
   overflow-x:hidden;
 }
 
-button,
-input{
+button,input{
   font:inherit;
 }
 
@@ -53,25 +53,21 @@ button{
   -webkit-tap-highlight-color:transparent;
 }
 
-/* ==============================
-   BACKGROUND
-============================== */
-
 #particles{
   position:fixed;
   inset:0;
   width:100%;
   height:100%;
-  z-index:0;
   pointer-events:none;
+  z-index:0;
 }
 
 .noise{
   position:fixed;
   inset:0;
-  pointer-events:none;
   z-index:100;
-  opacity:.035;
+  pointer-events:none;
+  opacity:.03;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
 }
 
@@ -79,6 +75,7 @@ button{
   position:fixed;
   left:0;
   right:0;
+  top:-120px;
   height:100px;
   z-index:99;
   pointer-events:none;
@@ -91,26 +88,22 @@ button{
 }
 
 @keyframes scan{
-  from{top:-120px}
   to{top:100vh}
 }
 
-/* ==============================
-   INTRO
-============================== */
+/* INTRO */
 
 #intro{
   position:fixed;
   inset:0;
   z-index:50;
   display:flex;
-  justify-content:center;
   align-items:center;
-  min-height:100vh;
+  justify-content:center;
   background:
     radial-gradient(circle at center,rgba(60,130,180,.08),transparent 38%),
-    rgba(5,8,13,.98);
-  transition:opacity 1s ease,visibility 1s ease;
+    rgba(5,8,13,.985);
+  transition:opacity .9s,visibility .9s;
 }
 
 #intro.hide{
@@ -119,18 +112,16 @@ button{
 }
 
 .intro-inner{
-  width:min(780px,88vw);
+  width:min(790px,88vw);
   text-align:center;
-  position:relative;
 }
 
 .signal{
-  font-family:'Space Mono',monospace;
-  font-size:10px;
-  letter-spacing:.35em;
+  margin-bottom:28px;
   color:var(--blue2);
   opacity:.75;
-  margin-bottom:28px;
+  font:10px 'Space Mono',monospace;
+  letter-spacing:.34em;
 }
 
 .signal-dot{
@@ -145,93 +136,31 @@ button{
 }
 
 @keyframes pulse{
-  50%{
-    opacity:.25;
-    box-shadow:0 0 3px var(--blue);
-  }
+  50%{opacity:.25}
 }
 
 .logo{
-  position:relative;
   margin:0;
-  font-family:'Space Mono',monospace;
-  font-size:clamp(42px,8vw,88px);
-  font-weight:400;
-  letter-spacing:.18em;
   color:#edf8ff;
+  font:400 clamp(42px,8vw,88px) 'Space Mono',monospace;
+  letter-spacing:.18em;
   text-shadow:0 0 35px rgba(135,210,255,.12);
 }
 
-.logo .colon{
-  color:var(--blue);
-}
-
-.logo::before,
-.logo::after{
-  content:'ECHO:RIFT';
-  position:absolute;
-  inset:0;
-  opacity:0;
-  pointer-events:none;
-}
-
-.logo::before{
-  color:#9fe2ff;
-  transform:translateX(2px);
-}
-
-.logo::after{
-  color:#d7efff;
-  transform:translateX(-2px);
-}
-
-.logo:hover::before{
-  animation:glitch1 .35s steps(2) 2;
-}
-
-.logo:hover::after{
-  animation:glitch2 .35s steps(2) 2;
-}
-
-@keyframes glitch1{
-  20%,60%{
-    opacity:.35;
-    clip-path:inset(20% 0 55% 0);
-  }
-  40%,80%{
-    opacity:.2;
-    clip-path:inset(65% 0 10% 0);
-  }
-}
-
-@keyframes glitch2{
-  20%,60%{
-    opacity:.2;
-    clip-path:inset(55% 0 25% 0);
-  }
-  40%,80%{
-    opacity:.35;
-    clip-path:inset(10% 0 70% 0);
-  }
-}
+.logo span{color:var(--blue)}
 
 .intro-line{
   width:80px;
   height:1px;
   margin:30px auto;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    var(--blue),
-    transparent
-  );
+  background:linear-gradient(90deg,transparent,var(--blue),transparent);
 }
 
 .intro-copy{
-  margin:0 auto;
+  margin:0;
   color:#8fa0ad;
-  line-height:2.05;
   font-size:14px;
+  line-height:2.05;
 }
 
 .intro-copy strong{
@@ -242,29 +171,27 @@ button{
 .enter{
   margin-top:42px;
   padding:13px 28px;
-  color:var(--blue);
   border:1px solid rgba(160,220,255,.3);
   background:rgba(120,200,255,.02);
-  font-family:'Space Mono',monospace;
-  font-size:11px;
-  letter-spacing:.2em;
+  color:var(--blue);
   cursor:pointer;
-  transition:.3s;
+  font:11px 'Space Mono',monospace;
+  letter-spacing:.18em;
+  transition:.25s;
 }
 
 .enter:hover{
-  background:rgba(120,200,255,.08);
   border-color:var(--blue);
-  box-shadow:0 0 25px rgba(100,190,255,.08);
+  background:rgba(120,200,255,.08);
 }
 
 .intro-status{
-  margin-top:55px;
   display:flex;
   justify-content:center;
   gap:28px;
+  margin-top:52px;
   color:#50606c;
-  font:9px 'Space Mono',monospace;
+  font:8px 'Space Mono',monospace;
   letter-spacing:.1em;
 }
 
@@ -273,61 +200,55 @@ button{
   font-weight:400;
 }
 
-/* ==============================
-   ARCHIVE LAYOUT
-============================== */
+/* LAYOUT */
 
 #archive{
   position:relative;
   z-index:2;
   min-height:100vh;
   opacity:0;
-  transition:opacity 1.2s ease;
+  transition:opacity 1s;
 }
 
-#archive.show{
-  opacity:1;
-}
+#archive.show{opacity:1}
 
 .sidebar{
   position:fixed;
-  left:0;
+  z-index:20;
   top:0;
+  left:0;
   bottom:0;
   width:260px;
   padding:38px 28px;
   border-right:1px solid var(--line);
-  background:rgba(5,9,14,.83);
-  backdrop-filter:blur(15px);
-  z-index:20;
+  background:rgba(5,9,14,.86);
+  backdrop-filter:blur(14px);
 }
 
 .side-logo{
+  margin-bottom:6px;
+  color:#e8f6ff;
   font:20px 'Space Mono',monospace;
   letter-spacing:.15em;
-  color:#e8f6ff;
-  margin-bottom:6px;
 }
 
-.side-logo span{
-  color:var(--blue);
-}
+.side-logo span{color:var(--blue)}
 
 .archive-id{
-  font:8px 'Space Mono',monospace;
+  margin-bottom:40px;
   color:#4c6170;
-  letter-spacing:.16em;
-  margin-bottom:42px;
+  font:8px 'Space Mono',monospace;
+  letter-spacing:.15em;
 }
 
 .online{
-  font:8px 'Space Mono',monospace;
+  margin-bottom:27px;
   color:#6f9eb9;
+  font:8px 'Space Mono',monospace;
   letter-spacing:.12em;
-  margin-bottom:28px;
 }
 
-.online::before{
+.online:before{
   content:'';
   display:inline-block;
   width:5px;
@@ -341,27 +262,22 @@ button{
 nav button{
   display:block;
   width:100%;
+  padding:10px 12px;
   border:0;
   border-left:1px solid transparent;
   background:none;
   color:#607481;
-  padding:10px 12px;
-  text-align:left;
   cursor:pointer;
+  text-align:left;
   font:10px 'Space Mono',monospace;
-  letter-spacing:.08em;
-  transition:.25s;
+  letter-spacing:.07em;
 }
 
 nav button:hover,
 nav button.active{
   color:#d9edf9;
   border-left-color:var(--blue);
-  background:linear-gradient(
-    90deg,
-    rgba(120,200,255,.06),
-    transparent
-  );
+  background:linear-gradient(90deg,rgba(120,200,255,.06),transparent);
 }
 
 .nav-num{
@@ -372,11 +288,11 @@ nav button.active{
 
 .side-bottom{
   position:absolute;
-  bottom:30px;
   left:28px;
   right:28px;
-  border-top:1px solid var(--line);
+  bottom:30px;
   padding-top:18px;
+  border-top:1px solid var(--line);
   color:#40515c;
   font:8px/1.9 'Space Mono',monospace;
 }
@@ -387,155 +303,286 @@ nav button.active{
 }
 
 .content{
-  margin-left:260px;
   min-height:100vh;
+  margin-left:260px;
   padding:65px clamp(35px,7vw,120px) 100px;
 }
 
 .page{
   display:none;
   max-width:1080px;
-  animation:fade .45s ease;
+  animation:fade .4s ease;
 }
 
-.page.active{
-  display:block;
-}
+.page.active{display:block}
 
 @keyframes fade{
-  from{
-    opacity:0;
-    transform:translateY(7px);
-  }
-  to{
-    opacity:1;
-    transform:none;
-  }
+  from{opacity:0;transform:translateY(7px)}
+  to{opacity:1;transform:none}
 }
 
 .eyebrow{
+  margin-bottom:15px;
   color:#597384;
   font:9px 'Space Mono',monospace;
-  letter-spacing:.22em;
-  margin-bottom:15px;
+  letter-spacing:.2em;
 }
 
 h2{
   margin:0;
-  font-family:'Space Mono',monospace;
-  font-size:clamp(30px,5vw,54px);
-  font-weight:400;
-  letter-spacing:.08em;
   color:#e4f1f8;
+  font:400 clamp(30px,5vw,54px) 'Space Mono',monospace;
+  letter-spacing:.08em;
 }
 
 .ko-title{
+  margin-top:9px;
   color:#627784;
   font-size:13px;
-  margin-top:10px;
-  letter-spacing:.15em;
+  letter-spacing:.13em;
 }
 
 .header-rule{
   height:1px;
-  background:linear-gradient(
-    90deg,
-    var(--line2),
-    transparent
-  );
-  margin:28px 0 48px;
+  margin:28px 0 44px;
+  background:linear-gradient(90deg,var(--line2),transparent);
 }
 
 .lead{
-  max-width:720px;
-  font-size:15px;
-  color:#91a1ab;
+  max-width:790px;
+  color:#92a4ae;
+  font-size:14px;
   line-height:2.05;
 }
 
 .lead strong{
-  color:#e0edf4;
+  color:#d9e8ef;
   font-weight:400;
 }
 
-/* ==============================
-   WORLD
-============================== */
+/* WORLD */
+
+.world-hero{
+  padding:32px;
+  border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(14,27,38,.62),rgba(5,9,14,.7));
+}
 
 .world-quote{
-  margin:70px 0;
-  padding-left:25px;
+  margin:55px 0 18px;
+  padding-left:23px;
   border-left:1px solid var(--blue);
-  font-size:clamp(18px,3vw,28px);
+  color:#c6d8e1;
+  font-size:clamp(18px,3vw,26px);
   line-height:1.8;
-  color:#c8d8e1;
-  font-weight:300;
 }
 
-.data-grid{
+.world-section{
+  margin-top:65px;
+}
+
+.section-label{
+  margin-bottom:8px;
+  color:#4f6b7b;
+  font:8px 'Space Mono',monospace;
+  letter-spacing:.18em;
+}
+
+.world-section h3{
+  margin:0 0 24px;
+  color:#d5e4eb;
+  font-size:22px;
+  font-weight:400;
+}
+
+.info-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1px;
-  background:var(--line);
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.info-card{
+  min-height:190px;
+  padding:24px;
   border:1px solid var(--line);
-  margin-top:45px;
+  background:rgba(8,14,20,.65);
 }
 
-.data-cell{
-  background:rgba(5,9,14,.93);
-  padding:25px;
-  min-height:130px;
+.info-card.wide{
+  grid-column:1/-1;
 }
 
-.data-label{
-  color:#4d6371;
+.info-code{
+  color:#45606f;
   font:8px 'Space Mono',monospace;
   letter-spacing:.15em;
-  margin-bottom:15px;
 }
 
-.data-value{
-  color:#bfd0da;
-  font:14px 'Space Mono',monospace;
+.info-card h4{
+  margin:20px 0 10px;
+  color:#cbdde6;
+  font-size:17px;
+  font-weight:400;
 }
 
-.data-desc{
-  color:#62737d;
+.info-card p{
+  margin:0;
+  color:#71848f;
+  font-size:12px;
+  line-height:1.9;
+}
+
+.rank-line{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin:22px 0 16px;
+}
+
+.rank-chip{
+  min-width:36px;
+  padding:7px 8px;
+  border:1px solid var(--line);
+  color:#7695a6;
+  text-align:center;
+  font:9px 'Space Mono',monospace;
+}
+
+.rank-chip.ex{
+  border-color:rgba(170,220,255,.28);
+  color:#bfd9e7;
+}
+
+.erosion-list{
+  margin-top:19px;
+}
+
+.erosion-row{
+  display:grid;
+  grid-template-columns:80px 120px 1fr;
+  gap:14px;
+  padding:10px 0;
+  border-top:1px solid rgba(170,220,255,.07);
+  align-items:center;
+}
+
+.er-percent{
+  color:#79a1b7;
+  font:9px 'Space Mono',monospace;
+}
+
+.er-name{
+  color:#a3b7c1;
   font-size:11px;
-  line-height:1.8;
-  margin-top:9px;
 }
 
-/* ==============================
-   TIMELINE
-============================== */
+.er-desc{
+  color:#5f737e;
+  font-size:10px;
+  line-height:1.6;
+}
+
+.compat-table{
+  margin-top:18px;
+}
+
+.compat-row{
+  display:grid;
+  grid-template-columns:90px 120px 1fr;
+  gap:15px;
+  padding:10px 0;
+  border-top:1px solid rgba(170,220,255,.07);
+}
+
+.compat-row span:first-child{
+  color:#79a1b7;
+  font:9px 'Space Mono',monospace;
+}
+
+.compat-row span:nth-child(2){
+  color:#9dafb8;
+  font-size:10px;
+}
+
+.compat-row span:last-child{
+  color:#627681;
+  font-size:10px;
+}
+
+.law-list{
+  display:grid;
+  gap:9px;
+  margin-top:18px;
+}
+
+.law{
+  display:grid;
+  grid-template-columns:45px 1fr;
+  gap:15px;
+  padding:13px 0;
+  border-top:1px solid rgba(170,220,255,.07);
+}
+
+.law-num{
+  color:#527789;
+  font:9px 'Space Mono',monospace;
+}
+
+.law p{
+  margin:0;
+}
+
+.conflict-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.conflict{
+  min-height:150px;
+  padding:20px;
+  border:1px solid var(--line);
+  background:rgba(8,14,20,.6);
+}
+
+.conflict b{
+  display:block;
+  margin-bottom:12px;
+  color:#aebfc7;
+  font-weight:400;
+  font-size:12px;
+}
+
+.conflict p{
+  margin:0;
+  color:#627681;
+  font-size:10px;
+  line-height:1.8;
+}
+
+/* TIMELINE */
 
 .timeline{
   position:relative;
-  margin-top:15px;
   padding-left:34px;
 }
 
-.timeline::before{
+.timeline:before{
   content:'';
   position:absolute;
   left:5px;
   top:5px;
   bottom:5px;
   width:1px;
-  background:linear-gradient(
-    var(--blue),
-    var(--line),
-    var(--line)
-  );
+  background:linear-gradient(var(--blue),var(--line));
 }
 
 .event{
   position:relative;
-  padding:0 0 42px 20px;
+  padding:0 0 40px 20px;
 }
 
-.event::before{
+.event:before{
   content:'';
   position:absolute;
   left:-32px;
@@ -550,7 +597,6 @@ h2{
 .year{
   color:#77a7c1;
   font:10px 'Space Mono',monospace;
-  letter-spacing:.15em;
 }
 
 .event h3{
@@ -569,179 +615,125 @@ h2{
 
 .redacted{
   display:inline-block;
+  padding:0 8px;
   background:#19232a;
   color:#19232a;
-  padding:0 8px;
   user-select:none;
 }
 
-/* ==============================
-   FACTION CARDS
-============================== */
+/* FACTIONS ACCORDION */
 
-.cards{
+.faction-list{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
+  gap:12px;
 }
 
-.card{
-  position:relative;
-  overflow:hidden;
-  min-height:220px;
-  padding:27px;
+.faction-item{
   border:1px solid var(--line);
-  background:linear-gradient(
-    145deg,
-    rgba(14,24,34,.65),
-    rgba(6,10,15,.75)
-  );
-  cursor:pointer;
-  transition:.35s;
+  background:rgba(8,14,20,.62);
+  overflow:hidden;
+  transition:border-color .25s;
 }
 
-.card:hover{
+.faction-item.open{
   border-color:rgba(160,220,255,.3);
-  transform:translateY(-2px);
-  background:linear-gradient(
-    145deg,
-    rgba(18,31,43,.72),
-    rgba(6,10,15,.8)
-  );
 }
 
-.card-code{
-  color:#405865;
+.faction-head{
+  position:relative;
+  padding:24px 27px;
+  cursor:pointer;
+  user-select:none;
+}
+
+.faction-head:hover{
+  background:rgba(130,200,240,.025);
+}
+
+.faction-code{
+  color:#415966;
   font:8px 'Space Mono',monospace;
-  letter-spacing:.15em;
+  letter-spacing:.14em;
 }
 
-.card h3{
-  margin:35px 0 7px;
-  color:#d5e4eb;
+.faction-head h3{
+  margin:22px 0 5px;
+  color:#d6e4eb;
   font-size:22px;
   font-weight:400;
-  letter-spacing:.03em;
 }
 
-.card .eng-name{
-  color:#667b88;
-  font:10px 'Space Mono',monospace;
-  letter-spacing:.1em;
+.faction-eng{
+  color:#627986;
+  font:9px 'Space Mono',monospace;
+  letter-spacing:.11em;
 }
 
-.card .sub{
-  color:#667b88;
+.faction-desc{
+  margin-top:13px;
+  color:#687c87;
   font-size:11px;
-  letter-spacing:.08em;
-  margin-top:5px;
 }
 
-.card p{
-  color:#687b86;
-  font-size:11px;
-  line-height:1.9;
-  margin-top:22px;
-}
-
-.card-status{
+.faction-arrow{
   position:absolute;
-  right:20px;
-  top:20px;
-  color:#52758a;
-  font:8px 'Space Mono',monospace;
+  right:27px;
+  top:50%;
+  color:#557384;
+  font:14px 'Space Mono',monospace;
+  transition:transform .3s;
 }
 
-/* ==============================
-   FACTION DETAIL
-============================== */
-
-.detail{
-  display:none;
-  margin-top:20px;
-  padding:30px;
-  border:1px solid var(--line);
-  background:rgba(7,12,18,.85);
+.faction-item.open .faction-arrow{
+  transform:rotate(180deg);
 }
 
-.detail.open{
-  display:block;
-  animation:fade .35s;
+.faction-panel{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:max-height .5s ease,opacity .35s ease;
 }
 
-.detail-head{
-  display:flex;
-  justify-content:space-between;
+.faction-item.open .faction-panel{
+  max-height:700px;
+  opacity:1;
+}
+
+.faction-inner{
+  margin:0 27px 27px;
+  padding-top:23px;
+  border-top:1px solid var(--line);
+}
+
+.faction-row{
+  display:grid;
+  grid-template-columns:150px 1fr;
   gap:20px;
-  border-bottom:1px solid var(--line);
-  padding-bottom:20px;
-  margin-bottom:20px;
-}
-
-.detail-title{
-  font:20px 'Space Mono',monospace;
-  color:#d7e8f0;
-}
-
-.close-detail{
-  border:0;
-  background:none;
-  color:#607581;
-  cursor:pointer;
-  font:10px 'Space Mono',monospace;
-}
-
-.detail table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-.detail td{
   padding:10px 0;
   border-bottom:1px solid rgba(170,220,255,.06);
-  color:#80929d;
+  color:#7a8f9a;
   font-size:11px;
 }
 
-.detail td:first-child{
-  width:150px;
+.faction-row span:first-child{
   color:#4f6979;
   font:9px 'Space Mono',monospace;
 }
 
-/* ==============================
-   STORIES
-============================== */
+/* STORIES */
 
 .story-main{
-  position:relative;
-  padding:35px 32px;
+  padding:34px 32px;
   border:1px solid rgba(160,220,255,.25);
-  background:
-    linear-gradient(
-      120deg,
-      rgba(15,29,41,.78),
-      rgba(6,11,17,.76)
-    );
-  margin-bottom:25px;
-  overflow:hidden;
-}
-
-.story-main::after{
-  content:'ACTIVE RECORD';
-  position:absolute;
-  right:26px;
-  top:25px;
-  color:#668da3;
-  font:8px 'Space Mono',monospace;
-  letter-spacing:.13em;
+  background:linear-gradient(120deg,rgba(15,29,41,.78),rgba(6,11,17,.76));
 }
 
 .story-main-side{
+  margin-bottom:30px;
   color:#577284;
   font:9px 'Space Mono',monospace;
-  letter-spacing:.15em;
-  margin-bottom:35px;
+  letter-spacing:.14em;
 }
 
 .story-main h3{
@@ -749,35 +741,30 @@ h2{
   color:#e0edf4;
   font:30px 'Space Mono',monospace;
   font-weight:400;
-  letter-spacing:.07em;
 }
 
-.story-main .story-ko{
-  margin-top:8px;
+.story-ko{
+  margin-top:7px;
   color:#90a7b4;
-  font-size:15px;
 }
 
 .season-tag{
   display:inline-block;
-  margin-top:25px;
+  margin-top:22px;
   padding:6px 10px;
   border:1px solid rgba(150,215,255,.2);
   color:#82abc1;
   font:8px 'Space Mono',monospace;
-  letter-spacing:.18em;
 }
 
 .story-copy{
-  margin-top:20px;
+  margin-top:18px;
   color:#83949e;
   font-size:13px;
-  line-height:1.9;
 }
 
 .corrupt-title{
-  margin-top:55px;
-  margin-bottom:14px;
+  margin:50px 0 14px;
   color:#465d6a;
   font:8px 'Space Mono',monospace;
   letter-spacing:.2em;
@@ -790,93 +777,93 @@ h2{
 }
 
 .corrupt-card{
-  position:relative;
-  min-height:145px;
-  overflow:hidden;
+  min-height:140px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   border:1px solid rgba(170,220,255,.07);
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(255,255,255,.015) 0px,
+      rgba(255,255,255,.015) 0,
       rgba(255,255,255,.015) 1px,
       transparent 1px,
       transparent 4px
     ),
     rgba(7,11,16,.64);
-  display:flex;
-  align-items:center;
-  justify-content:center;
   text-align:center;
 }
 
-.corrupt-card::before{
-  content:'';
-  position:absolute;
-  inset:-30%;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 7px,
-      rgba(145,205,235,.04) 8px,
-      transparent 10px
-    );
-  animation:corruptMove 7s linear infinite;
-}
-
-@keyframes corruptMove{
-  from{transform:translateX(-10%)}
-  to{transform:translateX(10%)}
-}
-
-.corrupt-inner{
-  position:relative;
-  z-index:2;
-}
-
-.corrupt-code{
-  color:#394d58;
+.corrupt-code,
+.corrupt-status{
+  color:#3d515c;
   font:8px 'Space Mono',monospace;
-  letter-spacing:.15em;
-  margin-bottom:13px;
 }
 
 .corrupt-name{
+  margin:13px 0 9px;
   color:#586a74;
   font:12px 'Space Mono',monospace;
-  letter-spacing:.1em;
-  text-shadow:
-    2px 0 rgba(160,220,255,.08),
-    -2px 0 rgba(255,255,255,.03);
-  animation:textFlicker 4s infinite;
 }
 
-@keyframes textFlicker{
-  0%,93%,100%{opacity:.7}
-  94%{opacity:.2;transform:translateX(2px)}
-  96%{opacity:.9;transform:translateX(-1px)}
+/* PERSONNEL */
+
+.person-tools{
+  margin-bottom:28px;
 }
 
-.corrupt-status{
-  margin-top:9px;
-  color:#344751;
-  font:7px 'Space Mono',monospace;
-  letter-spacing:.12em;
+.searchbox{
+  width:100%;
+  padding:14px 15px;
+  border:1px solid var(--line2);
+  background:#05090e;
+  outline:none;
+  color:#b9d4e3;
+  font:10px 'Space Mono',monospace;
 }
 
-/* ==============================
-   CHARACTERS
-============================== */
+.searchbox:focus{
+  border-color:rgba(165,220,255,.5);
+}
+
+.filter-bar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:12px;
+}
+
+.filter-btn{
+  padding:8px 11px;
+  border:1px solid var(--line);
+  background:none;
+  color:#637c89;
+  cursor:pointer;
+  font:8px 'Space Mono',monospace;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+  border-color:rgba(160,220,255,.35);
+  color:#b0cfdd;
+}
+
+.person-count{
+  margin:16px 0 12px;
+  color:#4d6775;
+  font:8px 'Space Mono',monospace;
+}
 
 .person-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:12px;
+  gap:11px;
 }
 
 .person{
+  min-height:205px;
+  padding:23px;
   border:1px solid var(--line);
-  padding:24px;
   background:rgba(8,14,20,.65);
 }
 
@@ -886,23 +873,23 @@ h2{
 }
 
 .person h3{
-  color:#d7e5ec;
-  font-size:20px;
-  font-weight:400;
   margin:20px 0 5px;
+  color:#d7e5ec;
+  font-size:19px;
+  font-weight:400;
 }
 
 .person-eng{
+  margin-bottom:20px;
   color:#546b78;
   font:9px 'Space Mono',monospace;
-  margin-bottom:22px;
 }
 
 .person-line{
   display:flex;
   justify-content:space-between;
   gap:20px;
-  padding:8px 0;
+  padding:7px 0;
   border-top:1px solid rgba(170,220,255,.06);
   font:9px 'Space Mono',monospace;
 }
@@ -916,9 +903,36 @@ h2{
   text-align:right;
 }
 
-/* ==============================
-   RIFT DATABASE
-============================== */
+.person.locked{
+  position:relative;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 4px,
+      rgba(160,220,255,.012) 5px
+    ),
+    rgba(7,11,16,.65);
+}
+
+.person.locked h3{
+  color:#42535d;
+  letter-spacing:.2em;
+}
+
+.locked-block{
+  margin-top:35px;
+  color:#384b55;
+  font:9px/2 'Space Mono',monospace;
+}
+
+.lock-message{
+  margin-top:20px;
+  color:#4a606c;
+  font:8px 'Space Mono',monospace;
+}
+
+/* RIFT */
 
 .db-row{
   display:grid;
@@ -945,68 +959,68 @@ h2{
   font:8px 'Space Mono',monospace;
 }
 
-.zero{
+.unknown-rift{
   margin-top:35px;
-  padding:30px;
-  border:1px solid rgba(160,210,240,.18);
-  background:rgba(10,17,24,.8);
+  padding:28px;
+  border:1px solid rgba(160,210,240,.14);
+  background:rgba(8,14,20,.7);
 }
 
-.zero-title{
-  color:#d8edf8;
-  font:28px 'Space Mono',monospace;
-  letter-spacing:.2em;
+.unknown-rift-title{
+  color:#728d9c;
+  font:13px 'Space Mono',monospace;
 }
 
-.error{
-  color:#809aa9;
-  font:9px 'Space Mono',monospace;
-  line-height:2;
+.system-lines{
+  margin-top:20px;
+  color:#607986;
+  font:9px/2 'Space Mono',monospace;
 }
 
-/* ==============================
-   CLASSIFIED
-============================== */
+.updated{
+  margin-top:22px;
+  color:#709db4;
+  font:8px 'Space Mono',monospace;
+  letter-spacing:.1em;
+}
+
+/* CLASSIFIED */
 
 .classified-terminal{
-  border:1px solid var(--line);
-  background:rgba(6,11,17,.78);
-  padding:32px;
+  padding:30px;
   margin-bottom:24px;
+  border:1px solid var(--line);
+  background:rgba(6,11,17,.8);
 }
 
 .classified-top{
   display:flex;
   justify-content:space-between;
-  gap:20px;
-  align-items:flex-start;
+  padding-bottom:22px;
+  margin-bottom:22px;
   border-bottom:1px solid var(--line);
-  padding-bottom:24px;
-  margin-bottom:25px;
 }
 
 .classified-status{
   color:#526c7b;
   font:8px 'Space Mono',monospace;
-  letter-spacing:.14em;
 }
 
 .archive-count{
-  margin-top:8px;
+  margin-top:7px;
   color:#d3e7f1;
   font:25px 'Space Mono',monospace;
 }
 
 .archive-count small{
-  font-size:11px;
   color:#607783;
+  font-size:11px;
 }
 
 .completion{
   text-align:right;
   color:#47616e;
-  font:8px 'Space Mono',monospace;
-  line-height:1.8;
+  font:8px/1.8 'Space Mono',monospace;
 }
 
 .code-area{
@@ -1018,41 +1032,29 @@ h2{
 .password{
   flex:1;
   min-width:0;
-  padding:13px 14px;
-  background:#05090e;
+  padding:13px;
   border:1px solid var(--line2);
+  background:#05090e;
   outline:none;
   color:#b9d4e3;
   font:11px 'Space Mono',monospace;
-  letter-spacing:.1em;
   text-transform:uppercase;
-}
-
-.password:focus{
-  border-color:rgba(165,220,255,.5);
 }
 
 .access-btn{
   padding:12px 20px;
-  background:none;
   border:1px solid var(--line2);
+  background:none;
   color:#7898aa;
-  font:9px 'Space Mono',monospace;
   cursor:pointer;
-  letter-spacing:.08em;
-}
-
-.access-btn:hover{
-  color:#b7d8e9;
-  border-color:#759eb4;
+  font:9px 'Space Mono',monospace;
 }
 
 .access-result{
-  min-height:21px;
-  margin-top:14px;
+  min-height:20px;
+  margin-top:13px;
   color:#765d63;
   font:9px 'Space Mono',monospace;
-  letter-spacing:.06em;
 }
 
 .access-result.success{
@@ -1062,91 +1064,92 @@ h2{
 .record-list{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:12px;
+  gap:11px;
 }
 
 .record-card{
-  min-height:140px;
-  padding:22px;
+  min-height:135px;
+  padding:21px;
   border:1px solid rgba(170,220,255,.08);
   background:rgba(8,13,19,.62);
-  transition:.3s;
 }
 
 .record-card.locked{
   opacity:.55;
-  cursor:default;
 }
 
 .record-card.unlocked{
   cursor:pointer;
-  border-color:rgba(160,220,255,.19);
+  border-color:rgba(160,220,255,.2);
 }
 
 .record-card.unlocked:hover{
-  border-color:rgba(160,220,255,.42);
-  transform:translateY(-2px);
+  border-color:rgba(160,220,255,.4);
 }
 
 .record-number{
   color:#3f5663;
   font:8px 'Space Mono',monospace;
-  letter-spacing:.15em;
 }
 
 .record-name{
-  margin-top:30px;
+  margin-top:27px;
   color:#5d707b;
-  font:12px 'Space Mono',monospace;
+  font:11px 'Space Mono',monospace;
   line-height:1.7;
 }
 
-.record-card.unlocked .record-name{
+.unlocked .record-name{
   color:#bdd3de;
 }
 
 .record-state{
-  margin-top:13px;
+  margin-top:12px;
   color:#40545f;
   font:8px 'Space Mono',monospace;
 }
 
-.record-card.unlocked .record-state{
+.unlocked .record-state{
   color:#668fa4;
 }
 
 .record-view{
   display:none;
   margin-top:24px;
+  padding:30px;
   border:1px solid var(--line);
-  background:rgba(5,10,15,.92);
-  padding:32px;
+  background:rgba(5,10,15,.93);
 }
 
 .record-view.open{
   display:block;
-  animation:fade .4s ease;
 }
 
 .record-view-head{
   display:flex;
   justify-content:space-between;
-  gap:20px;
-  border-bottom:1px solid var(--line);
   padding-bottom:20px;
-  margin-bottom:27px;
+  margin-bottom:25px;
+  border-bottom:1px solid var(--line);
 }
 
 .record-view-type{
+  margin-bottom:7px;
   color:#597483;
   font:8px 'Space Mono',monospace;
-  letter-spacing:.14em;
-  margin-bottom:8px;
 }
 
 .record-view-title{
   color:#d1e3eb;
   font:18px 'Space Mono',monospace;
+}
+
+.close-btn{
+  border:0;
+  background:none;
+  color:#607581;
+  cursor:pointer;
+  font:9px 'Space Mono',monospace;
 }
 
 .document{
@@ -1155,72 +1158,55 @@ h2{
   line-height:2;
 }
 
-.document .mono{
+.mono{
   font-family:'Space Mono',monospace;
   font-size:10px;
 }
 
-.document .doc-title{
-  color:#c3d7e0;
-  font:13px 'Space Mono',monospace;
-}
-
-.document .divider{
+.divider{
   height:1px;
-  margin:25px 0;
-  background:linear-gradient(
-    90deg,
-    rgba(170,220,255,.18),
-    transparent
-  );
+  margin:24px 0;
+  background:linear-gradient(90deg,rgba(170,220,255,.18),transparent);
 }
 
-.document .blackout{
+.blackout{
   display:inline-block;
-  min-width:130px;
   background:#182229;
   color:#182229;
   user-select:none;
 }
 
-.document .warning{
+.quote{
+  margin:18px 0;
+  padding-left:17px;
+  border-left:1px solid #64869a;
+  color:#c1d3dd;
+}
+
+.warning{
   color:#8f7178;
   font-family:'Space Mono',monospace;
 }
 
-.document .quote{
-  padding-left:17px;
-  border-left:1px solid #64869a;
-  color:#c1d3dd;
-  margin:20px 0;
-}
-
-.document .unknown{
+.unknown{
+  padding:20px 0;
   text-align:center;
-  padding:25px 0;
   color:#bedbea;
-  font:13px 'Space Mono',monospace;
-  letter-spacing:.08em;
+  font:12px 'Space Mono',monospace;
 }
 
 .complete-message{
   display:none;
-  margin-top:25px;
-  padding:22px;
-  border:1px solid rgba(170,220,255,.15);
+  margin-top:24px;
+  padding:20px;
+  border:1px solid rgba(170,220,255,.14);
   color:#7795a6;
-  background:rgba(10,18,25,.55);
   font:9px/2 'Space Mono',monospace;
-  letter-spacing:.08em;
 }
 
-.complete-message.show{
-  display:block;
-}
+.complete-message.show{display:block}
 
-/* ==============================
-   MOBILE
-============================== */
+/* MOBILE */
 
 .mobile-top{
   display:none;
@@ -1229,56 +1215,69 @@ h2{
 @media(max-width:800px){
 
   .sidebar{
-    transform:translateX(-100%);
-    transition:.35s;
     width:250px;
     padding-top:75px;
+    transform:translateX(-100%);
+    transition:.3s;
   }
 
-  .sidebar.open{
-    transform:translateX(0);
-  }
+  .sidebar.open{transform:none}
 
   .mobile-top{
-    display:flex;
     position:fixed;
+    z-index:30;
     top:0;
     left:0;
     right:0;
     height:58px;
-    z-index:30;
+    display:flex;
     align-items:center;
     justify-content:space-between;
     padding:0 18px;
     border-bottom:1px solid var(--line);
-    background:rgba(5,9,14,.9);
-    backdrop-filter:blur(12px);
+    background:rgba(5,9,14,.92);
   }
 
   .mobile-logo{
     font:14px 'Space Mono',monospace;
-    letter-spacing:.13em;
   }
 
   .menu-btn{
-    background:none;
     border:0;
+    background:none;
     color:#8da2ae;
     font-size:20px;
-    cursor:pointer;
   }
 
   .content{
     margin-left:0;
-    padding:100px 22px 70px;
+    padding:92px 21px 70px;
   }
 
-  .data-grid,
-  .cards,
-  .person-grid,
+  .info-grid,
+  .conflict-grid,
   .corrupt-grid,
+  .person-grid,
   .record-list{
     grid-template-columns:1fr;
+  }
+
+  .info-card.wide{
+    grid-column:auto;
+  }
+
+  .erosion-row{
+    grid-template-columns:70px 95px 1fr;
+    gap:8px;
+  }
+
+  .compat-row{
+    grid-template-columns:70px 90px 1fr;
+    gap:8px;
+  }
+
+  .faction-row{
+    grid-template-columns:100px 1fr;
   }
 
   .db-row{
@@ -1289,55 +1288,23 @@ h2{
     display:none;
   }
 
-  .intro-status{
-    flex-direction:column;
-    gap:7px;
-  }
-
-  .classified-terminal{
-    padding:23px 18px;
-  }
-
-  .classified-top{
-    flex-direction:column;
-  }
-
-  .completion{
-    text-align:left;
-  }
-
   .code-area{
     flex-direction:column;
   }
 
-  .access-btn{
-    width:100%;
+  .classified-top{
+    flex-direction:column;
+    gap:18px;
   }
 
-  .record-view{
-    padding:23px 18px;
-  }
+  .completion{text-align:left}
 
-  .story-main{
-    padding:30px 23px;
-  }
-
-  .story-main::after{
-    position:static;
-    display:block;
-    margin-top:25px;
+  .intro-status{
+    flex-direction:column;
+    gap:7px;
   }
 }
 
-@media(prefers-reduced-motion:reduce){
-  *,
-  *::before,
-  *::after{
-    animation-duration:.01ms !important;
-    animation-iteration-count:1 !important;
-    scroll-behavior:auto !important;
-  }
-}
 </style>
 </head>
 
@@ -1346,10 +1313,6 @@ h2{
 <canvas id="particles"></canvas>
 <div class="noise"></div>
 <div class="scanline"></div>
-
-<!-- ==============================
-     INTRO
-============================== -->
 
 <section id="intro">
   <div class="intro-inner">
@@ -1360,17 +1323,17 @@ h2{
     </div>
 
     <h1 class="logo">
-      ECHO<span class="colon">:</span>RIFT
+      ECHO<span>:</span>RIFT
     </h1>
 
     <div class="intro-line"></div>
 
     <p class="intro-copy">
       20년 전, 세계에 <strong>균열</strong>이 열렸다.<br>
-      인류는 그것을 이해하고 통제할 수 있다고 믿었다.
+      그날 이후 인간은 더 이상 하나의 종류가 아니었다.
       <br><br>
-      그리고 어느 날,<br>
-      <strong>균열이 먼저 인간을 알아보기 시작했다.</strong>
+      이곳은 균열 이후의 세계를 기록하는<br>
+      <strong>ECHO:RIFT ARCHIVE</strong>다.
     </p>
 
     <button class="enter" onclick="enterArchive()">
@@ -1380,1248 +1343,1318 @@ h2{
     <div class="intro-status">
       <span>RIFT NETWORK <b>ONLINE</b></span>
       <span>ARCHIVE <b>CONNECTED</b></span>
-      <span>UNKNOWN WAVE <b>DETECTED</b></span>
+      <span>CLEARANCE <b>PUBLIC</b></span>
     </div>
 
   </div>
 </section>
-
-<!-- ==============================
-     MOBILE HEADER
-============================== -->
 
 <div class="mobile-top">
   <div class="mobile-logo">ECHO:RIFT</div>
   <button class="menu-btn" onclick="toggleMenu()">☰</button>
 </div>
 
-<!-- ==============================
-     ARCHIVE
-============================== -->
-
 <div id="archive">
 
-  <aside class="sidebar" id="sidebar">
+<aside class="sidebar" id="sidebar">
 
-    <div class="side-logo">
-      ECHO<span>:</span>RIFT
-    </div>
+  <div class="side-logo">
+    ECHO<span>:</span>RIFT
+  </div>
 
-    <div class="archive-id">
-      SHARED UNIVERSE ARCHIVE
-    </div>
+  <div class="archive-id">
+    SHARED UNIVERSE ARCHIVE
+  </div>
 
-    <div class="online">
-      SYSTEM ONLINE
-    </div>
+  <div class="online">
+    SYSTEM ONLINE
+  </div>
 
-    <nav>
+  <nav>
 
-      <button class="active" onclick="openPage('world',this)">
-        <span class="nav-num">01</span>
-        WORLD
-      </button>
+    <button class="active" onclick="openPage('world',this)">
+      <span class="nav-num">01</span>WORLD
+    </button>
 
-      <button onclick="openPage('timeline',this)">
-        <span class="nav-num">02</span>
-        TIMELINE
-      </button>
+    <button onclick="openPage('timeline',this)">
+      <span class="nav-num">02</span>TIMELINE
+    </button>
 
-      <button onclick="openPage('factions',this)">
-        <span class="nav-num">03</span>
-        FACTIONS
-      </button>
+    <button onclick="openPage('factions',this)">
+      <span class="nav-num">03</span>FACTIONS
+    </button>
 
-      <button onclick="openPage('stories',this)">
-        <span class="nav-num">04</span>
-        STORIES
-      </button>
+    <button onclick="openPage('stories',this)">
+      <span class="nav-num">04</span>STORIES
+    </button>
 
-      <button onclick="openPage('characters',this)">
-        <span class="nav-num">05</span>
-        CHARACTERS
-      </button>
+    <button onclick="openPage('characters',this)">
+      <span class="nav-num">05</span>CHARACTERS
+    </button>
 
-      <button onclick="openPage('database',this)">
-        <span class="nav-num">06</span>
-        RIFT DATABASE
-      </button>
+    <button onclick="openPage('database',this)">
+      <span class="nav-num">06</span>RIFT DATABASE
+    </button>
 
-      <button onclick="openPage('classified',this)">
-        <span class="nav-num">07</span>
-        CLASSIFIED
-      </button>
+    <button onclick="openPage('classified',this)">
+      <span class="nav-num">07</span>CLASSIFIED
+    </button>
 
-    </nav>
+  </nav>
 
-    <div class="side-bottom">
-      WORLD TIME / <strong>Y0</strong><br>
-      ARCHIVE NODE / <strong>KR-01</strong><br>
-      CLEARANCE / <strong>PUBLIC</strong>
-    </div>
+  <div class="side-bottom">
+    WORLD TIME / <strong>Y0</strong><br>
+    ARCHIVE NODE / <strong>KR-01</strong><br>
+    CLEARANCE / <strong>PUBLIC</strong>
+  </div>
 
-  </aside>
+</aside>
 
-  <main class="content">
+<main class="content">
 
-    <!-- ==============================
-         01 WORLD
-    ============================== -->
+<!-- WORLD -->
 
-    <section class="page active" id="world">
+<section class="page active" id="world">
 
-      <div class="eyebrow">
-        ARCHIVE / 01 / WORLD
+  <div class="eyebrow">ARCHIVE / 01 / WORLD</div>
+  <h2>WORLD</h2>
+  <div class="ko-title">대균열 이후의 세계</div>
+
+  <div class="header-rule"></div>
+
+  <div class="world-hero">
+    <p class="lead">
+      약 20년 전, 세계 각지에 정체불명의 <strong>균열</strong>이 발생했다.
+      균열 너머에서 출현한 이형 존재는 기존 생물학으로 설명할 수 없었으며,
+      인류는 그들을 <strong>Aberrant</strong>라 명명했다.
+      <br><br>
+      동시에 일부 인간에게 기존 과학으로 설명할 수 없는 변화가 나타났다.
+      강화된 신체와 이능을 지닌 <strong>센티넬</strong>,
+      그리고 정신파를 통해 그들을 안정시키는 <strong>가이드</strong>.
+      두 종류의 각성자는 균열 이후 인류 사회의 핵심 전력이자
+      새로운 갈등의 중심이 되었다.
+    </p>
+  </div>
+
+  <div class="world-quote">
+    살아남기 위해 만들어진 제도는<br>
+    때때로 살아가는 방식을 결정하기 시작했다.
+  </div>
+
+  <!-- AWAKENED -->
+
+  <div class="world-section">
+
+    <div class="section-label">WORLD DATA / AWAKENED</div>
+    <h3>각성자</h3>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <div class="info-code">CLASS / SENTINEL</div>
+        <h4>센티넬</h4>
+        <p>
+          일반인을 크게 뛰어넘는 신체능력과 감각,
+          개인마다 다른 고유 이능을 지닌 각성자.
+          <br><br>
+          이능을 사용할수록 정신과 신경계에
+          '침식'이라 불리는 부담이 축적된다.
+          침식이 임계점에 도달하면 자아와 판단력을 잃고
+          BREAK 상태에 빠질 수 있다.
+        </p>
       </div>
 
-      <h2>THE GREAT RIFT</h2>
-
-      <div class="ko-title">
-        대균열 이후의 세계
+      <div class="info-card">
+        <div class="info-code">CLASS / GUIDE</div>
+        <h4>가이드</h4>
+        <p>
+          특수한 정신파를 통해 센티넬의 불안정한 정신파와
+          침식을 안정화할 수 있는 각성자.
+          <br><br>
+          가이딩은 만능 치료가 아니다.
+          과도하거나 깊은 가이딩은 가이드에게
+          상대의 감정·기억·침식이 역으로 전달되는
+          '역류'를 일으킬 수 있다.
+        </p>
       </div>
 
-      <div class="header-rule"></div>
+    </div>
+  </div>
 
-      <p class="lead">
-        약 20년 전, 세계 각지에 정체불명의
-        <strong>균열</strong>이 발생했다.
-        균열 너머에서 출현한 이형 존재는 기존 생물학으로
-        설명할 수 없었고, 인류는 그들을
-        <strong>Aberrant</strong>라 명명했다.
+  <!-- RANK -->
+
+  <div class="world-section">
+
+    <div class="section-label">WORLD DATA / RANK</div>
+    <h3>각성 등급</h3>
+
+    <div class="info-card wide">
+
+      <div class="info-code">AWAKENED CLASSIFICATION</div>
+
+      <div class="rank-line">
+        <div class="rank-chip">F</div>
+        <div class="rank-chip">E</div>
+        <div class="rank-chip">D</div>
+        <div class="rank-chip">C</div>
+        <div class="rank-chip">B</div>
+        <div class="rank-chip">A</div>
+        <div class="rank-chip">S</div>
+        <div class="rank-chip ex">EX</div>
+      </div>
+
+      <p>
+        F부터 S까지의 등급은 이능 출력, 안정성, 지속 가능성,
+        정신파 규모와 실제 균열 대응능력 등을 종합해 책정한다.
+        높은 등급일수록 사회적 영향력과 위험관리 수준도 함께 높아진다.
+        <br><br>
+        <strong style="color:#b8d0dc;font-weight:400;">EX</strong>는
+        S보다 강하다는 뜻의 상위등급이 아니다.
+        기존 측정법이나 분류기준으로 정상적인 평가가 불가능한
+        예외 개체에 부여되는 특수 분류다.
       </p>
 
-      <div class="world-quote">
-        균열이 열린 날,<br>
-        인류는 두 종류의 새로운 인간을 발견했다.
-      </div>
+    </div>
+  </div>
 
-      <div class="data-grid">
+  <!-- EROSION -->
 
-        <div class="data-cell">
-          <div class="data-label">CLASS / 01</div>
-          <div class="data-value">SENTINEL</div>
-          <div class="data-desc">
-            비정상적으로 강화된 신체·감각과
-            고유 능력을 지닌 각성자.
-          </div>
+  <div class="world-section">
+
+    <div class="section-label">WORLD DATA / EROSION</div>
+    <h3>침식도</h3>
+
+    <div class="info-card wide">
+
+      <div class="info-code">SENTINEL EROSION INDEX / 0–100%</div>
+
+      <p>
+        센티넬의 이능 사용과 정신적 과부하가 누적되며 발생하는
+        정신파 불안정 수치. 개인차가 존재하며,
+        높은 침식도가 반드시 즉각적인 폭주를 뜻하지는 않는다.
+      </p>
+
+      <div class="erosion-list">
+
+        <div class="erosion-row">
+          <div class="er-percent">0–20%</div>
+          <div class="er-name">안정</div>
+          <div class="er-desc">일상생활과 이능 운용에 특별한 이상 없음.</div>
         </div>
 
-        <div class="data-cell">
-          <div class="data-label">CLASS / 02</div>
-          <div class="data-value">GUIDE</div>
-          <div class="data-desc">
-            정신파를 통해 센티넬의 불안정성을
-            완화하는 각성자.
-          </div>
+        <div class="erosion-row">
+          <div class="er-percent">21–40%</div>
+          <div class="er-name">과민</div>
+          <div class="er-desc">감각 과민, 피로, 신경 반응 증가.</div>
         </div>
 
-        <div class="data-cell">
-          <div class="data-label">ENTITY / UNKNOWN</div>
-          <div class="data-value">ABERRANT</div>
-          <div class="data-desc">
-            균열 너머에서 출현하는 이형 존재.
-            생태와 기원은 규명되지 않았다.
-          </div>
+        <div class="erosion-row">
+          <div class="er-percent">41–60%</div>
+          <div class="er-name">불안정</div>
+          <div class="er-desc">감정 및 이능 제어 난도가 눈에 띄게 상승.</div>
+        </div>
+
+        <div class="erosion-row">
+          <div class="er-percent">61–80%</div>
+          <div class="er-name">위험</div>
+          <div class="er-desc">즉각적인 안정화와 가이딩이 권고되는 단계.</div>
+        </div>
+
+        <div class="erosion-row">
+          <div class="er-percent">81–99%</div>
+          <div class="er-name">폭주 직전</div>
+          <div class="er-desc">자아·판단력 손상 위험. 고위험 관찰 대상으로 분류.</div>
+        </div>
+
+        <div class="erosion-row">
+          <div class="er-percent">100%</div>
+          <div class="er-name">BREAK</div>
+          <div class="er-desc">완전 폭주. 정상적인 자기통제 상실.</div>
         </div>
 
       </div>
-    </section>
 
-    <!-- ==============================
-         02 TIMELINE
-    ============================== -->
+    </div>
+  </div>
 
-    <section class="page" id="timeline">
+  <!-- SUPPRESSANT -->
 
-      <div class="eyebrow">
-        ARCHIVE / 02 / TIMELINE
+  <div class="world-section">
+
+    <div class="section-label">WORLD DATA / MEDICAL</div>
+    <h3>억제제</h3>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <div class="info-code">EROSION SUPPRESSANT</div>
+        <h4>기능</h4>
+        <p>
+          정신파의 과활성 및 이능 반응을 일시적으로 억제해
+          침식 악화를 늦추기 위한 약물.
+          임무 현장이나 가이딩을 즉시 받을 수 없는 상황에서 사용된다.
+        </p>
       </div>
 
-      <h2>TIMELINE</h2>
-
-      <div class="ko-title">
-        공개 역사 기록
+      <div class="info-card">
+        <div class="info-code">MEDICAL WARNING</div>
+        <h4>한계</h4>
+        <p>
+          억제제는 이미 발생한 침식을 제거하지 않는다.
+          근본적인 회복 수단이 아니라 시간을 벌기 위한 임시조치다.
+          장기간 억제제만으로 상태를 유지하는 것은 권장되지 않는다.
+        </p>
       </div>
 
-      <div class="header-rule"></div>
+    </div>
+  </div>
 
-      <div class="timeline">
+  <!-- GUIDING -->
 
-        <div class="event">
-          <div class="year">Y-20</div>
-          <h3>THE GREAT RIFT</h3>
+  <div class="world-section">
+
+    <div class="section-label">WORLD DATA / GUIDING</div>
+    <h3>가이딩과 역류</h3>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <div class="info-code">GUIDING / LEVEL 01</div>
+        <h4>비접촉 가이딩</h4>
+        <p>
+          일정 거리에서 정신파를 조율하는 가장 기본적인 방식.
+          신체 접촉 부담이 적지만 효율과 안정화 속도는 상대적으로 낮다.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-code">GUIDING / LEVEL 02</div>
+        <h4>접촉 가이딩</h4>
+        <p>
+          손, 팔 등 신체 접촉을 통해 정신파 전달 효율을 높인다.
+          일반적인 의료·현장 안정화에서 널리 사용되는 방식이다.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-code">GUIDING / LEVEL 03</div>
+        <h4>심층 가이딩</h4>
+        <p>
+          정신파의 깊은 층까지 직접 접속하는 고강도 방식.
+          높은 안정화 효과를 기대할 수 있으나
+          기억과 감정이 서로 노출될 가능성이 커진다.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-code">SIDE EFFECT / BACKFLOW</div>
+        <h4>역류</h4>
+        <p>
+          센티넬의 감정, 기억, 감각 또는 침식 부담 일부가
+          가이드에게 역으로 유입되는 현상.
+          반복되는 역류는 가이드 자신의 감정과 타인의 감정을
+          구별하기 어렵게 만들 수 있다.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COMPATIBILITY -->
+
+  <div class="world-section">
+
+    <div class="section-label">WORLD DATA / COMPATIBILITY</div>
+    <h3>상성률</h3>
+
+    <div class="info-card wide">
+
+      <div class="info-code">SENTINEL × GUIDE MATCHING INDEX</div>
+
+      <p>
+        센티넬과 가이드의 정신파가 얼마나 안정적으로 맞물리는지를
+        수치화한 지표. 상성률은 능력의 강함이나 연애감정과는 무관하다.
+        같은 두 사람이라도 건강상태와 침식 정도 등에 따라
+        측정값이 조금씩 변할 수 있다.
+      </p>
+
+      <div class="compat-table">
+
+        <div class="compat-row">
+          <span>0–29%</span>
+          <span>LOW</span>
+          <span>가이딩 효율이 매우 낮거나 불안정함.</span>
+        </div>
+
+        <div class="compat-row">
+          <span>30–49%</span>
+          <span>AVAILABLE</span>
+          <span>기본적인 안정화 가능.</span>
+        </div>
+
+        <div class="compat-row">
+          <span>50–69%</span>
+          <span>STABLE</span>
+          <span>일반적인 정기 매칭 범위.</span>
+        </div>
+
+        <div class="compat-row">
+          <span>70–84%</span>
+          <span>HIGH</span>
+          <span>높은 가이딩 효율과 안정성을 보임.</span>
+        </div>
+
+        <div class="compat-row">
+          <span>85–94%</span>
+          <span>VERY HIGH</span>
+          <span>희귀한 고상성 조합.</span>
+        </div>
+
+        <div class="compat-row">
+          <span>95%+</span>
+          <span>EXCEPTIONAL</span>
+          <span>극히 드물며 반복 측정과 별도 관찰이 권고됨.</span>
+        </div>
+
+      </div>
+
+      <p style="margin-top:20px;">
+        ※ 상성률 100%는 특별한 관계나 완전한 결합을 뜻하지 않는다.
+        상성률과 개인적 관계는 서로 별개의 요소로 취급된다.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- IMPRINT -->
+
+  <div class="world-section">
+
+    <div class="section-label">WORLD DATA / IMPRINT</div>
+    <h3>각인</h3>
+
+    <div class="info-card wide">
+
+      <div class="info-code">MENTAL WAVE IMPRINT</div>
+
+      <p>
+        특정 센티넬과 가이드가 장기간 반복적으로 깊은 가이딩을 주고받을 경우,
+        서로의 정신파가 상대의 파형을 익숙한 안정 신호로 인식하는 현상.
+        통상적으로 '각인'이라 불린다.
+        <br><br>
+        각인은 운명적 짝이나 연애관계를 의미하지 않으며,
+        법적 배우자 관계와도 무관하다.
+        그러나 각인 이후 특정 상대의 가이딩 효율이 크게 높아지거나
+        다른 파형에 적응하는 데 시간이 걸릴 수 있어
+        의료적·윤리적 관리 대상이 된다.
+        <br><br>
+        본인의 동의 없이 각인을 의도적으로 유도하는 행위는
+        중대한 인권침해로 취급된다.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- LAW -->
+
+  <div class="world-section">
+
+    <div class="section-label">WORLD DATA / LAW</div>
+    <h3>각성자 관련 법과 협약</h3>
+
+    <div class="info-card wide">
+
+      <div class="info-code">INTERNATIONAL AWAKENED RIGHTS FRAMEWORK</div>
+
+      <p>
+        세부 법률은 국가별로 다르지만,
+        AEGIS 협약국은 다음 원칙을 공통적인 기준으로 삼는다.
+      </p>
+
+      <div class="law-list">
+
+        <div class="law">
+          <div class="law-num">01</div>
           <p>
-            세계 각지에서 최초의 대규모 균열 현상 발생.
+            확인된 각성자는 공공 안전과 의료지원을 위해
+            각성 사실 및 능력 분류를 관계기관에 등록한다.
           </p>
         </div>
 
-        <div class="event">
-          <div class="year">Y-18</div>
-          <h3>AEGIS</h3>
+        <div class="law">
+          <div class="law-num">02</div>
           <p>
-            국제 각성자·균열 관리기관 AEGIS 설립.
+            센티넬의 이능은 재난 대응, 정당방위 및 허가된 상황을 제외하고
+            공공장소에서의 위험한 사용이 제한된다.
           </p>
         </div>
 
-        <div class="event">
-          <div class="year">Y-17</div>
-          <h3>백야 연구소</h3>
+        <div class="law">
+          <div class="law-num">03</div>
           <p>
-            정신파와 균열 연구를 목적으로 한
-            연구기관 설립 기록이 존재한다.
+            가이딩은 원칙적으로 당사자의 동의를 필요로 한다.
+            강압적 가이딩과 비동의 심층 정신접촉은 금지된다.
           </p>
         </div>
 
-        <div class="event">
-          <div class="year">Y-08</div>
-          <h3>[ DATA CORRUPTED ]</h3>
+        <div class="law">
+          <div class="law-num">04</div>
           <p>
-            <span class="redacted">
-              ACCESS DENIED ARCHIVE RECORD
-            </span>
+            타인의 의사에 반해 각인을 유도하거나
+            정신파 의존관계를 고의로 형성하는 행위는 금지된다.
           </p>
         </div>
 
-        <div class="event">
-          <div class="year">Y-06</div>
-          <h3>LIBERA</h3>
+        <div class="law">
+          <div class="law-num">05</div>
           <p>
-            AEGIS의 관리체계에 반대하는
-            각성자 세력 등장.
+            RED·BLACK급 등 대규모 재난 시에는
+            각성자 전력에 대한 긴급동원 절차가 발동될 수 있다.
+            이 제도는 현재까지도 가장 큰 사회적 논쟁 중 하나다.
           </p>
         </div>
 
-        <div class="event">
-          <div class="year">Y-05</div>
-          <h3>NEST</h3>
+        <div class="law">
+          <div class="law-num">06</div>
           <p>
-            미등록 각성자를 중심으로
-            지하 네트워크가 형성된다.
-          </p>
-        </div>
-
-        <div class="event">
-          <div class="year">Y0 / CURRENT</div>
-          <h3>UNKNOWN WAVE</h3>
-          <p>
-            분류되지 않은 정신파 관련
-            이상현상 보고 증가.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==============================
-         03 FACTIONS
-    ============================== -->
-
-    <section class="page" id="factions">
-
-      <div class="eyebrow">
-        ARCHIVE / 03 / ORGANIZATIONS
-      </div>
-
-      <h2>FACTIONS</h2>
-
-      <div class="ko-title">
-        주요 조직
-      </div>
-
-      <div class="header-rule"></div>
-
-      <div class="cards">
-
-        <div class="card" onclick="showFaction('aegis')">
-          <div class="card-code">ORG / A-001</div>
-          <div class="card-status">ACTIVE</div>
-
-          <h3>AEGIS</h3>
-
-          <div class="eng-name">
-            INTERNATIONAL AWAKENED MANAGEMENT
-          </div>
-
-          <div class="sub">
-            국제 각성자 관리기관
-          </div>
-
-          <p>
-            국제 각성자 관리 및 균열 대응기관.
-          </p>
-        </div>
-
-        <div class="card" onclick="showFaction('white')">
-          <div class="card-code">ORG / W-001</div>
-          <div class="card-status">STATUS UNKNOWN</div>
-
-          <h3>백야 연구소</h3>
-
-          <div class="eng-name">
-            WHITE NIGHT LABORATORY
-          </div>
-
-          <div class="sub">
-            정신파·균열 연구기관
-          </div>
-
-          <p>
-            정신파, 공명 및 균열을 연구했던
-            연구기관.
-          </p>
-        </div>
-
-        <div class="card" onclick="showFaction('libera')">
-          <div class="card-code">ORG / L-001</div>
-          <div class="card-status">ACTIVE</div>
-
-          <h3>LIBERA</h3>
-
-          <div class="eng-name">
-            AWAKENED LIBERATION
-          </div>
-
-          <div class="sub">
-            각성자 해방조직
-          </div>
-
-          <p>
-            각성자의 자유와 자기결정권을
-            주장하는 조직.
-          </p>
-        </div>
-
-        <div class="card" onclick="showFaction('nest')">
-          <div class="card-code">ORG / N-001</div>
-          <div class="card-status">ACTIVE</div>
-
-          <h3>NEST</h3>
-
-          <div class="eng-name">
-            UNDERGROUND NETWORK
-          </div>
-
-          <div class="sub">
-            미등록 각성자 지하 네트워크
-          </div>
-
-          <p>
-            미등록 각성자와 도망자를 위한
-            비공식 지하 네트워크.
-          </p>
-        </div>
-
-        <div class="card" onclick="showFaction('sanctuary')">
-          <div class="card-code">ORG / S-001</div>
-          <div class="card-status">ACTIVE</div>
-
-          <h3>성역 교단</h3>
-
-          <div class="eng-name">
-            SANCTUARY
-          </div>
-
-          <div class="sub">
-            균열 신앙·신탁 종교집단
-          </div>
-
-          <p>
-            균열을 재앙이 아닌
-            '문'으로 해석하는 종교집단.
+            정신파 기록, 상성률, 침식도, 가이딩 기록은
+            보호가 필요한 개인 의료·신상정보로 분류된다.
           </p>
         </div>
 
       </div>
 
-      <div class="detail" id="factionDetail">
+    </div>
+  </div>
 
-        <div class="detail-head">
+  <!-- SOCIAL -->
 
-          <div class="detail-title" id="factionTitle"></div>
+  <div class="world-section">
 
-          <button
-            class="close-detail"
-            onclick="closeFaction()"
-          >
-            [ CLOSE ]
-          </button>
+    <div class="section-label">WORLD DATA / SOCIETY</div>
+    <h3>사회적 갈등</h3>
 
-        </div>
+    <div class="conflict-grid">
 
-        <div id="factionBody"></div>
-
-      </div>
-    </section>
-
-    <!-- ==============================
-         04 STORIES
-    ============================== -->
-
-    <section class="page" id="stories">
-
-      <div class="eyebrow">
-        ARCHIVE / 04 / STORIES
+      <div class="conflict">
+        <b>보호인가, 관리인가</b>
+        <p>
+          AEGIS의 등록과 통제가 각성자를 보호하기 위한 필수장치인지,
+          개인의 자유를 제한하는 감시체계인지에 대한 논쟁이 계속되고 있다.
+        </p>
       </div>
 
-      <h2>STORIES</h2>
-
-      <div class="ko-title">
-        ECHO:RIFT ARCHIVE
+      <div class="conflict">
+        <b>센티넬에 대한 공포</b>
+        <p>
+          강력한 이능과 BREAK 위험 때문에
+          센티넬을 잠재적인 재난으로 보는 시선이 존재한다.
+        </p>
       </div>
 
-      <div class="header-rule"></div>
-
-      <div class="story-main">
-
-        <div class="story-main-side">
-          AEGIS SIDE / CURRENT RECORD
-        </div>
-
-        <h3>RESONANCE</h3>
-
-        <div class="story-ko">
-          공명
-        </div>
-
-        <div class="season-tag">
-          SEASON 1
-        </div>
-
-        <div class="story-copy">
-          균열이 나를 알아보기 시작했다.
-        </div>
-
+      <div class="conflict">
+        <b>가이드의 도구화</b>
+        <p>
+          희소한 고등급 가이드에게 과도한 업무와
+          특정 센티넬 전담을 요구하는 관행이 인권 문제로 지적된다.
+        </p>
       </div>
 
-      <div class="corrupt-title">
-        UNAVAILABLE ARCHIVE RECORDS
+      <div class="conflict">
+        <b>등급 사회</b>
+        <p>
+          고등급 각성자에게 권한과 책임이 집중되는 반면
+          저등급 각성자가 사회적으로 과소평가된다는 비판이 있다.
+        </p>
       </div>
 
-      <div class="corrupt-grid">
-
-        <div class="corrupt-card">
-          <div class="corrupt-inner">
-            <div class="corrupt-code">
-              RECORD / ██-01
-            </div>
-            <div class="corrupt-name">
-              ████ █████
-            </div>
-            <div class="corrupt-status">
-              [ SIGNAL LOST ]
-            </div>
-          </div>
-        </div>
-
-        <div class="corrupt-card">
-          <div class="corrupt-inner">
-            <div class="corrupt-code">
-              RECORD / ██-02
-            </div>
-            <div class="corrupt-name">
-              ███████ ███
-            </div>
-            <div class="corrupt-status">
-              [ DATA CORRUPTED ]
-            </div>
-          </div>
-        </div>
-
-        <div class="corrupt-card">
-          <div class="corrupt-inner">
-            <div class="corrupt-code">
-              RECORD / ██-03
-            </div>
-            <div class="corrupt-name">
-              ███ ████████
-            </div>
-            <div class="corrupt-status">
-              [ ACCESS DENIED ]
-            </div>
-          </div>
-        </div>
-
-        <div class="corrupt-card">
-          <div class="corrupt-inner">
-            <div class="corrupt-code">
-              RECORD / ██-04
-            </div>
-            <div class="corrupt-name">
-              █████ █████
-            </div>
-            <div class="corrupt-status">
-              [ UNKNOWN RECORD ]
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==============================
-         05 CHARACTERS
-    ============================== -->
-
-    <section class="page" id="characters">
-
-      <div class="eyebrow">
-        ARCHIVE / 05 / PERSONNEL
+      <div class="conflict">
+        <b>미등록 각성자</b>
+        <p>
+          제도권을 불신하거나 신원을 숨겨야 하는 각성자들은
+          공식 의료와 가이딩 서비스를 이용하기 어렵다.
+        </p>
       </div>
 
-      <h2>CHARACTERS</h2>
-
-      <div class="ko-title">
-        등록 인물 파일
+      <div class="conflict">
+        <b>상성률과 관계</b>
+        <p>
+          높은 상성률을 개인적 관계의 당위성으로 해석하는 문화가 남아 있어,
+          매칭과 연애·결혼을 분리해야 한다는 목소리가 커지고 있다.
+        </p>
       </div>
 
-      <div class="header-rule"></div>
+    </div>
+  </div>
 
-      <div class="person-grid">
+</section>
 
-        <div class="person">
+<!-- TIMELINE -->
 
-          <div class="person-id">
-            PERSONNEL / A-01
-          </div>
+<section class="page" id="timeline">
 
-          <h3>강태윤</h3>
+  <div class="eyebrow">ARCHIVE / 02 / TIMELINE</div>
+  <h2>TIMELINE</h2>
+  <div class="ko-title">공개 역사 기록</div>
 
-          <div class="person-eng">
-            KANG TAEYOON
-          </div>
+  <div class="header-rule"></div>
 
-          <div class="person-line">
-            <span>CLASS</span>
-            <span>SENTINEL</span>
-          </div>
+  <div class="timeline">
 
-          <div class="person-line">
-            <span>RANK</span>
-            <span>S</span>
-          </div>
+    <div class="event">
+      <div class="year">Y-20</div>
+      <h3>THE GREAT RIFT</h3>
+      <p>세계 각지에서 최초의 대규모 균열 현상 발생.</p>
+    </div>
 
-          <div class="person-line">
-            <span>AFFILIATION</span>
-            <span>AEGIS</span>
-          </div>
+    <div class="event">
+      <div class="year">Y-18</div>
+      <h3>AEGIS</h3>
+      <p>국제 각성자·균열 관리기관 AEGIS 설립.</p>
+    </div>
 
-          <div class="person-line">
-            <span>ABILITY</span>
-            <span>GRAVITY</span>
-          </div>
+    <div class="event">
+      <div class="year">Y-17</div>
+      <h3>백야 연구소</h3>
+      <p>정신파와 균열을 연구하는 연구기관의 설립 기록.</p>
+    </div>
 
-        </div>
+    <div class="event">
+      <div class="year">Y-08</div>
+      <h3>[ DATA CORRUPTED ]</h3>
+      <p><span class="redacted">ACCESS DENIED ARCHIVE RECORD</span></p>
+    </div>
 
-        <div class="person">
+    <div class="event">
+      <div class="year">Y-06</div>
+      <h3>LIBERA</h3>
+      <p>AEGIS 관리체계에 반대하는 각성자 세력 등장.</p>
+    </div>
 
-          <div class="person-id">
-            PERSONNEL / A-02
-          </div>
+    <div class="event">
+      <div class="year">Y-05</div>
+      <h3>NEST</h3>
+      <p>미등록 각성자 중심 지하 네트워크 형성.</p>
+    </div>
 
-          <h3>윤시헌</h3>
+    <div class="event">
+      <div class="year">Y0 / CURRENT</div>
+      <h3>UNKNOWN WAVE</h3>
+      <p>분류되지 않은 정신파 관련 이상현상 보고.</p>
+    </div>
 
-          <div class="person-eng">
-            YOON SIHEON
-          </div>
+  </div>
 
-          <div class="person-line">
-            <span>CLASS</span>
-            <span>GUIDE</span>
-          </div>
+</section>
 
-          <div class="person-line">
-            <span>RANK</span>
-            <span>S</span>
-          </div>
+<!-- FACTIONS -->
 
-          <div class="person-line">
-            <span>AFFILIATION</span>
-            <span>AEGIS</span>
-          </div>
+<section class="page" id="factions">
 
-          <div class="person-line">
-            <span>DESIGNATION</span>
-            <span>SAINT</span>
-          </div>
+  <div class="eyebrow">ARCHIVE / 03 / ORGANIZATIONS</div>
+  <h2>FACTIONS</h2>
+  <div class="ko-title">주요 기관 및 세력</div>
 
-        </div>
+  <div class="header-rule"></div>
 
-        <div class="person">
+  <div class="faction-list">
 
-          <div class="person-id">
-            PERSONNEL / L-??
-          </div>
-
-          <h3>차이현</h3>
-
-          <div class="person-eng">
-            CHA YIHYEON
-          </div>
-
-          <div class="person-line">
-            <span>CLASS</span>
-            <span>SENTINEL</span>
-          </div>
-
-          <div class="person-line">
-            <span>RANK</span>
-            <span>A</span>
-          </div>
-
-          <div class="person-line">
-            <span>AFFILIATION</span>
-            <span>FORMER LIBERA</span>
-          </div>
-
-          <div class="person-line">
-            <span>ABILITY</span>
-            <span>ELECTRICITY</span>
-          </div>
-
-        </div>
-
-        <div class="person">
-
-          <div class="person-id">
-            SUBJECT FILE / 00
-          </div>
-
-          <h3>SUBJECT 00</h3>
-
-          <div class="person-eng">
-            NAME / [ NO DATA ]
-          </div>
-
-          <div class="person-line">
-            <span>CLASS</span>
-            <span>SENTINEL</span>
-          </div>
-
-          <div class="person-line">
-            <span>RANK</span>
-            <span>EX</span>
-          </div>
-
-          <div class="person-line">
-            <span>AFFILIATION</span>
-            <span>[ DATA DELETED ]</span>
-          </div>
-
-          <div class="person-line">
-            <span>STATUS</span>
-            <span>UNKNOWN</span>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==============================
-         06 RIFT DATABASE
-    ============================== -->
-
-    <section class="page" id="database">
-
-      <div class="eyebrow">
-        ARCHIVE / 06 / RIFT DATABASE
+    <div class="faction-item">
+      <div class="faction-head" onclick="toggleFaction(this)">
+        <div class="faction-code">ORG / A-001</div>
+        <h3>AEGIS</h3>
+        <div class="faction-eng">INTERNATIONAL AWAKENED MANAGEMENT</div>
+        <div class="faction-desc">국제 각성자 관리 및 균열 대응기관</div>
+        <div class="faction-arrow">⌄</div>
       </div>
 
-      <h2>RIFT DATABASE</h2>
+      <div class="faction-panel">
+        <div class="faction-inner">
 
-      <div class="ko-title">
-        균열 위험등급
+          <div class="faction-row"><span>ESTABLISHED</span><span>Y-18</span></div>
+          <div class="faction-row"><span>PURPOSE</span><span>균열 대응 / 각성자 보호 및 관리</span></div>
+          <div class="faction-row"><span>제1국</span><span>균열 전투 및 현장 대응</span></div>
+          <div class="faction-row"><span>제2국</span><span>가이드 관리 및 매칭</span></div>
+          <div class="faction-row"><span>제3국</span><span>공명·균열 연구</span></div>
+          <div class="faction-row"><span>제4국</span><span>감찰·각성자 범죄</span></div>
+          <div class="faction-row"><span>제5국</span><span>정보·외부세력</span></div>
+          <div class="faction-row"><span>제0국</span><span>[ ACCESS DENIED ]</span></div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="faction-item">
+      <div class="faction-head" onclick="toggleFaction(this)">
+        <div class="faction-code">ORG / W-001</div>
+        <h3>백야 연구소</h3>
+        <div class="faction-eng">WHITE NIGHT LABORATORY</div>
+        <div class="faction-desc">정신파·공명·균열 연구기관</div>
+        <div class="faction-arrow">⌄</div>
       </div>
 
-      <div class="header-rule"></div>
+      <div class="faction-panel">
+        <div class="faction-inner">
 
-      <div class="db-row">
-        <div class="db-class">WHITE</div>
-        <div class="db-desc">
-          극소규모 균열
+          <div class="faction-row"><span>ESTABLISHED</span><span>Y-17</span></div>
+          <div class="faction-row"><span>FIELD</span><span>정신파 / 공명 / 균열 연구</span></div>
+          <div class="faction-row"><span>STATUS</span><span>[ UNKNOWN ]</span></div>
+          <div class="faction-row"><span>RECORD</span><span>[ DATA PARTIALLY DELETED ]</span></div>
+
         </div>
-        <div class="db-level">LOW</div>
+      </div>
+    </div>
+
+    <div class="faction-item">
+      <div class="faction-head" onclick="toggleFaction(this)">
+        <div class="faction-code">ORG / L-001</div>
+        <h3>LIBERA</h3>
+        <div class="faction-eng">AWAKENED LIBERATION</div>
+        <div class="faction-desc">각성자 해방조직</div>
+        <div class="faction-arrow">⌄</div>
       </div>
 
-      <div class="db-row">
-        <div class="db-class">BLUE</div>
-        <div class="db-desc">
-          소규모 균열
+      <div class="faction-panel">
+        <div class="faction-inner">
+
+          <div class="faction-row"><span>TYPE</span><span>각성자 해방조직</span></div>
+          <div class="faction-row"><span>PRINCIPLE</span><span>누구도 타인의 삶을 결정할 수 없다.</span></div>
+          <div class="faction-row"><span>INTERNAL</span><span>온건 / 강경 / 독립 노선 존재</span></div>
+          <div class="faction-row"><span>STATUS</span><span>ACTIVE</span></div>
+
         </div>
-        <div class="db-level">CONTROLLED</div>
+      </div>
+    </div>
+
+    <div class="faction-item">
+      <div class="faction-head" onclick="toggleFaction(this)">
+        <div class="faction-code">ORG / N-001</div>
+        <h3>NEST</h3>
+        <div class="faction-eng">UNDERGROUND NETWORK</div>
+        <div class="faction-desc">미등록 각성자 지하 네트워크</div>
+        <div class="faction-arrow">⌄</div>
       </div>
 
-      <div class="db-row">
-        <div class="db-class">YELLOW</div>
-        <div class="db-desc">
-          민간인 대피 필요
+      <div class="faction-panel">
+        <div class="faction-inner">
+
+          <div class="faction-row"><span>TYPE</span><span>비공식 지하 네트워크</span></div>
+          <div class="faction-row"><span>USERS</span><span>미등록 각성자 / 브로커 / 도망자</span></div>
+          <div class="faction-row"><span>SERVICE</span><span>정보 / 신분 / 은신처 / 의약품</span></div>
+          <div class="faction-row"><span>STATUS</span><span>ACTIVE</span></div>
+
         </div>
-        <div class="db-level">EVACUATION</div>
+      </div>
+    </div>
+
+    <div class="faction-item">
+      <div class="faction-head" onclick="toggleFaction(this)">
+        <div class="faction-code">ORG / S-001</div>
+        <h3>성역 교단</h3>
+        <div class="faction-eng">SANCTUARY</div>
+        <div class="faction-desc">균열을 '문'으로 해석하는 종교집단</div>
+        <div class="faction-arrow">⌄</div>
       </div>
 
-      <div class="db-row">
-        <div class="db-class">ORANGE</div>
-        <div class="db-desc">
-          A급 전력 투입
+      <div class="faction-panel">
+        <div class="faction-inner">
+
+          <div class="faction-row"><span>RIFT</span><span>THE DOOR / 문</span></div>
+          <div class="faction-row"><span>SENTINEL</span><span>THE SWORD / 검</span></div>
+          <div class="faction-row"><span>GUIDE</span><span>THE KEY / 열쇠</span></div>
+          <div class="faction-row"><span>DOCTRINE</span><span>균열은 재앙이 아니라 문이다.</span></div>
+          <div class="faction-row"><span>STATUS</span><span>ACTIVE</span></div>
+
         </div>
-        <div class="db-level">HIGH</div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- STORIES -->
+
+<section class="page" id="stories">
+
+  <div class="eyebrow">ARCHIVE / 04 / STORIES</div>
+  <h2>STORIES</h2>
+  <div class="ko-title">ECHO:RIFT 기록</div>
+
+  <div class="header-rule"></div>
+
+  <div class="story-main">
+    <div class="story-main-side">AEGIS SIDE / CURRENT RECORD</div>
+    <h3>RESONANCE</h3>
+    <div class="story-ko">공명</div>
+    <div class="season-tag">SEASON 1</div>
+    <div class="story-copy">균열이 나를 알아보기 시작했다.</div>
+  </div>
+
+  <div class="corrupt-title">UNAVAILABLE ARCHIVE RECORDS</div>
+
+  <div class="corrupt-grid">
+
+    <div class="corrupt-card">
+      <div>
+        <div class="corrupt-code">RECORD / ██-01</div>
+        <div class="corrupt-name">████ █████</div>
+        <div class="corrupt-status">[ SIGNAL LOST ]</div>
+      </div>
+    </div>
+
+    <div class="corrupt-card">
+      <div>
+        <div class="corrupt-code">RECORD / ██-02</div>
+        <div class="corrupt-name">███████ ███</div>
+        <div class="corrupt-status">[ DATA CORRUPTED ]</div>
+      </div>
+    </div>
+
+    <div class="corrupt-card">
+      <div>
+        <div class="corrupt-code">RECORD / ██-03</div>
+        <div class="corrupt-name">███ ████████</div>
+        <div class="corrupt-status">[ ACCESS DENIED ]</div>
+      </div>
+    </div>
+
+    <div class="corrupt-card">
+      <div>
+        <div class="corrupt-code">RECORD / ██-04</div>
+        <div class="corrupt-name">█████ █████</div>
+        <div class="corrupt-status">[ UNKNOWN RECORD ]</div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CHARACTERS -->
+
+<section class="page" id="characters">
+
+  <div class="eyebrow">ARCHIVE / 05 / PERSONNEL DATABASE</div>
+  <h2>CHARACTERS</h2>
+  <div class="ko-title">ECHO:RIFT 인물 데이터베이스</div>
+
+  <div class="header-rule"></div>
+
+  <div class="person-tools">
+
+    <input
+      id="personSearch"
+      class="searchbox"
+      type="text"
+      placeholder="SEARCH PERSONNEL"
+      oninput="filterPeople()"
+    >
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all" onclick="setPersonFilter('all',this)">ALL</button>
+      <button class="filter-btn" data-filter="aegis" onclick="setPersonFilter('aegis',this)">AEGIS</button>
+      <button class="filter-btn" data-filter="white" onclick="setPersonFilter('white',this)">백야 연구소</button>
+      <button class="filter-btn" data-filter="libera" onclick="setPersonFilter('libera',this)">LIBERA</button>
+      <button class="filter-btn" data-filter="nest" onclick="setPersonFilter('nest',this)">NEST</button>
+      <button class="filter-btn" data-filter="sanctuary" onclick="setPersonFilter('sanctuary',this)">성역 교단</button>
+    </div>
+
+    <div class="person-count">
+      <span id="personCount">0</span> RECORDS DISPLAYED
+    </div>
+
+  </div>
+
+  <div class="person-grid" id="personGrid">
+
+    <!-- AEGIS -->
+
+    <div class="person" data-group="aegis" data-search="강태윤 kang taeyoon aegis sentinel">
+      <div class="person-id">PERSONNEL / A-01</div>
+      <h3>강태윤</h3>
+      <div class="person-eng">KANG TAEYOON</div>
+      <div class="person-line"><span>CLASS</span><span>SENTINEL</span></div>
+      <div class="person-line"><span>RANK</span><span>S</span></div>
+      <div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div>
+      <div class="person-line"><span>ABILITY</span><span>GRAVITY</span></div>
+    </div>
+
+    <div class="person" data-group="aegis" data-search="윤시헌 yoon siheon aegis guide saint">
+      <div class="person-id">PERSONNEL / A-02</div>
+      <h3>윤시헌</h3>
+      <div class="person-eng">YOON SIHEON</div>
+      <div class="person-line"><span>CLASS</span><span>GUIDE</span></div>
+      <div class="person-line"><span>RANK</span><span>S</span></div>
+      <div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div>
+      <div class="person-line"><span>DESIGNATION</span><span>SAINT</span></div>
+    </div>
+
+    <div class="person" data-group="aegis" data-search="서정우 aegis">
+      <div class="person-id">PERSONNEL / A-03</div>
+      <h3>서정우</h3>
+      <div class="person-eng">SEO JEONGWOO</div>
+      <div class="person-line"><span>CLASS</span><span>SENTINEL</span></div>
+      <div class="person-line"><span>RANK</span><span>A</span></div>
+      <div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div>
+      <div class="person-line"><span>POSITION</span><span>제1국</span></div>
+    </div>
+
+    <div class="person" data-group="aegis" data-search="한세라 aegis medical">
+      <div class="person-id">PERSONNEL / A-04</div>
+      <h3>한세라</h3>
+      <div class="person-eng">HAN SERA</div>
+      <div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div>
+      <div class="person-line"><span>DIVISION</span><span>MEDICAL</span></div>
+      <div class="person-line"><span>POSITION</span><span>의료부 책임자</span></div>
+      <div class="person-line"><span>STATUS</span><span>ACTIVE</span></div>
+    </div>
+
+    <div class="person" data-group="aegis" data-search="서문재 aegis guide management">
+      <div class="person-id">PERSONNEL / A-05</div>
+      <h3>서문재</h3>
+      <div class="person-eng">SEOMUN JAE</div>
+      <div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div>
+      <div class="person-line"><span>DIVISION</span><span>GUIDE MANAGEMENT</span></div>
+      <div class="person-line"><span>POSITION</span><span>정신건강 관리</span></div>
+      <div class="person-line"><span>DETAIL</span><span>[ RESTRICTED ]</span></div>
+    </div>
+
+    <!-- WHITE NIGHT -->
+
+    <div class="person" data-group="white" data-search="subject 00 백야 white night">
+      <div class="person-id">SUBJECT FILE / 00</div>
+      <h3>SUBJECT 00</h3>
+      <div class="person-eng">NAME / [ NO DATA ]</div>
+      <div class="person-line"><span>CLASS</span><span>SENTINEL</span></div>
+      <div class="person-line"><span>RANK</span><span>EX</span></div>
+      <div class="person-line"><span>AFFILIATION</span><span>[ DATA DELETED ]</span></div>
+      <div class="person-line"><span>STATUS</span><span>UNKNOWN</span></div>
+    </div>
+
+    <div class="person" data-group="white" data-search="이도겸 lee dogyeom">
+      <div class="person-id">PERSONNEL / W-??</div>
+      <h3>이도겸</h3>
+      <div class="person-eng">LEE DOGYEOM</div>
+      <div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div>
+      <div class="person-line"><span>AFFILIATION</span><span>[ DATA DELETED ]</span></div>
+      <div class="person-line"><span>OCCUPATION</span><span>[ RESTRICTED ]</span></div>
+      <div class="person-line"><span>STATUS</span><span>UNKNOWN</span></div>
+    </div>
+
+    <div class="person locked" data-group="white" data-search="locked 백야">
+      <div class="person-id">PERSONNEL / W-██</div>
+      <h3>████████</h3>
+      <div class="locked-block">
+        IDENTITY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ CLASSIFIED ]<br>
+        CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>
+        STATUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;██████
+      </div>
+      <div class="lock-message">[ RECORD LOCKED ]</div>
+    </div>
+
+    <div class="person locked" data-group="white" data-search="locked 백야">
+      <div class="person-id">SUBJECT FILE / ██</div>
+      <h3>████████</h3>
+      <div class="locked-block">
+        IDENTITY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ DATA DELETED ]<br>
+        RECORD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ CORRUPTED ]<br>
+        STATUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN
+      </div>
+      <div class="lock-message">[ RECORD LOCKED ]</div>
+    </div>
+
+    <!-- LIBERA -->
+
+    <div class="person" data-group="libera" data-search="차이현 cha yihyeon libera">
+      <div class="person-id">PERSONNEL / L-01</div>
+      <h3>차이현</h3>
+      <div class="person-eng">CHA YIHYEON</div>
+      <div class="person-line"><span>CLASS</span><span>SENTINEL</span></div>
+      <div class="person-line"><span>RANK</span><span>A</span></div>
+      <div class="person-line"><span>AFFILIATION</span><span>FORMER LIBERA</span></div>
+      <div class="person-line"><span>ABILITY</span><span>ELECTRICITY</span></div>
+    </div>
+
+    <div class="person" data-group="libera" data-search="백도진 baek dojin libera">
+      <div class="person-id">PERSONNEL / L-02</div>
+      <h3>백도진</h3>
+      <div class="person-eng">BAEK DOJIN</div>
+      <div class="person-line"><span>CLASS</span><span>SENTINEL</span></div>
+      <div class="person-line"><span>RANK</span><span>A</span></div>
+      <div class="person-line"><span>AFFILIATION</span><span>LIBERA</span></div>
+      <div class="person-line"><span>STATUS</span><span>ACTIVE</span></div>
+    </div>
+
+    <div class="person locked" data-group="libera" data-search="locked libera">
+      <div class="person-id">PERSONNEL / L-██</div>
+      <h3>████████</h3>
+      <div class="locked-block">
+        IDENTITY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ CLASSIFIED ]<br>
+        CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>
+        STATUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACTIVE
+      </div>
+      <div class="lock-message">[ RECORD LOCKED ]</div>
+    </div>
+
+    <div class="person locked" data-group="libera" data-search="locked libera">
+      <div class="person-id">PERSONNEL / L-██</div>
+      <h3>████████</h3>
+      <div class="locked-block">
+        IDENTITY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ CLASSIFIED ]<br>
+        CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>
+        STATUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN
+      </div>
+      <div class="lock-message">[ RECORD LOCKED ]</div>
+    </div>
+
+    <!-- NEST -->
+
+    <div class="person" data-group="nest" data-search="장미라 jang mira nest">
+      <div class="person-id">PERSONNEL / N-01</div>
+      <h3>장미라</h3>
+      <div class="person-eng">JANG MIRA</div>
+      <div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div>
+      <div class="person-line"><span>AFFILIATION</span><span>NEST</span></div>
+      <div class="person-line"><span>ROLE</span><span>INFORMATION BROKER</span></div>
+      <div class="person-line"><span>STATUS</span><span>ACTIVE</span></div>
+    </div>
+
+    <div class="person locked" data-group="nest" data-search="locked nest">
+      <div class="person-id">PERSONNEL / N-██</div>
+      <h3>████████</h3>
+      <div class="locked-block">[ PERSONNEL DATA RESTRICTED ]</div>
+      <div class="lock-message">[ RECORD LOCKED ]</div>
+    </div>
+
+    <div class="person locked" data-group="nest" data-search="locked nest">
+      <div class="person-id">PERSONNEL / N-██</div>
+      <h3>████████</h3>
+      <div class="locked-block">[ PERSONNEL DATA RESTRICTED ]</div>
+      <div class="lock-message">[ RECORD LOCKED ]</div>
+    </div>
+
+    <div class="person locked" data-group="nest" data-search="locked nest">
+      <div class="person-id">PERSONNEL / N-██</div>
+      <h3>████████</h3>
+      <div class="locked-block">[ PERSONNEL DATA RESTRICTED ]</div>
+      <div class="lock-message">[ RECORD LOCKED ]</div>
+    </div>
+
+    <!-- SANCTUARY -->
+
+    <div class="person" data-group="sanctuary" data-search="마리아 한 maria han 성역 sanctuary">
+      <div class="person-id">PERSONNEL / S-01</div>
+      <h3>마리아 한</h3>
+      <div class="person-eng">MARIA HAN</div>
+      <div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div>
+      <div class="person-line"><span>AFFILIATION</span><span>성역 교단</span></div>
+      <div class="person-line"><span>POSITION</span><span>[ RESTRICTED ]</span></div>
+      <div class="person-line"><span>STATUS</span><span>ACTIVE</span></div>
+    </div>
+
+    <div class="person locked" data-group="sanctuary" data-search="locked 성역 sanctuary">
+      <div class="person-id">PERSONNEL / S-██</div>
+      <h3>████████</h3>
+      <div class="locked-block">[ PERSONNEL DATA RESTRICTED ]</div>
+      <div class="lock-message">[ RECORD LOCKED ]</div>
+    </div>
+
+    <div class="person locked" data-group="sanctuary" data-search="locked 성역 sanctuary">
+      <div class="person-id">PERSONNEL / S-██</div>
+      <h3>████████</h3>
+      <div class="locked-block">[ PERSONNEL DATA RESTRICTED ]</div>
+      <div class="lock-message">[ RECORD LOCKED ]</div>
+    </div>
+
+    <div class="person locked" data-group="sanctuary" data-search="locked 성역 sanctuary">
+      <div class="person-id">PERSONNEL / S-██</div>
+      <h3>████████</h3>
+      <div class="locked-block">[ PERSONNEL DATA RESTRICTED ]</div>
+      <div class="lock-message">[ RECORD LOCKED ]</div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- RIFT DATABASE -->
+
+<section class="page" id="database">
+
+  <div class="eyebrow">ARCHIVE / 06 / RIFT DATABASE</div>
+  <h2>RIFT DATABASE</h2>
+  <div class="ko-title">균열 위험등급 및 이상분류</div>
+
+  <div class="header-rule"></div>
+
+  <div class="db-row">
+    <div class="db-class">WHITE</div>
+    <div class="db-desc">극소규모 균열</div>
+    <div class="db-level">LOW</div>
+  </div>
+
+  <div class="db-row">
+    <div class="db-class">BLUE</div>
+    <div class="db-desc">소규모 균열</div>
+    <div class="db-level">CONTROLLED</div>
+  </div>
+
+  <div class="db-row">
+    <div class="db-class">YELLOW</div>
+    <div class="db-desc">민간인 대피 필요</div>
+    <div class="db-level">EVACUATION</div>
+  </div>
+
+  <div class="db-row">
+    <div class="db-class">ORANGE</div>
+    <div class="db-desc">A급 전력 투입</div>
+    <div class="db-level">HIGH</div>
+  </div>
+
+  <div class="db-row">
+    <div class="db-class">RED</div>
+    <div class="db-desc">S급 전력 / 도시재난 수준</div>
+    <div class="db-level">SEVERE</div>
+  </div>
+
+  <div class="db-row">
+    <div class="db-class">BLACK</div>
+    <div class="db-desc">국가재난급 균열</div>
+    <div class="db-level">CATASTROPHE</div>
+  </div>
+
+  <div class="unknown-rift" id="unknownRift"></div>
+
+</section>
+
+<!-- CLASSIFIED -->
+
+<section class="page" id="classified">
+
+  <div class="eyebrow">ARCHIVE / 07 / CLASSIFIED</div>
+  <h2>CLASSIFIED</h2>
+  <div class="ko-title">보안등급 제한 기록</div>
+
+  <div class="header-rule"></div>
+
+  <div class="classified-terminal">
+
+    <div class="classified-top">
+
+      <div>
+        <div class="classified-status">DISCOVERED RECORDS</div>
+        <div class="archive-count">
+          <span id="unlockCount">0</span>
+          <small>/ 4</small>
+        </div>
       </div>
 
-      <div class="db-row">
-        <div class="db-class">RED</div>
-        <div class="db-desc">
-          S급 전력 / 도시재난 수준
-        </div>
-        <div class="db-level">SEVERE</div>
+      <div class="completion">
+        ARCHIVE COMPLETION<br>
+        <span id="completionPercent">0%</span>
       </div>
 
-      <div class="db-row">
-        <div class="db-class">BLACK</div>
-        <div class="db-desc">
-          국가재난급 균열
-        </div>
-        <div class="db-level">CATASTROPHE</div>
-      </div>
+    </div>
 
-      <div class="zero">
+    <div class="code-area">
 
-        <div class="zero-title">
-          ZERO
-        </div>
-
-        <div class="header-rule"></div>
-
-        <div class="error">
-          CLASSIFICATION : UNKNOWN<br>
-          MEASUREMENT : FAILED<br>
-          ORIGIN : [ ACCESS DENIED ]<br>
-          STATUS : UNDEFINED
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==============================
-         07 CLASSIFIED
-    ============================== -->
-
-    <section class="page" id="classified">
-
-      <div class="eyebrow">
-        ARCHIVE / 07 / CLASSIFIED
-      </div>
-
-      <h2>CLASSIFIED</h2>
-
-      <div class="ko-title">
-        보안등급 제한 기록
-      </div>
-
-      <div class="header-rule"></div>
-
-      <div class="classified-terminal">
-
-        <div class="classified-top">
-
-          <div>
-            <div class="classified-status">
-              DISCOVERED RECORDS
-            </div>
-
-            <div class="archive-count">
-              <span id="unlockCount">0</span>
-              <small>/ 4</small>
-            </div>
-          </div>
-
-          <div class="completion">
-            ARCHIVE COMPLETION<br>
-            <span id="completionPercent">0%</span>
-          </div>
-
-        </div>
-
-        <div class="code-area">
-
-          <input
-            class="password"
-            id="password"
-            type="text"
-            autocomplete="off"
-            placeholder="ACCESS CODE"
-            onkeydown="if(event.key==='Enter'){tryAccess();}"
-          >
-
-          <button
-            class="access-btn"
-            onclick="tryAccess()"
-          >
-            [ VERIFY ]
-          </button>
-
-        </div>
-
-        <div
-          class="access-result"
-          id="accessResult"
-        ></div>
-
-      </div>
-
-      <div class="record-list">
-
-        <div
-          class="record-card locked"
-          id="record-name"
-          onclick="openRecord('name')"
-        >
-          <div class="record-number">
-            RECORD / 01
-          </div>
-
-          <div class="record-name">
-            [ UNDISCOVERED ]
-          </div>
-
-          <div class="record-state">
-            ACCESS KEY REQUIRED
-          </div>
-        </div>
-
-        <div
-          class="record-card locked"
-          id="record-key"
-          onclick="openRecord('key')"
-        >
-          <div class="record-number">
-            RECORD / 02
-          </div>
-
-          <div class="record-name">
-            [ UNDISCOVERED ]
-          </div>
-
-          <div class="record-state">
-            ACCESS KEY REQUIRED
-          </div>
-        </div>
-
-        <div
-          class="record-card locked"
-          id="record-resonance"
-          onclick="openRecord('resonance')"
-        >
-          <div class="record-number">
-            RECORD / 03
-          </div>
-
-          <div class="record-name">
-            [ UNDISCOVERED ]
-          </div>
-
-          <div class="record-state">
-            ACCESS KEY REQUIRED
-          </div>
-        </div>
-
-        <div
-          class="record-card locked"
-          id="record-remember"
-          onclick="openRecord('remember')"
-        >
-          <div class="record-number">
-            RECORD / 04
-          </div>
-
-          <div class="record-name">
-            [ UNDISCOVERED ]
-          </div>
-
-          <div class="record-state">
-            ACCESS KEY REQUIRED
-          </div>
-        </div>
-
-      </div>
-
-      <div class="record-view" id="recordView">
-
-        <div class="record-view-head">
-
-          <div>
-
-            <div
-              class="record-view-type"
-              id="recordViewType"
-            ></div>
-
-            <div
-              class="record-view-title"
-              id="recordViewTitle"
-            ></div>
-
-          </div>
-
-          <button
-            class="close-detail"
-            onclick="closeRecord()"
-          >
-            [ CLOSE ]
-          </button>
-
-        </div>
-
-        <div
-          class="document"
-          id="recordViewBody"
-        ></div>
-
-      </div>
-
-      <div
-        class="complete-message"
-        id="completeMessage"
+      <input
+        id="password"
+        class="password"
+        type="text"
+        autocomplete="off"
+        placeholder="ACCESS CODE"
+        onkeydown="if(event.key==='Enter')tryAccess()"
       >
-        [ ARCHIVE COMPLETION : 100% ]<br>
-        ALL AVAILABLE SEASON 1 RECORDS RECOVERED.<br>
-        ADDITIONAL DATA : [ NOT FOUND ]
+
+      <button class="access-btn" onclick="tryAccess()">
+        [ VERIFY ]
+      </button>
+
+    </div>
+
+    <div class="access-result" id="accessResult"></div>
+
+  </div>
+
+  <div class="record-list">
+
+    <div class="record-card locked" id="record-name" onclick="openRecord('name')">
+      <div class="record-number">RECORD / 01</div>
+      <div class="record-name">[ UNDISCOVERED ]</div>
+      <div class="record-state">ACCESS KEY REQUIRED</div>
+    </div>
+
+    <div class="record-card locked" id="record-key" onclick="openRecord('key')">
+      <div class="record-number">RECORD / 02</div>
+      <div class="record-name">[ UNDISCOVERED ]</div>
+      <div class="record-state">ACCESS KEY REQUIRED</div>
+    </div>
+
+    <div class="record-card locked" id="record-resonance" onclick="openRecord('resonance')">
+      <div class="record-number">RECORD / 03</div>
+      <div class="record-name">[ UNDISCOVERED ]</div>
+      <div class="record-state">ACCESS KEY REQUIRED</div>
+    </div>
+
+    <div class="record-card locked" id="record-remember" onclick="openRecord('remember')">
+      <div class="record-number">RECORD / 04</div>
+      <div class="record-name">[ UNDISCOVERED ]</div>
+      <div class="record-state">ACCESS KEY REQUIRED</div>
+    </div>
+
+  </div>
+
+  <div class="record-view" id="recordView">
+
+    <div class="record-view-head">
+
+      <div>
+        <div class="record-view-type" id="recordViewType"></div>
+        <div class="record-view-title" id="recordViewTitle"></div>
       </div>
 
-    </section>
+      <button class="close-btn" onclick="closeRecord()">[ CLOSE ]</button>
 
-  </main>
+    </div>
+
+    <div class="document" id="recordViewBody"></div>
+
+  </div>
+
+  <div class="complete-message" id="completeMessage">
+    [ ARCHIVE COMPLETION : 100% ]<br>
+    ALL AVAILABLE SEASON 1 RECORDS RECOVERED.<br>
+    ADDITIONAL DATA : [ NOT FOUND ]
+  </div>
+
+</section>
+
+</main>
 </div>
 
 <script>
 
-/* ==============================
-   INTRO
-============================== */
+/* INTRO */
 
 function enterArchive(){
-
-  document
-    .getElementById('intro')
-    .classList.add('hide');
-
-  document
-    .getElementById('archive')
-    .classList.add('show');
-
-  sessionStorage.setItem(
-    'echoEntered',
-    '1'
-  );
+  document.getElementById('intro').classList.add('hide');
+  document.getElementById('archive').classList.add('show');
+  sessionStorage.setItem('echoEntered','1');
 }
 
-if(
-  sessionStorage.getItem('echoEntered')
-){
-  document
-    .getElementById('intro')
-    .classList.add('hide');
-
-  document
-    .getElementById('archive')
-    .classList.add('show');
+if(sessionStorage.getItem('echoEntered')){
+  document.getElementById('intro').classList.add('hide');
+  document.getElementById('archive').classList.add('show');
 }
 
-/* ==============================
-   PAGE MENU
-============================== */
+/* MENU */
 
 function openPage(id,button){
 
-  document
-    .querySelectorAll('.page')
-    .forEach(page=>{
-      page.classList.remove('active');
-    });
-
-  document
-    .getElementById(id)
-    .classList.add('active');
-
-  document
-    .querySelectorAll('nav button')
-    .forEach(btn=>{
-      btn.classList.remove('active');
-    });
-
-  if(button){
-    button.classList.add('active');
-  }
-
-  document
-    .getElementById('sidebar')
-    .classList.remove('open');
-
-  window.scrollTo({
-    top:0,
-    behavior:'smooth'
+  document.querySelectorAll('.page').forEach(page=>{
+    page.classList.remove('active');
   });
+
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('nav button').forEach(btn=>{
+    btn.classList.remove('active');
+  });
+
+  if(button) button.classList.add('active');
+
+  document.getElementById('sidebar').classList.remove('open');
+
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function toggleMenu(){
-
-  document
-    .getElementById('sidebar')
-    .classList.toggle('open');
+  document.getElementById('sidebar').classList.toggle('open');
 }
 
-/* ==============================
-   FACTIONS
-============================== */
+/* FACTION ACCORDION */
 
-const factionData={
+function toggleFaction(head){
 
-  aegis:{
-    title:'AEGIS',
-    body:`
-      <table>
+  const item=head.parentElement;
+  const alreadyOpen=item.classList.contains('open');
 
-        <tr>
-          <td>STATUS</td>
-          <td>ACTIVE</td>
-        </tr>
+  document.querySelectorAll('.faction-item').forEach(el=>{
+    el.classList.remove('open');
+  });
 
-        <tr>
-          <td>ESTABLISHED</td>
-          <td>Y-18</td>
-        </tr>
-
-        <tr>
-          <td>PURPOSE</td>
-          <td>균열 대응 / 각성자 관리 및 보호</td>
-        </tr>
-
-        <tr>
-          <td>01</td>
-          <td>균열 전투</td>
-        </tr>
-
-        <tr>
-          <td>02</td>
-          <td>가이드 관리 및 매칭</td>
-        </tr>
-
-        <tr>
-          <td>03</td>
-          <td>공명·균열 연구</td>
-        </tr>
-
-        <tr>
-          <td>04</td>
-          <td>감찰·각성자 범죄</td>
-        </tr>
-
-        <tr>
-          <td>05</td>
-          <td>정보·외부세력</td>
-        </tr>
-
-        <tr>
-          <td>00</td>
-          <td>[ ACCESS DENIED ]</td>
-        </tr>
-
-      </table>
-    `
-  },
-
-  white:{
-    title:'백야 연구소',
-    body:`
-      <table>
-
-        <tr>
-          <td>ENGLISH</td>
-          <td>WHITE NIGHT LABORATORY</td>
-        </tr>
-
-        <tr>
-          <td>STATUS</td>
-          <td>[ UNKNOWN ]</td>
-        </tr>
-
-        <tr>
-          <td>ESTABLISHED</td>
-          <td>Y-17</td>
-        </tr>
-
-        <tr>
-          <td>FIELD</td>
-          <td>정신파 / 공명 / 균열 연구</td>
-        </tr>
-
-        <tr>
-          <td>RECORD</td>
-          <td>[ DATA PARTIALLY DELETED ]</td>
-        </tr>
-
-      </table>
-    `
-  },
-
-  libera:{
-    title:'LIBERA',
-    body:`
-      <table>
-
-        <tr>
-          <td>STATUS</td>
-          <td>ACTIVE</td>
-        </tr>
-
-        <tr>
-          <td>TYPE</td>
-          <td>각성자 해방조직</td>
-        </tr>
-
-        <tr>
-          <td>PRINCIPLE</td>
-          <td>누구도 타인의 삶을 결정할 수 없다.</td>
-        </tr>
-
-        <tr>
-          <td>INTERNAL</td>
-          <td>온건 / 강경 / 독립 노선 존재</td>
-        </tr>
-
-      </table>
-    `
-  },
-
-  nest:{
-    title:'NEST',
-    body:`
-      <table>
-
-        <tr>
-          <td>STATUS</td>
-          <td>ACTIVE</td>
-        </tr>
-
-        <tr>
-          <td>TYPE</td>
-          <td>미등록 각성자 지하 네트워크</td>
-        </tr>
-
-        <tr>
-          <td>USERS</td>
-          <td>미등록 각성자 / 브로커 / 도망자</td>
-        </tr>
-
-        <tr>
-          <td>SERVICE</td>
-          <td>정보 / 신분 / 은신처 / 의약품</td>
-        </tr>
-
-      </table>
-    `
-  },
-
-  sanctuary:{
-    title:'성역 교단',
-    body:`
-      <table>
-
-        <tr>
-          <td>ENGLISH</td>
-          <td>SANCTUARY</td>
-        </tr>
-
-        <tr>
-          <td>STATUS</td>
-          <td>ACTIVE</td>
-        </tr>
-
-        <tr>
-          <td>RIFT</td>
-          <td>THE DOOR / 문</td>
-        </tr>
-
-        <tr>
-          <td>SENTINEL</td>
-          <td>THE SWORD / 검</td>
-        </tr>
-
-        <tr>
-          <td>GUIDE</td>
-          <td>THE KEY / 열쇠</td>
-        </tr>
-
-        <tr>
-          <td>DOCTRINE</td>
-          <td>균열은 재앙이 아니라 문이다.</td>
-        </tr>
-
-      </table>
-    `
+  if(!alreadyOpen){
+    item.classList.add('open');
   }
-
-};
-
-function showFaction(id){
-
-  const data=
-    factionData[id];
-
-  document
-    .getElementById('factionTitle')
-    .textContent=data.title;
-
-  document
-    .getElementById('factionBody')
-    .innerHTML=data.body;
-
-  document
-    .getElementById('factionDetail')
-    .classList.add('open');
-
-  setTimeout(()=>{
-
-    document
-      .getElementById('factionDetail')
-      .scrollIntoView({
-        behavior:'smooth',
-        block:'nearest'
-      });
-
-  },50);
 }
 
-function closeFaction(){
+/* PERSONNEL FILTER */
 
-  document
-    .getElementById('factionDetail')
-    .classList.remove('open');
+let currentPersonFilter='all';
+
+function setPersonFilter(filter,button){
+
+  currentPersonFilter=filter;
+
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.classList.remove('active');
+  });
+
+  button.classList.add('active');
+
+  filterPeople();
 }
 
-/* ==============================
-   CLASSIFIED DATA
-============================== */
+function filterPeople(){
+
+  const query=document
+    .getElementById('personSearch')
+    .value
+    .trim()
+    .toLowerCase();
+
+  let count=0;
+
+  document.querySelectorAll('.person').forEach(card=>{
+
+    const group=card.dataset.group;
+    const search=(card.dataset.search || '').toLowerCase();
+
+    const groupMatch=
+      currentPersonFilter==='all' ||
+      group===currentPersonFilter;
+
+    const searchMatch=
+      !query ||
+      search.includes(query) ||
+      card.innerText.toLowerCase().includes(query);
+
+    const show=groupMatch && searchMatch;
+
+    card.style.display=show ? '' : 'none';
+
+    if(show) count++;
+  });
+
+  document.getElementById('personCount').textContent=count;
+}
+
+/* CLASSIFIED */
 
 const ACCESS_CODES={
-
   'NME-0047-SKY':'name',
-
   'KEY-017-114':'key',
-
   'RSN-FR-9998':'resonance',
-
   'REM-NULL-WRU':'remember'
-
 };
 
 const RECORD_DATA={
 
   name:{
-
     title:'SUBJECT OBSERVATION LOG',
-
     type:'WHITE NIGHT / SUBJECT RECORD',
-
     card:'SUBJECT 00 / OBSERVATION LOG',
 
     body:`
@@ -2636,16 +2669,12 @@ const RECORD_DATA={
 
       Q. 원하는 것이 있습니까?
       <br><br>
-
       00은 질문을 이해하지 못했다.
       <br><br>
-
       같은 질문을 세 차례 반복한 뒤,
       대상은 다음과 같이 답했다.
 
-      <div class="quote">
-        "뭘 해도 돼?"
-      </div>
+      <div class="quote">"뭘 해도 돼?"</div>
 
       질문 방식을 변경했다.
       <br><br>
@@ -2654,25 +2683,17 @@ const RECORD_DATA={
       <br><br>
 
       대상은 약 47초간 응답하지 않았다.
-      <br><br>
-
       이후 창문을 가리켰다.
 
-      <div class="quote">
-        "저건 뭐야?"
-      </div>
+      <div class="quote">"저건 뭐야?"</div>
 
       Q. 하늘입니다.
 
-      <div class="quote">
-        "왜 파래?"
-      </div>
+      <div class="quote">"왜 파래?"</div>
 
       <div class="divider"></div>
 
-      <div class="mono">
-        OBSERVATION NOTE
-      </div>
+      <div class="mono">OBSERVATION NOTE</div>
 
       대상에게 선택지를 제공하는 행위가
       실험 결과에 불필요한 변수를 발생시킨다는
@@ -2687,9 +2708,7 @@ const RECORD_DATA={
 
       <div class="divider"></div>
 
-      <div class="mono">
-        OBSERVER COMMENT
-      </div>
+      <div class="mono">OBSERVER COMMENT</div>
 
       <span class="blackout">
         DATA DELETED DATA DELETED
@@ -2698,11 +2717,8 @@ const RECORD_DATA={
   },
 
   key:{
-
     title:'ORACLE ARCHIVE',
-
     type:'SANCTUARY / RESTRICTED RECORD',
-
     card:'성역 교단 / 신탁기록',
 
     body:`
@@ -2715,26 +2731,20 @@ const RECORD_DATA={
 
       <div class="divider"></div>
 
-      <div class="doc-title">
-        신탁 원문 일부
-      </div>
+      신탁 원문 일부
 
       <div class="quote">
         "문이 열린 날,<br>
         그것은 우리를 보았다."
       </div>
 
-      <span class="blackout">
-        ██████████████████████
-      </span>
+      <span class="blackout">██████████████████████</span>
 
       <div class="quote">
         "열쇠는 문을 여는 자가 아니다."
       </div>
 
-      <span class="blackout">
-        ███████████████████
-      </span>
+      <span class="blackout">██████████████████</span>
 
       <div class="quote">
         "문이 열쇠를 선택한다."
@@ -2742,33 +2752,18 @@ const RECORD_DATA={
 
       <div class="divider"></div>
 
-      <span class="warning">
-        [ TRANSLATION DISPUTED ]
-      </span>
+      <span class="warning">[ TRANSLATION DISPUTED ]</span>
 
       <br><br>
 
-      해당 문장은 현재 성역 교단의
-      공식 교리와 해석이 일치하지 않는다.
-
-      <br><br>
-
-      최초 번역자 기록 :
-      <span class="blackout">██████</span>
-
-      <br>
-
-      수정 승인 :
-      <span class="blackout">██████</span>
+      해당 문장은 현재 성역 교단의 공식 교리와
+      해석이 일치하지 않는다.
     `
   },
 
   resonance:{
-
     title:'FIRST RIFT OBSERVATION LOG',
-
     type:'AEGIS / RESTRICTED ARCHIVE',
-
     card:'FIRST RIFT / OBSERVATION LOG',
 
     body:`
@@ -2791,9 +2786,7 @@ const RECORD_DATA={
 
       <br><br>
 
-      <span class="blackout">
-        DATA DELETED DATA DELETED
-      </span>
+      <span class="blackout">DATA DELETED DATA DELETED</span>
 
       <br><br>
 
@@ -2803,9 +2796,6 @@ const RECORD_DATA={
       <br><br>
 
       그러나 분석 결과—
-
-      <br><br>
-
       신호의 방향이 예상과 일치하지 않았다.
 
       <div class="quote">
@@ -2817,17 +2807,15 @@ const RECORD_DATA={
       <div class="mono">
         UNIDENTIFIED MENTAL WAVE<br>
         MATCH : 99.998%<br>
+        ANOMALY DESIGNATION : ZERO<br>
         SOURCE : [ ACCESS DENIED ]
       </div>
     `
   },
 
   remember:{
-
     title:'UNKNOWN ARCHIVE',
-
     type:'SOURCE / NOT FOUND',
-
     card:'UNKNOWN / UNIDENTIFIED RECORD',
 
     body:`
@@ -2840,30 +2828,20 @@ const RECORD_DATA={
 
       <div class="divider"></div>
 
-      이 기록은 AEGIS 데이터베이스에
-      존재하지 않습니다.
-
+      이 기록은 AEGIS 데이터베이스에 존재하지 않습니다.
       <br><br>
-
-      이 기록은 백야 연구소 데이터베이스에
-      존재하지 않습니다.
-
+      이 기록은 백야 연구소 데이터베이스에 존재하지 않습니다.
       <br><br>
-
       작성자는 존재하지 않습니다.
 
       <div class="divider"></div>
 
       <div class="unknown">
         [ SIGNAL RECEIVED ]
-      </div>
-
-      <div class="unknown">
+        <br><br>
         ████████████████████
         <br><br>
-
         WE REMEMBER YOU.
-
         <br><br>
         ████████████████████
       </div>
@@ -2884,19 +2862,10 @@ const RECORD_DATA={
 
 };
 
-/* ==============================
-   CLASSIFIED STORAGE
-============================== */
-
 let unlockedRecords=
-  JSON.parse(
-    localStorage.getItem(
-      'echoRiftUnlocked'
-    ) || '[]'
-  );
+  JSON.parse(localStorage.getItem('echoRiftUnlocked') || '[]');
 
 function saveUnlocked(){
-
   localStorage.setItem(
     'echoRiftUnlocked',
     JSON.stringify(unlockedRecords)
@@ -2905,391 +2874,231 @@ function saveUnlocked(){
 
 function refreshArchive(){
 
-  const ids=[
-    'name',
-    'key',
-    'resonance',
-    'remember'
-  ];
+  ['name','key','resonance','remember'].forEach(id=>{
 
-  ids.forEach(id=>{
+    const card=document.getElementById('record-'+id);
+    const name=card.querySelector('.record-name');
+    const state=card.querySelector('.record-state');
 
-    const card=
-      document.getElementById(
-        'record-'+id
-      );
+    if(unlockedRecords.includes(id)){
 
-    const name=
-      card.querySelector(
-        '.record-name'
-      );
+      card.classList.remove('locked');
+      card.classList.add('unlocked');
 
-    const state=
-      card.querySelector(
-        '.record-state'
-      );
-
-    if(
-      unlockedRecords.includes(id)
-    ){
-
-      card
-        .classList
-        .remove('locked');
-
-      card
-        .classList
-        .add('unlocked');
-
-      name.textContent=
-        RECORD_DATA[id].card;
-
-      state.textContent=
-        'ACCESS GRANTED';
+      name.textContent=RECORD_DATA[id].card;
+      state.textContent='ACCESS GRANTED';
 
     }else{
 
-      card
-        .classList
-        .remove('unlocked');
+      card.classList.remove('unlocked');
+      card.classList.add('locked');
 
-      card
-        .classList
-        .add('locked');
-
-      name.textContent=
-        '[ UNDISCOVERED ]';
-
-      state.textContent=
-        'ACCESS KEY REQUIRED';
+      name.textContent='[ UNDISCOVERED ]';
+      state.textContent='ACCESS KEY REQUIRED';
     }
-
   });
 
-  const count=
-    unlockedRecords.length;
+  const count=unlockedRecords.length;
+
+  document.getElementById('unlockCount').textContent=count;
+  document.getElementById('completionPercent').textContent=
+    Math.round(count/4*100)+'%';
 
   document
-    .getElementById('unlockCount')
-    .textContent=count;
+    .getElementById('completeMessage')
+    .classList.toggle('show',count===4);
 
-  const percent=
-    Math.round(
-      count / 4 * 100
-    );
-
-  document
-    .getElementById(
-      'completionPercent'
-    )
-    .textContent=
-    percent+'%';
-
-  if(count===4){
-
-    document
-      .getElementById(
-        'completeMessage'
-      )
-      .classList.add('show');
-
-  }else{
-
-    document
-      .getElementById(
-        'completeMessage'
-      )
-      .classList.remove('show');
-  }
+  refreshRiftDatabase();
 }
-
-/* ==============================
-   ACCESS CODE
-============================== */
 
 function tryAccess(){
 
-  const field=
-    document.getElementById(
-      'password'
-    );
+  const field=document.getElementById('password');
+  const result=document.getElementById('accessResult');
 
-  const result=
-    document.getElementById(
-      'accessResult'
-    );
+  const code=field.value.trim().toUpperCase();
 
-  const code=
-    field.value
-      .trim()
-      .toUpperCase();
-
-  result
-    .classList
-    .remove('success');
+  result.classList.remove('success');
 
   if(!code){
-
-    result.textContent=
-      '[ ACCESS CODE REQUIRED ]';
-
+    result.textContent='[ ACCESS CODE REQUIRED ]';
     return;
   }
 
-  const recordId=
-    ACCESS_CODES[code];
+  const recordId=ACCESS_CODES[code];
 
   if(!recordId){
-
-    result.textContent=
-      '[ ACCESS DENIED / INVALID KEY ]';
-
+    result.textContent='[ ACCESS DENIED / INVALID KEY ]';
     field.select();
-
     return;
   }
 
-  if(
-    unlockedRecords
-      .includes(recordId)
-  ){
+  if(unlockedRecords.includes(recordId)){
 
-    result
-      .classList
-      .add('success');
-
-    result.textContent=
-      '[ RECORD ALREADY RECOVERED ]';
+    result.classList.add('success');
+    result.textContent='[ RECORD ALREADY RECOVERED ]';
 
     field.value='';
-
     openRecord(recordId);
-
     return;
   }
 
-  unlockedRecords
-    .push(recordId);
+  unlockedRecords.push(recordId);
 
   saveUnlocked();
-
   refreshArchive();
 
-  result
-    .classList
-    .add('success');
-
-  result.textContent=
-    '[ ACCESS GRANTED / RECORD RECOVERED ]';
+  result.classList.add('success');
+  result.textContent='[ ACCESS GRANTED / DATABASE UPDATED ]';
 
   field.value='';
 
-  setTimeout(()=>{
-
-    openRecord(recordId);
-
-  },450);
+  setTimeout(()=>openRecord(recordId),350);
 }
-
-/* ==============================
-   RECORD VIEW
-============================== */
 
 function openRecord(id){
 
-  if(
-    !unlockedRecords.includes(id)
-  ){
-    return;
-  }
+  if(!unlockedRecords.includes(id)) return;
 
-  const data=
-    RECORD_DATA[id];
+  const data=RECORD_DATA[id];
 
-  document
-    .getElementById(
-      'recordViewType'
-    )
-    .textContent=
-    data.type;
+  document.getElementById('recordViewType').textContent=data.type;
+  document.getElementById('recordViewTitle').textContent=data.title;
+  document.getElementById('recordViewBody').innerHTML=data.body;
 
-  document
-    .getElementById(
-      'recordViewTitle'
-    )
-    .textContent=
-    data.title;
+  const view=document.getElementById('recordView');
 
-  document
-    .getElementById(
-      'recordViewBody'
-    )
-    .innerHTML=
-    data.body;
-
-  const view=
-    document.getElementById(
-      'recordView'
-    );
-
-  view
-    .classList
-    .add('open');
+  view.classList.add('open');
 
   setTimeout(()=>{
-
     view.scrollIntoView({
       behavior:'smooth',
       block:'start'
     });
-
   },50);
 }
 
 function closeRecord(){
-
-  document
-    .getElementById(
-      'recordView'
-    )
-    .classList
-    .remove('open');
+  document.getElementById('recordView').classList.remove('open');
 }
 
-/* ==============================
-   PARTICLES
-============================== */
+/* RIFT DATABASE UNLOCK */
 
-const canvas=
-  document.getElementById(
-    'particles'
-  );
+function refreshRiftDatabase(){
 
-const ctx=
-  canvas.getContext('2d');
+  const box=document.getElementById('unknownRift');
+
+  if(unlockedRecords.includes('resonance')){
+
+    box.innerHTML=`
+      <div class="unknown-rift-title">
+        ZERO
+      </div>
+
+      <div class="system-lines">
+        CLASSIFICATION&nbsp;&nbsp;UNKNOWN<br>
+        CATEGORY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OUTSIDE STANDARD CLASSIFICATION<br>
+        MEASUREMENT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FAILED<br>
+        ORIGIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>
+        STATUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UNDEFINED
+      </div>
+
+      <div class="divider"></div>
+
+      <div style="color:#71858f;font-size:11px;line-height:1.9;">
+        ZERO는 WHITE–BLACK 위험등급의 상위 등급이 아니다.<br>
+        기존 균열 분류체계가 적용되지 않는
+        이상현상에 사용되는 별도 분류명이다.
+      </div>
+
+      <div class="updated">
+        [ RECORD UPDATED / CLASSIFIED KEY ACCEPTED ]
+      </div>
+    `;
+
+  }else{
+
+    box.innerHTML=`
+      <div class="unknown-rift-title">
+        [ UNREGISTERED ENTRY DETECTED ]
+      </div>
+
+      <div class="system-lines">
+        DESIGNATION&nbsp;&nbsp;&nbsp;&nbsp;█████<br>
+        CLASSIFICATION&nbsp;█████<br>
+        MEASUREMENT&nbsp;&nbsp;&nbsp;&nbsp;FAILED<br>
+        ACCESS LEVEL&nbsp;&nbsp;&nbsp;&nbsp;INSUFFICIENT
+      </div>
+
+      <div class="updated">
+        [ ACCESS DENIED ]
+      </div>
+    `;
+  }
+}
+
+/* PARTICLES */
+
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
 
 let particles=[];
 
-function resize(){
+function resizeParticles(){
 
-  canvas.width=
-    window.innerWidth;
-
-  canvas.height=
-    window.innerHeight;
-
-  createParticles();
-}
-
-function createParticles(){
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
 
   particles=[];
 
-  const amount=
-    Math.min(
-      85,
-      Math.floor(
-        window.innerWidth / 18
-      )
-    );
+  const amount=Math.min(
+    80,
+    Math.floor(window.innerWidth/18)
+  );
 
-  for(
-    let i=0;
-    i<amount;
-    i++
-  ){
+  for(let i=0;i<amount;i++){
 
     particles.push({
-
-      x:
-        Math.random()
-        *canvas.width,
-
-      y:
-        Math.random()
-        *canvas.height,
-
-      r:
-        Math.random()
-        *1.2+.2,
-
-      a:
-        Math.random()
-        *.45+.08,
-
-      vx:
-        (Math.random()-.5)
-        *.08,
-
-      vy:
-        (Math.random()-.5)
-        *.08
-
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height,
+      r:Math.random()*1.2+.2,
+      a:Math.random()*.4+.06,
+      vx:(Math.random()-.5)*.08,
+      vy:(Math.random()-.5)*.08
     });
   }
 }
 
-function animate(){
+function animateParticles(){
 
-  ctx.clearRect(
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 
   particles.forEach(p=>{
 
     p.x+=p.vx;
     p.y+=p.vy;
 
-    if(p.x<0){
-      p.x=canvas.width;
-    }
-
-    if(p.x>canvas.width){
-      p.x=0;
-    }
-
-    if(p.y<0){
-      p.y=canvas.height;
-    }
-
-    if(p.y>canvas.height){
-      p.y=0;
-    }
+    if(p.x<0)p.x=canvas.width;
+    if(p.x>canvas.width)p.x=0;
+    if(p.y<0)p.y=canvas.height;
+    if(p.y>canvas.height)p.y=0;
 
     ctx.beginPath();
-
-    ctx.arc(
-      p.x,
-      p.y,
-      p.r,
-      0,
-      Math.PI*2
-    );
-
-    ctx.fillStyle=
-      `rgba(170,220,255,${p.a})`;
-
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(170,220,255,${p.a})`;
     ctx.fill();
-
   });
 
-  requestAnimationFrame(
-    animate
-  );
+  requestAnimationFrame(animateParticles);
 }
 
-window.addEventListener(
-  'resize',
-  resize
-);
+window.addEventListener('resize',resizeParticles);
 
-resize();
-animate();
+resizeParticles();
+animateParticles();
 
 refreshArchive();
+filterPeople();
 
 </script>
 
