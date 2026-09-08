@@ -1497,6 +1497,156 @@ h2{
     line-height:1.8;
   }
 }
+
+/* MOBILE BOTTOM NAVIGATION */
+
+.mobile-nav{
+  display:none;
+}
+
+.mobile-clearance{
+  color:#465e6c;
+  font:7px 'Space Mono',monospace;
+  letter-spacing:.08em;
+}
+
+.mobile-logo span{
+  color:var(--blue);
+}
+
+@media(max-width:800px){
+
+  /* 기존 햄버거형 사이드바 사용 안 함 */
+  .sidebar{
+    display:none !important;
+  }
+
+  .mobile-top{
+    height:52px;
+    padding:0 16px;
+  }
+
+  /* 본문이 상단/하단 고정바에 가리지 않도록 */
+  .content{
+    margin-left:0;
+    padding:
+      78px
+      18px
+      calc(105px + env(safe-area-inset-bottom))
+      18px;
+  }
+
+  .mobile-nav{
+    position:fixed;
+    z-index:40;
+    left:0;
+    right:0;
+    bottom:0;
+
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+
+    padding-bottom:env(safe-area-inset-bottom);
+
+    border-top:1px solid rgba(170,220,255,.16);
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(8,14,20,.96),
+        rgba(4,8,13,.985)
+      );
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+      0 -12px 35px rgba(0,0,0,.28);
+  }
+
+  .mobile-nav-btn{
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    min-width:0;
+    height:64px;
+    padding:8px 1px 7px;
+
+    border:0;
+    border-right:1px solid rgba(170,220,255,.045);
+
+    background:none;
+
+    color:#637985;
+
+    cursor:pointer;
+
+    font-family:'Noto Sans KR',sans-serif;
+    font-size:10px;
+    font-weight:400;
+
+    white-space:nowrap;
+
+    transition:
+      color .2s,
+      background .2s;
+  }
+
+  .mobile-nav-btn:last-child{
+    border-right:0;
+  }
+
+  .mobile-nav-num{
+    display:block;
+
+    margin-bottom:5px;
+
+    color:#394e5b;
+
+    font:6.5px 'Space Mono',monospace;
+    letter-spacing:.05em;
+  }
+
+  .mobile-nav-btn.active{
+    color:#d8edf8;
+
+    background:
+      linear-gradient(
+        0deg,
+        rgba(110,195,245,.075),
+        transparent 75%
+      );
+  }
+
+  .mobile-nav-btn.active::before{
+    content:'';
+
+    position:absolute;
+    left:24%;
+    right:24%;
+    top:0;
+
+    height:1px;
+
+    background:var(--blue);
+
+    box-shadow:
+      0 0 8px rgba(168,220,255,.65);
+  }
+
+  .mobile-nav-btn.active .mobile-nav-num{
+    color:#79a6bd;
+  }
+
+  /* 기밀 메뉴는 아주 미세하게 구분 */
+  .mobile-nav-btn.classified-nav{
+    border-left:1px solid rgba(170,220,255,.09);
+  }
+}
   
 </style>
 </head>
@@ -1543,10 +1693,63 @@ h2{
 </section>
 
 <div class="mobile-top">
-  <div class="mobile-logo">ECHO:RIFT</div>
-  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <div class="mobile-logo">ECHO<span>:</span>RIFT</div>
+  <div class="mobile-clearance">ARCHIVE / PUBLIC</div>
 </div>
 
+<div class="mobile-nav">
+
+  <button class="mobile-nav-btn active"
+          data-page="world"
+          onclick="openMobilePage('world',this)">
+    <span class="mobile-nav-num">01</span>
+    <span>세계관</span>
+  </button>
+
+  <button class="mobile-nav-btn"
+          data-page="timeline"
+          onclick="openMobilePage('timeline',this)">
+    <span class="mobile-nav-num">02</span>
+    <span>연표</span>
+  </button>
+
+  <button class="mobile-nav-btn"
+          data-page="factions"
+          onclick="openMobilePage('factions',this)">
+    <span class="mobile-nav-num">03</span>
+    <span>세력</span>
+  </button>
+
+  <button class="mobile-nav-btn"
+          data-page="awakened"
+          onclick="openMobilePage('awakened',this)">
+    <span class="mobile-nav-num">04</span>
+    <span>각성자</span>
+  </button>
+
+  <button class="mobile-nav-btn"
+          data-page="characters"
+          onclick="openMobilePage('characters',this)">
+    <span class="mobile-nav-num">05</span>
+    <span>인물</span>
+  </button>
+
+  <button class="mobile-nav-btn"
+          data-page="database"
+          onclick="openMobilePage('database',this)">
+    <span class="mobile-nav-num">06</span>
+    <span>균열</span>
+  </button>
+
+  <button class="mobile-nav-btn classified-nav"
+          data-page="classified"
+          onclick="openMobilePage('classified',this)">
+    <span class="mobile-nav-num">07</span>
+    <span>기밀</span>
+  </button>
+
+</div>
+  
 <div id="archive">
 
 <aside class="sidebar" id="sidebar">
@@ -2962,6 +3165,37 @@ function toggleMenu(){
   document.getElementById('sidebar').classList.toggle('open');
 }
 
+function openMobilePage(id,button){
+
+  document.querySelectorAll('.page').forEach(page=>{
+    page.classList.remove('active');
+  });
+
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('.mobile-nav-btn').forEach(btn=>{
+    btn.classList.remove('active');
+  });
+
+  button.classList.add('active');
+
+  /* PC 사이드 메뉴 상태도 함께 맞춤 */
+  document.querySelectorAll('nav button').forEach(btn=>{
+    btn.classList.remove('active');
+
+    const click=btn.getAttribute('onclick') || '';
+
+    if(click.includes("'" + id + "'")){
+      btn.classList.add('active');
+    }
+  });
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+}
+  
 /* FACTION ACCORDION */
 
 function toggleFaction(head){
