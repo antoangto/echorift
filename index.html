@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#05080d">
+<meta name="description" content="ECHO:RIFT 공식 세계관 아카이브">
 <title>ECHO:RIFT — ARCHIVE</title>
 
 <style>
@@ -19,10 +20,13 @@
   --muted:#708391;
   --blue:#a8dcff;
   --blue2:#6abfff;
-  --danger:#d9a0a0;
+  --danger:#b8838b;
+  --gold:#c3aa73;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 html{
   scroll-behavior:smooth;
@@ -40,9 +44,19 @@ body{
   overflow-x:hidden;
 }
 
-button{font:inherit}
+button,
+input{
+  font:inherit;
+}
 
-/* 배경 */
+button{
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* ==============================
+   BACKGROUND
+============================== */
+
 #particles{
   position:fixed;
   inset:0;
@@ -68,7 +82,11 @@ button{font:inherit}
   height:100px;
   z-index:99;
   pointer-events:none;
-  background:linear-gradient(transparent,rgba(140,215,255,.018),transparent);
+  background:linear-gradient(
+    transparent,
+    rgba(140,215,255,.018),
+    transparent
+  );
   animation:scan 9s linear infinite;
 }
 
@@ -77,7 +95,10 @@ button{font:inherit}
   to{top:100vh}
 }
 
-/* INTRO */
+/* ==============================
+   INTRO
+============================== */
+
 #intro{
   position:fixed;
   inset:0;
@@ -124,7 +145,10 @@ button{font:inherit}
 }
 
 @keyframes pulse{
-  50%{opacity:.25;box-shadow:0 0 3px var(--blue)}
+  50%{
+    opacity:.25;
+    box-shadow:0 0 3px var(--blue);
+  }
 }
 
 .logo{
@@ -170,20 +194,37 @@ button{font:inherit}
 }
 
 @keyframes glitch1{
-  20%,60%{opacity:.35;clip-path:inset(20% 0 55% 0)}
-  40%,80%{opacity:.2;clip-path:inset(65% 0 10% 0)}
+  20%,60%{
+    opacity:.35;
+    clip-path:inset(20% 0 55% 0);
+  }
+  40%,80%{
+    opacity:.2;
+    clip-path:inset(65% 0 10% 0);
+  }
 }
 
 @keyframes glitch2{
-  20%,60%{opacity:.2;clip-path:inset(55% 0 25% 0)}
-  40%,80%{opacity:.35;clip-path:inset(10% 0 70% 0)}
+  20%,60%{
+    opacity:.2;
+    clip-path:inset(55% 0 25% 0);
+  }
+  40%,80%{
+    opacity:.35;
+    clip-path:inset(10% 0 70% 0);
+  }
 }
 
 .intro-line{
   width:80px;
   height:1px;
   margin:30px auto;
-  background:linear-gradient(90deg,transparent,var(--blue),transparent);
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--blue),
+    transparent
+  );
 }
 
 .intro-copy{
@@ -232,7 +273,10 @@ button{font:inherit}
   font-weight:400;
 }
 
-/* ARCHIVE */
+/* ==============================
+   ARCHIVE LAYOUT
+============================== */
+
 #archive{
   position:relative;
   z-index:2;
@@ -241,7 +285,9 @@ button{font:inherit}
   transition:opacity 1.2s ease;
 }
 
-#archive.show{opacity:1}
+#archive.show{
+  opacity:1;
+}
 
 .sidebar{
   position:fixed;
@@ -263,7 +309,9 @@ button{font:inherit}
   margin-bottom:6px;
 }
 
-.side-logo span{color:var(--blue)}
+.side-logo span{
+  color:var(--blue);
+}
 
 .archive-id{
   font:8px 'Space Mono',monospace;
@@ -309,7 +357,11 @@ nav button:hover,
 nav button.active{
   color:#d9edf9;
   border-left-color:var(--blue);
-  background:linear-gradient(90deg,rgba(120,200,255,.06),transparent);
+  background:linear-gradient(
+    90deg,
+    rgba(120,200,255,.06),
+    transparent
+  );
 }
 
 .nav-num{
@@ -346,11 +398,19 @@ nav button.active{
   animation:fade .45s ease;
 }
 
-.page.active{display:block}
+.page.active{
+  display:block;
+}
 
 @keyframes fade{
-  from{opacity:0;transform:translateY(7px)}
-  to{opacity:1;transform:none}
+  from{
+    opacity:0;
+    transform:translateY(7px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
 
 .eyebrow{
@@ -378,7 +438,11 @@ h2{
 
 .header-rule{
   height:1px;
-  background:linear-gradient(90deg,var(--line2),transparent);
+  background:linear-gradient(
+    90deg,
+    var(--line2),
+    transparent
+  );
   margin:28px 0 48px;
 }
 
@@ -394,7 +458,10 @@ h2{
   font-weight:400;
 }
 
-/* WORLD */
+/* ==============================
+   WORLD
+============================== */
+
 .world-quote{
   margin:70px 0;
   padding-left:25px;
@@ -439,7 +506,10 @@ h2{
   margin-top:9px;
 }
 
-/* TIMELINE */
+/* ==============================
+   TIMELINE
+============================== */
+
 .timeline{
   position:relative;
   margin-top:15px;
@@ -453,7 +523,11 @@ h2{
   top:5px;
   bottom:5px;
   width:1px;
-  background:linear-gradient(var(--blue),var(--line),var(--line));
+  background:linear-gradient(
+    var(--blue),
+    var(--line),
+    var(--line)
+  );
 }
 
 .event{
@@ -501,7 +575,10 @@ h2{
   user-select:none;
 }
 
-/* CARDS */
+/* ==============================
+   FACTION CARDS
+============================== */
+
 .cards{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -514,7 +591,11 @@ h2{
   min-height:220px;
   padding:27px;
   border:1px solid var(--line);
-  background:linear-gradient(145deg,rgba(14,24,34,.65),rgba(6,10,15,.75));
+  background:linear-gradient(
+    145deg,
+    rgba(14,24,34,.65),
+    rgba(6,10,15,.75)
+  );
   cursor:pointer;
   transition:.35s;
 }
@@ -522,7 +603,11 @@ h2{
 .card:hover{
   border-color:rgba(160,220,255,.3);
   transform:translateY(-2px);
-  background:linear-gradient(145deg,rgba(18,31,43,.72),rgba(6,10,15,.8));
+  background:linear-gradient(
+    145deg,
+    rgba(18,31,43,.72),
+    rgba(6,10,15,.8)
+  );
 }
 
 .card-code{
@@ -534,15 +619,22 @@ h2{
 .card h3{
   margin:35px 0 7px;
   color:#d5e4eb;
-  font:22px 'Space Mono',monospace;
+  font-size:22px;
   font-weight:400;
-  letter-spacing:.06em;
+  letter-spacing:.03em;
+}
+
+.card .eng-name{
+  color:#667b88;
+  font:10px 'Space Mono',monospace;
+  letter-spacing:.1em;
 }
 
 .card .sub{
   color:#667b88;
   font-size:11px;
-  letter-spacing:.12em;
+  letter-spacing:.08em;
+  margin-top:5px;
 }
 
 .card p{
@@ -560,22 +652,10 @@ h2{
   font:8px 'Space Mono',monospace;
 }
 
-.card.locked{
-  opacity:.48;
-}
+/* ==============================
+   FACTION DETAIL
+============================== */
 
-.card.locked::after{
-  content:'ACCESS RESTRICTED';
-  position:absolute;
-  right:-31px;
-  bottom:22px;
-  transform:rotate(-45deg);
-  color:#667a86;
-  font:7px 'Space Mono',monospace;
-  letter-spacing:.12em;
-}
-
-/* DETAIL */
 .detail{
   display:none;
   margin-top:20px;
@@ -629,44 +709,165 @@ h2{
   font:9px 'Space Mono',monospace;
 }
 
-/* STORIES */
-.story-card{
-  margin-bottom:12px;
-  padding:28px 30px;
-  border:1px solid var(--line);
-  background:rgba(8,14,21,.62);
-  display:grid;
-  grid-template-columns:120px 1fr 90px;
-  gap:20px;
-  align-items:center;
+/* ==============================
+   STORIES
+============================== */
+
+.story-main{
+  position:relative;
+  padding:35px 32px;
+  border:1px solid rgba(160,220,255,.25);
+  background:
+    linear-gradient(
+      120deg,
+      rgba(15,29,41,.78),
+      rgba(6,11,17,.76)
+    );
+  margin-bottom:25px;
+  overflow:hidden;
 }
 
-.story-side{
-  color:#526a79;
+.story-main::after{
+  content:'ACTIVE RECORD';
+  position:absolute;
+  right:26px;
+  top:25px;
+  color:#668da3;
   font:8px 'Space Mono',monospace;
   letter-spacing:.13em;
 }
 
-.story-name{
-  color:#d3e2e9;
-  font:18px 'Space Mono',monospace;
-  letter-spacing:.05em;
+.story-main-side{
+  color:#577284;
+  font:9px 'Space Mono',monospace;
+  letter-spacing:.15em;
+  margin-bottom:35px;
 }
 
-.story-name small{
-  display:block;
-  margin-top:7px;
-  color:#637681;
-  font:11px 'Noto Sans KR',sans-serif;
+.story-main h3{
+  margin:0;
+  color:#e0edf4;
+  font:30px 'Space Mono',monospace;
+  font-weight:400;
+  letter-spacing:.07em;
 }
 
-.story-state{
-  text-align:right;
-  color:#5f8194;
+.story-main .story-ko{
+  margin-top:8px;
+  color:#90a7b4;
+  font-size:15px;
+}
+
+.season-tag{
+  display:inline-block;
+  margin-top:25px;
+  padding:6px 10px;
+  border:1px solid rgba(150,215,255,.2);
+  color:#82abc1;
   font:8px 'Space Mono',monospace;
+  letter-spacing:.18em;
 }
 
-/* CHARACTERS */
+.story-copy{
+  margin-top:20px;
+  color:#83949e;
+  font-size:13px;
+  line-height:1.9;
+}
+
+.corrupt-title{
+  margin-top:55px;
+  margin-bottom:14px;
+  color:#465d6a;
+  font:8px 'Space Mono',monospace;
+  letter-spacing:.2em;
+}
+
+.corrupt-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.corrupt-card{
+  position:relative;
+  min-height:145px;
+  overflow:hidden;
+  border:1px solid rgba(170,220,255,.07);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.015) 0px,
+      rgba(255,255,255,.015) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    rgba(7,11,16,.64);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.corrupt-card::before{
+  content:'';
+  position:absolute;
+  inset:-30%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 7px,
+      rgba(145,205,235,.04) 8px,
+      transparent 10px
+    );
+  animation:corruptMove 7s linear infinite;
+}
+
+@keyframes corruptMove{
+  from{transform:translateX(-10%)}
+  to{transform:translateX(10%)}
+}
+
+.corrupt-inner{
+  position:relative;
+  z-index:2;
+}
+
+.corrupt-code{
+  color:#394d58;
+  font:8px 'Space Mono',monospace;
+  letter-spacing:.15em;
+  margin-bottom:13px;
+}
+
+.corrupt-name{
+  color:#586a74;
+  font:12px 'Space Mono',monospace;
+  letter-spacing:.1em;
+  text-shadow:
+    2px 0 rgba(160,220,255,.08),
+    -2px 0 rgba(255,255,255,.03);
+  animation:textFlicker 4s infinite;
+}
+
+@keyframes textFlicker{
+  0%,93%,100%{opacity:.7}
+  94%{opacity:.2;transform:translateX(2px)}
+  96%{opacity:.9;transform:translateX(-1px)}
+}
+
+.corrupt-status{
+  margin-top:9px;
+  color:#344751;
+  font:7px 'Space Mono',monospace;
+  letter-spacing:.12em;
+}
+
+/* ==============================
+   CHARACTERS
+============================== */
+
 .person-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -700,15 +901,25 @@ h2{
 .person-line{
   display:flex;
   justify-content:space-between;
+  gap:20px;
   padding:8px 0;
   border-top:1px solid rgba(170,220,255,.06);
   font:9px 'Space Mono',monospace;
 }
 
-.person-line span:first-child{color:#415966}
-.person-line span:last-child{color:#849ba8}
+.person-line span:first-child{
+  color:#415966;
+}
 
-/* DATABASE */
+.person-line span:last-child{
+  color:#849ba8;
+  text-align:right;
+}
+
+/* ==============================
+   RIFT DATABASE
+============================== */
+
 .db-row{
   display:grid;
   grid-template-columns:110px 1fr 120px;
@@ -753,70 +964,270 @@ h2{
   line-height:2;
 }
 
-/* CLASSIFIED */
-.classified-box{
-  max-width:620px;
-  margin:70px auto;
-  text-align:center;
-  padding:50px;
+/* ==============================
+   CLASSIFIED
+============================== */
+
+.classified-terminal{
   border:1px solid var(--line);
   background:rgba(6,11,17,.78);
+  padding:32px;
+  margin-bottom:24px;
 }
 
-.lock-icon{
-  font:34px 'Space Mono',monospace;
-  color:#647b88;
+.classified-top{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:flex-start;
+  border-bottom:1px solid var(--line);
+  padding-bottom:24px;
+  margin-bottom:25px;
 }
 
-.classified-box h3{
-  font:16px 'Space Mono',monospace;
-  font-weight:400;
-  letter-spacing:.12em;
+.classified-status{
+  color:#526c7b;
+  font:8px 'Space Mono',monospace;
+  letter-spacing:.14em;
 }
 
-.classified-box p{
-  color:#566a76;
+.archive-count{
+  margin-top:8px;
+  color:#d3e7f1;
+  font:25px 'Space Mono',monospace;
+}
+
+.archive-count small{
   font-size:11px;
+  color:#607783;
+}
+
+.completion{
+  text-align:right;
+  color:#47616e;
+  font:8px 'Space Mono',monospace;
   line-height:1.8;
 }
 
+.code-area{
+  display:flex;
+  max-width:560px;
+  gap:8px;
+}
+
 .password{
-  width:100%;
-  max-width:340px;
-  margin-top:20px;
-  padding:12px;
+  flex:1;
+  min-width:0;
+  padding:13px 14px;
   background:#05090e;
   border:1px solid var(--line2);
   outline:none;
   color:#b9d4e3;
   font:11px 'Space Mono',monospace;
-  text-align:center;
-  letter-spacing:.12em;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.password:focus{
+  border-color:rgba(165,220,255,.5);
 }
 
 .access-btn{
-  display:block;
-  margin:12px auto;
-  padding:10px 25px;
+  padding:12px 20px;
   background:none;
   border:1px solid var(--line2);
   color:#7898aa;
   font:9px 'Space Mono',monospace;
   cursor:pointer;
+  letter-spacing:.08em;
+}
+
+.access-btn:hover{
+  color:#b7d8e9;
+  border-color:#759eb4;
 }
 
 .access-result{
-  min-height:18px;
+  min-height:21px;
+  margin-top:14px;
   color:#765d63;
   font:9px 'Space Mono',monospace;
+  letter-spacing:.06em;
 }
 
-/* MOBILE */
+.access-result.success{
+  color:#82a9bd;
+}
+
+.record-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.record-card{
+  min-height:140px;
+  padding:22px;
+  border:1px solid rgba(170,220,255,.08);
+  background:rgba(8,13,19,.62);
+  transition:.3s;
+}
+
+.record-card.locked{
+  opacity:.55;
+  cursor:default;
+}
+
+.record-card.unlocked{
+  cursor:pointer;
+  border-color:rgba(160,220,255,.19);
+}
+
+.record-card.unlocked:hover{
+  border-color:rgba(160,220,255,.42);
+  transform:translateY(-2px);
+}
+
+.record-number{
+  color:#3f5663;
+  font:8px 'Space Mono',monospace;
+  letter-spacing:.15em;
+}
+
+.record-name{
+  margin-top:30px;
+  color:#5d707b;
+  font:12px 'Space Mono',monospace;
+  line-height:1.7;
+}
+
+.record-card.unlocked .record-name{
+  color:#bdd3de;
+}
+
+.record-state{
+  margin-top:13px;
+  color:#40545f;
+  font:8px 'Space Mono',monospace;
+}
+
+.record-card.unlocked .record-state{
+  color:#668fa4;
+}
+
+.record-view{
+  display:none;
+  margin-top:24px;
+  border:1px solid var(--line);
+  background:rgba(5,10,15,.92);
+  padding:32px;
+}
+
+.record-view.open{
+  display:block;
+  animation:fade .4s ease;
+}
+
+.record-view-head{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  border-bottom:1px solid var(--line);
+  padding-bottom:20px;
+  margin-bottom:27px;
+}
+
+.record-view-type{
+  color:#597483;
+  font:8px 'Space Mono',monospace;
+  letter-spacing:.14em;
+  margin-bottom:8px;
+}
+
+.record-view-title{
+  color:#d1e3eb;
+  font:18px 'Space Mono',monospace;
+}
+
+.document{
+  color:#8da0aa;
+  font-size:12px;
+  line-height:2;
+}
+
+.document .mono{
+  font-family:'Space Mono',monospace;
+  font-size:10px;
+}
+
+.document .doc-title{
+  color:#c3d7e0;
+  font:13px 'Space Mono',monospace;
+}
+
+.document .divider{
+  height:1px;
+  margin:25px 0;
+  background:linear-gradient(
+    90deg,
+    rgba(170,220,255,.18),
+    transparent
+  );
+}
+
+.document .blackout{
+  display:inline-block;
+  min-width:130px;
+  background:#182229;
+  color:#182229;
+  user-select:none;
+}
+
+.document .warning{
+  color:#8f7178;
+  font-family:'Space Mono',monospace;
+}
+
+.document .quote{
+  padding-left:17px;
+  border-left:1px solid #64869a;
+  color:#c1d3dd;
+  margin:20px 0;
+}
+
+.document .unknown{
+  text-align:center;
+  padding:25px 0;
+  color:#bedbea;
+  font:13px 'Space Mono',monospace;
+  letter-spacing:.08em;
+}
+
+.complete-message{
+  display:none;
+  margin-top:25px;
+  padding:22px;
+  border:1px solid rgba(170,220,255,.15);
+  color:#7795a6;
+  background:rgba(10,18,25,.55);
+  font:9px/2 'Space Mono',monospace;
+  letter-spacing:.08em;
+}
+
+.complete-message.show{
+  display:block;
+}
+
+/* ==============================
+   MOBILE
+============================== */
+
 .mobile-top{
   display:none;
 }
 
 @media(max-width:800px){
+
   .sidebar{
     transform:translateX(-100%);
     transition:.35s;
@@ -864,30 +1275,67 @@ h2{
 
   .data-grid,
   .cards,
-  .person-grid{
+  .person-grid,
+  .corrupt-grid,
+  .record-list{
     grid-template-columns:1fr;
   }
-
-  .story-card{
-    grid-template-columns:1fr;
-    gap:8px;
-  }
-
-  .story-state{text-align:left}
 
   .db-row{
     grid-template-columns:80px 1fr;
   }
 
-  .db-level{display:none}
+  .db-level{
+    display:none;
+  }
 
   .intro-status{
     flex-direction:column;
     gap:7px;
   }
 
-  .classified-box{
-    padding:35px 20px;
+  .classified-terminal{
+    padding:23px 18px;
+  }
+
+  .classified-top{
+    flex-direction:column;
+  }
+
+  .completion{
+    text-align:left;
+  }
+
+  .code-area{
+    flex-direction:column;
+  }
+
+  .access-btn{
+    width:100%;
+  }
+
+  .record-view{
+    padding:23px 18px;
+  }
+
+  .story-main{
+    padding:30px 23px;
+  }
+
+  .story-main::after{
+    position:static;
+    display:block;
+    margin-top:25px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
   }
 }
 </style>
@@ -899,7 +1347,10 @@ h2{
 <div class="noise"></div>
 <div class="scanline"></div>
 
-<!-- INTRO -->
+<!-- ==============================
+     INTRO
+============================== -->
+
 <section id="intro">
   <div class="intro-inner">
 
@@ -908,18 +1359,23 @@ h2{
       UNKNOWN SIGNAL DETECTED
     </div>
 
-    <h1 class="logo">ECHO<span class="colon">:</span>RIFT</h1>
+    <h1 class="logo">
+      ECHO<span class="colon">:</span>RIFT
+    </h1>
 
     <div class="intro-line"></div>
 
     <p class="intro-copy">
       20년 전, 세계에 <strong>균열</strong>이 열렸다.<br>
-      인류는 그것을 이해하고 통제할 수 있다고 믿었다.<br><br>
+      인류는 그것을 이해하고 통제할 수 있다고 믿었다.
+      <br><br>
       그리고 어느 날,<br>
       <strong>균열이 먼저 인간을 알아보기 시작했다.</strong>
     </p>
 
-    <button class="enter" onclick="enterArchive()">[ ENTER ARCHIVE ]</button>
+    <button class="enter" onclick="enterArchive()">
+      [ ENTER ARCHIVE ]
+    </button>
 
     <div class="intro-status">
       <span>RIFT NETWORK <b>ONLINE</b></span>
@@ -930,44 +1386,72 @@ h2{
   </div>
 </section>
 
-<!-- MOBILE -->
+<!-- ==============================
+     MOBILE HEADER
+============================== -->
+
 <div class="mobile-top">
   <div class="mobile-logo">ECHO:RIFT</div>
   <button class="menu-btn" onclick="toggleMenu()">☰</button>
 </div>
 
-<!-- ARCHIVE -->
+<!-- ==============================
+     ARCHIVE
+============================== -->
+
 <div id="archive">
 
   <aside class="sidebar" id="sidebar">
 
-    <div class="side-logo">ECHO<span>:</span>RIFT</div>
-    <div class="archive-id">SHARED UNIVERSE ARCHIVE</div>
+    <div class="side-logo">
+      ECHO<span>:</span>RIFT
+    </div>
 
-    <div class="online">SYSTEM ONLINE</div>
+    <div class="archive-id">
+      SHARED UNIVERSE ARCHIVE
+    </div>
+
+    <div class="online">
+      SYSTEM ONLINE
+    </div>
 
     <nav>
+
       <button class="active" onclick="openPage('world',this)">
-        <span class="nav-num">01</span> WORLD
+        <span class="nav-num">01</span>
+        WORLD
       </button>
+
       <button onclick="openPage('timeline',this)">
-        <span class="nav-num">02</span> TIMELINE
+        <span class="nav-num">02</span>
+        TIMELINE
       </button>
+
       <button onclick="openPage('factions',this)">
-        <span class="nav-num">03</span> FACTIONS
+        <span class="nav-num">03</span>
+        FACTIONS
       </button>
+
       <button onclick="openPage('stories',this)">
-        <span class="nav-num">04</span> STORIES
+        <span class="nav-num">04</span>
+        STORIES
       </button>
+
       <button onclick="openPage('characters',this)">
-        <span class="nav-num">05</span> CHARACTERS
+        <span class="nav-num">05</span>
+        CHARACTERS
       </button>
+
       <button onclick="openPage('database',this)">
-        <span class="nav-num">06</span> RIFT DATABASE
+        <span class="nav-num">06</span>
+        RIFT DATABASE
       </button>
+
       <button onclick="openPage('classified',this)">
-        <span class="nav-num">07</span> CLASSIFIED
+        <span class="nav-num">07</span>
+        CLASSIFIED
       </button>
+
     </nav>
 
     <div class="side-bottom">
@@ -980,17 +1464,30 @@ h2{
 
   <main class="content">
 
-    <!-- WORLD -->
+    <!-- ==============================
+         01 WORLD
+    ============================== -->
+
     <section class="page active" id="world">
-      <div class="eyebrow">ARCHIVE / 01 / WORLD</div>
+
+      <div class="eyebrow">
+        ARCHIVE / 01 / WORLD
+      </div>
+
       <h2>THE GREAT RIFT</h2>
-      <div class="ko-title">대균열 이후의 세계</div>
+
+      <div class="ko-title">
+        대균열 이후의 세계
+      </div>
+
       <div class="header-rule"></div>
 
       <p class="lead">
-        약 20년 전, 세계 각지에 정체불명의 <strong>균열</strong>이 발생했다.
-        균열 너머에서 출현한 이형 존재는 기존 생물학으로 설명할 수 없었고,
-        인류는 그들을 <strong>Aberrant</strong>라 명명했다.
+        약 20년 전, 세계 각지에 정체불명의
+        <strong>균열</strong>이 발생했다.
+        균열 너머에서 출현한 이형 존재는 기존 생물학으로
+        설명할 수 없었고, 인류는 그들을
+        <strong>Aberrant</strong>라 명명했다.
       </p>
 
       <div class="world-quote">
@@ -999,11 +1496,13 @@ h2{
       </div>
 
       <div class="data-grid">
+
         <div class="data-cell">
           <div class="data-label">CLASS / 01</div>
           <div class="data-value">SENTINEL</div>
           <div class="data-desc">
-            비정상적으로 강화된 신체·감각과 고유 능력을 지닌 각성자.
+            비정상적으로 강화된 신체·감각과
+            고유 능력을 지닌 각성자.
           </div>
         </div>
 
@@ -1011,7 +1510,8 @@ h2{
           <div class="data-label">CLASS / 02</div>
           <div class="data-value">GUIDE</div>
           <div class="data-desc">
-            정신파를 통해 센티넬의 불안정성을 완화하는 각성자.
+            정신파를 통해 센티넬의 불안정성을
+            완화하는 각성자.
           </div>
         </div>
 
@@ -1019,17 +1519,30 @@ h2{
           <div class="data-label">ENTITY / UNKNOWN</div>
           <div class="data-value">ABERRANT</div>
           <div class="data-desc">
-            균열 너머에서 출현하는 이형 존재. 생태와 기원은 규명되지 않았다.
+            균열 너머에서 출현하는 이형 존재.
+            생태와 기원은 규명되지 않았다.
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- TIMELINE -->
+    <!-- ==============================
+         02 TIMELINE
+    ============================== -->
+
     <section class="page" id="timeline">
-      <div class="eyebrow">ARCHIVE / 02 / TIMELINE</div>
+
+      <div class="eyebrow">
+        ARCHIVE / 02 / TIMELINE
+      </div>
+
       <h2>TIMELINE</h2>
-      <div class="ko-title">공개 역사 기록</div>
+
+      <div class="ko-title">
+        공개 역사 기록
+      </div>
+
       <div class="header-rule"></div>
 
       <div class="timeline">
@@ -1037,53 +1550,84 @@ h2{
         <div class="event">
           <div class="year">Y-20</div>
           <h3>THE GREAT RIFT</h3>
-          <p>세계 각지에서 최초의 대규모 균열 현상 발생.</p>
+          <p>
+            세계 각지에서 최초의 대규모 균열 현상 발생.
+          </p>
         </div>
 
         <div class="event">
           <div class="year">Y-18</div>
           <h3>AEGIS</h3>
-          <p>국제 각성자·균열 관리기관 AEGIS 설립.</p>
+          <p>
+            국제 각성자·균열 관리기관 AEGIS 설립.
+          </p>
         </div>
 
         <div class="event">
           <div class="year">Y-17</div>
-          <h3>WHITE NIGHT</h3>
-          <p>정신파와 균열 연구를 목적으로 백야 연구소 설립.</p>
+          <h3>백야 연구소</h3>
+          <p>
+            정신파와 균열 연구를 목적으로 한
+            연구기관 설립 기록이 존재한다.
+          </p>
         </div>
 
         <div class="event">
           <div class="year">Y-08</div>
           <h3>[ DATA CORRUPTED ]</h3>
-          <p><span class="redacted">ACCESS DENIED ARCHIVE RECORD</span></p>
+          <p>
+            <span class="redacted">
+              ACCESS DENIED ARCHIVE RECORD
+            </span>
+          </p>
         </div>
 
         <div class="event">
           <div class="year">Y-06</div>
           <h3>LIBERA</h3>
-          <p>AEGIS의 관리체계에 반대하는 각성자 세력 등장.</p>
+          <p>
+            AEGIS의 관리체계에 반대하는
+            각성자 세력 등장.
+          </p>
         </div>
 
         <div class="event">
           <div class="year">Y-05</div>
           <h3>NEST</h3>
-          <p>미등록 각성자를 중심으로 지하 네트워크가 형성된다.</p>
+          <p>
+            미등록 각성자를 중심으로
+            지하 네트워크가 형성된다.
+          </p>
         </div>
 
         <div class="event">
           <div class="year">Y0 / CURRENT</div>
           <h3>UNKNOWN WAVE</h3>
-          <p>분류되지 않은 정신파 관련 이상현상 보고 증가.</p>
+          <p>
+            분류되지 않은 정신파 관련
+            이상현상 보고 증가.
+          </p>
         </div>
 
       </div>
     </section>
 
-    <!-- FACTIONS -->
+    <!-- ==============================
+         03 FACTIONS
+    ============================== -->
+
     <section class="page" id="factions">
-      <div class="eyebrow">ARCHIVE / 03 / ORGANIZATIONS</div>
+
+      <div class="eyebrow">
+        ARCHIVE / 03 / ORGANIZATIONS
+      </div>
+
       <h2>FACTIONS</h2>
-      <div class="ko-title">주요 조직</div>
+
+      <div class="ko-title">
+        주요 조직
+      </div>
+
       <div class="header-rule"></div>
 
       <div class="cards">
@@ -1091,310 +1635,830 @@ h2{
         <div class="card" onclick="showFaction('aegis')">
           <div class="card-code">ORG / A-001</div>
           <div class="card-status">ACTIVE</div>
+
           <h3>AEGIS</h3>
-          <div class="sub">MANAGEMENT / PROTECTION</div>
-          <p>국제 각성자 관리 및 균열 대응기관.</p>
+
+          <div class="eng-name">
+            INTERNATIONAL AWAKENED MANAGEMENT
+          </div>
+
+          <div class="sub">
+            국제 각성자 관리기관
+          </div>
+
+          <p>
+            국제 각성자 관리 및 균열 대응기관.
+          </p>
         </div>
 
         <div class="card" onclick="showFaction('white')">
           <div class="card-code">ORG / W-001</div>
           <div class="card-status">STATUS UNKNOWN</div>
-          <h3>WHITE NIGHT</h3>
-          <div class="sub">RESEARCH</div>
-          <p>정신파·공명·균열을 연구했던 비공개 연구기관.</p>
+
+          <h3>백야 연구소</h3>
+
+          <div class="eng-name">
+            WHITE NIGHT LABORATORY
+          </div>
+
+          <div class="sub">
+            정신파·균열 연구기관
+          </div>
+
+          <p>
+            정신파, 공명 및 균열을 연구했던
+            연구기관.
+          </p>
         </div>
 
         <div class="card" onclick="showFaction('libera')">
           <div class="card-code">ORG / L-001</div>
           <div class="card-status">ACTIVE</div>
+
           <h3>LIBERA</h3>
-          <div class="sub">LIBERATION</div>
-          <p>각성자의 자유와 자기결정권을 주장하는 조직.</p>
+
+          <div class="eng-name">
+            AWAKENED LIBERATION
+          </div>
+
+          <div class="sub">
+            각성자 해방조직
+          </div>
+
+          <p>
+            각성자의 자유와 자기결정권을
+            주장하는 조직.
+          </p>
         </div>
 
         <div class="card" onclick="showFaction('nest')">
           <div class="card-code">ORG / N-001</div>
           <div class="card-status">ACTIVE</div>
+
           <h3>NEST</h3>
-          <div class="sub">UNDERGROUND</div>
-          <p>미등록 각성자를 위한 비공식 지하 네트워크.</p>
+
+          <div class="eng-name">
+            UNDERGROUND NETWORK
+          </div>
+
+          <div class="sub">
+            미등록 각성자 지하 네트워크
+          </div>
+
+          <p>
+            미등록 각성자와 도망자를 위한
+            비공식 지하 네트워크.
+          </p>
         </div>
 
         <div class="card" onclick="showFaction('sanctuary')">
           <div class="card-code">ORG / S-001</div>
           <div class="card-status">ACTIVE</div>
-          <h3>SANCTUARY</h3>
-          <div class="sub">FAITH / PROPHECY</div>
-          <p>균열을 '문'으로 해석하는 종교집단.</p>
+
+          <h3>성역 교단</h3>
+
+          <div class="eng-name">
+            SANCTUARY
+          </div>
+
+          <div class="sub">
+            균열 신앙·신탁 종교집단
+          </div>
+
+          <p>
+            균열을 재앙이 아닌
+            '문'으로 해석하는 종교집단.
+          </p>
         </div>
 
       </div>
 
       <div class="detail" id="factionDetail">
+
         <div class="detail-head">
+
           <div class="detail-title" id="factionTitle"></div>
-          <button class="close-detail" onclick="closeFaction()">[ CLOSE ]</button>
+
+          <button
+            class="close-detail"
+            onclick="closeFaction()"
+          >
+            [ CLOSE ]
+          </button>
+
         </div>
+
         <div id="factionBody"></div>
+
       </div>
     </section>
 
-    <!-- STORIES -->
+    <!-- ==============================
+         04 STORIES
+    ============================== -->
+
     <section class="page" id="stories">
-      <div class="eyebrow">ARCHIVE / 04 / STORIES</div>
+
+      <div class="eyebrow">
+        ARCHIVE / 04 / STORIES
+      </div>
+
       <h2>STORIES</h2>
-      <div class="ko-title">ECHO:RIFT SHARED UNIVERSE</div>
+
+      <div class="ko-title">
+        ECHO:RIFT ARCHIVE
+      </div>
+
       <div class="header-rule"></div>
 
-      <div class="story-card">
-        <div class="story-side">AEGIS SIDE</div>
-        <div class="story-name">
-          RESONANCE
-          <small>공명 — 균열이 나를 알아보기 시작했다.</small>
+      <div class="story-main">
+
+        <div class="story-main-side">
+          AEGIS SIDE / CURRENT RECORD
         </div>
-        <div class="story-state">ACTIVE</div>
+
+        <h3>RESONANCE</h3>
+
+        <div class="story-ko">
+          공명
+        </div>
+
+        <div class="season-tag">
+          SEASON 1
+        </div>
+
+        <div class="story-copy">
+          균열이 나를 알아보기 시작했다.
+        </div>
+
       </div>
 
-      <div class="story-card">
-        <div class="story-side">WHITE NIGHT</div>
-        <div class="story-name">
-          WHITE NOISE
-          <small>백색소음 — 연구소가 폐쇄된 날, 죽은 피험자들이 방송을 시작했다.</small>
-        </div>
-        <div class="story-state">ARCHIVED</div>
+      <div class="corrupt-title">
+        UNAVAILABLE ARCHIVE RECORDS
       </div>
 
-      <div class="story-card">
-        <div class="story-side">LIBERA SIDE</div>
-        <div class="story-name">
-          STRAY
-          <small>길 잃은 자들</small>
-        </div>
-        <div class="story-state">LOCKED</div>
-      </div>
+      <div class="corrupt-grid">
 
-      <div class="story-card">
-        <div class="story-side">NEST SIDE</div>
-        <div class="story-name">
-          UNDERGROUND
-          <small>지하에는 밤이 없다</small>
+        <div class="corrupt-card">
+          <div class="corrupt-inner">
+            <div class="corrupt-code">
+              RECORD / ██-01
+            </div>
+            <div class="corrupt-name">
+              ████ █████
+            </div>
+            <div class="corrupt-status">
+              [ SIGNAL LOST ]
+            </div>
+          </div>
         </div>
-        <div class="story-state">LOCKED</div>
-      </div>
 
-      <div class="story-card">
-        <div class="story-side">SANCTUARY</div>
-        <div class="story-name">
-          APOCRYPHA
-          <small>쓰이지 않은 성서</small>
+        <div class="corrupt-card">
+          <div class="corrupt-inner">
+            <div class="corrupt-code">
+              RECORD / ██-02
+            </div>
+            <div class="corrupt-name">
+              ███████ ███
+            </div>
+            <div class="corrupt-status">
+              [ DATA CORRUPTED ]
+            </div>
+          </div>
         </div>
-        <div class="story-state">LOCKED</div>
+
+        <div class="corrupt-card">
+          <div class="corrupt-inner">
+            <div class="corrupt-code">
+              RECORD / ██-03
+            </div>
+            <div class="corrupt-name">
+              ███ ████████
+            </div>
+            <div class="corrupt-status">
+              [ ACCESS DENIED ]
+            </div>
+          </div>
+        </div>
+
+        <div class="corrupt-card">
+          <div class="corrupt-inner">
+            <div class="corrupt-code">
+              RECORD / ██-04
+            </div>
+            <div class="corrupt-name">
+              █████ █████
+            </div>
+            <div class="corrupt-status">
+              [ UNKNOWN RECORD ]
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- CHARACTERS -->
+    <!-- ==============================
+         05 CHARACTERS
+    ============================== -->
+
     <section class="page" id="characters">
-      <div class="eyebrow">ARCHIVE / 05 / PERSONNEL</div>
+
+      <div class="eyebrow">
+        ARCHIVE / 05 / PERSONNEL
+      </div>
+
       <h2>CHARACTERS</h2>
-      <div class="ko-title">등록 인물 파일</div>
+
+      <div class="ko-title">
+        등록 인물 파일
+      </div>
+
       <div class="header-rule"></div>
 
       <div class="person-grid">
 
         <div class="person">
-          <div class="person-id">PERSONNEL / A-01</div>
+
+          <div class="person-id">
+            PERSONNEL / A-01
+          </div>
+
           <h3>강태윤</h3>
-          <div class="person-eng">KANG TAEYOON</div>
-          <div class="person-line"><span>CLASS</span><span>SENTINEL</span></div>
-          <div class="person-line"><span>RANK</span><span>S</span></div>
-          <div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div>
-          <div class="person-line"><span>ABILITY</span><span>GRAVITY</span></div>
+
+          <div class="person-eng">
+            KANG TAEYOON
+          </div>
+
+          <div class="person-line">
+            <span>CLASS</span>
+            <span>SENTINEL</span>
+          </div>
+
+          <div class="person-line">
+            <span>RANK</span>
+            <span>S</span>
+          </div>
+
+          <div class="person-line">
+            <span>AFFILIATION</span>
+            <span>AEGIS</span>
+          </div>
+
+          <div class="person-line">
+            <span>ABILITY</span>
+            <span>GRAVITY</span>
+          </div>
+
         </div>
 
         <div class="person">
-          <div class="person-id">PERSONNEL / A-02</div>
+
+          <div class="person-id">
+            PERSONNEL / A-02
+          </div>
+
           <h3>윤시헌</h3>
-          <div class="person-eng">YOON SIHEON</div>
-          <div class="person-line"><span>CLASS</span><span>GUIDE</span></div>
-          <div class="person-line"><span>RANK</span><span>S</span></div>
-          <div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div>
-          <div class="person-line"><span>DESIGNATION</span><span>SAINT</span></div>
+
+          <div class="person-eng">
+            YOON SIHEON
+          </div>
+
+          <div class="person-line">
+            <span>CLASS</span>
+            <span>GUIDE</span>
+          </div>
+
+          <div class="person-line">
+            <span>RANK</span>
+            <span>S</span>
+          </div>
+
+          <div class="person-line">
+            <span>AFFILIATION</span>
+            <span>AEGIS</span>
+          </div>
+
+          <div class="person-line">
+            <span>DESIGNATION</span>
+            <span>SAINT</span>
+          </div>
+
         </div>
 
         <div class="person">
-          <div class="person-id">PERSONNEL / L-??</div>
+
+          <div class="person-id">
+            PERSONNEL / L-??
+          </div>
+
           <h3>차이현</h3>
-          <div class="person-eng">CHA YIHYEON</div>
-          <div class="person-line"><span>CLASS</span><span>SENTINEL</span></div>
-          <div class="person-line"><span>RANK</span><span>A</span></div>
-          <div class="person-line"><span>AFFILIATION</span><span>FORMER LIBERA</span></div>
-          <div class="person-line"><span>ABILITY</span><span>ELECTRICITY</span></div>
+
+          <div class="person-eng">
+            CHA YIHYEON
+          </div>
+
+          <div class="person-line">
+            <span>CLASS</span>
+            <span>SENTINEL</span>
+          </div>
+
+          <div class="person-line">
+            <span>RANK</span>
+            <span>A</span>
+          </div>
+
+          <div class="person-line">
+            <span>AFFILIATION</span>
+            <span>FORMER LIBERA</span>
+          </div>
+
+          <div class="person-line">
+            <span>ABILITY</span>
+            <span>ELECTRICITY</span>
+          </div>
+
         </div>
 
         <div class="person">
-          <div class="person-id">SUBJECT FILE / 00</div>
+
+          <div class="person-id">
+            SUBJECT FILE / 00
+          </div>
+
           <h3>SUBJECT 00</h3>
-          <div class="person-eng">NAME / [ NO DATA ]</div>
-          <div class="person-line"><span>CLASS</span><span>SENTINEL</span></div>
-          <div class="person-line"><span>RANK</span><span>EX</span></div>
-          <div class="person-line"><span>AFFILIATION</span><span>[DELETED]</span></div>
-          <div class="person-line"><span>STATUS</span><span>UNKNOWN</span></div>
+
+          <div class="person-eng">
+            NAME / [ NO DATA ]
+          </div>
+
+          <div class="person-line">
+            <span>CLASS</span>
+            <span>SENTINEL</span>
+          </div>
+
+          <div class="person-line">
+            <span>RANK</span>
+            <span>EX</span>
+          </div>
+
+          <div class="person-line">
+            <span>AFFILIATION</span>
+            <span>[ DATA DELETED ]</span>
+          </div>
+
+          <div class="person-line">
+            <span>STATUS</span>
+            <span>UNKNOWN</span>
+          </div>
+
         </div>
 
       </div>
     </section>
 
-    <!-- DATABASE -->
+    <!-- ==============================
+         06 RIFT DATABASE
+    ============================== -->
+
     <section class="page" id="database">
-      <div class="eyebrow">ARCHIVE / 06 / RIFT DATABASE</div>
+
+      <div class="eyebrow">
+        ARCHIVE / 06 / RIFT DATABASE
+      </div>
+
       <h2>RIFT DATABASE</h2>
-      <div class="ko-title">균열 위험등급</div>
+
+      <div class="ko-title">
+        균열 위험등급
+      </div>
+
       <div class="header-rule"></div>
 
       <div class="db-row">
         <div class="db-class">WHITE</div>
-        <div class="db-desc">극소규모 균열</div>
+        <div class="db-desc">
+          극소규모 균열
+        </div>
         <div class="db-level">LOW</div>
       </div>
 
       <div class="db-row">
         <div class="db-class">BLUE</div>
-        <div class="db-desc">소규모 균열</div>
+        <div class="db-desc">
+          소규모 균열
+        </div>
         <div class="db-level">CONTROLLED</div>
       </div>
 
       <div class="db-row">
         <div class="db-class">YELLOW</div>
-        <div class="db-desc">민간인 대피 필요</div>
+        <div class="db-desc">
+          민간인 대피 필요
+        </div>
         <div class="db-level">EVACUATION</div>
       </div>
 
       <div class="db-row">
         <div class="db-class">ORANGE</div>
-        <div class="db-desc">A급 전력 투입</div>
+        <div class="db-desc">
+          A급 전력 투입
+        </div>
         <div class="db-level">HIGH</div>
       </div>
 
       <div class="db-row">
         <div class="db-class">RED</div>
-        <div class="db-desc">S급 전력 / 도시재난 수준</div>
+        <div class="db-desc">
+          S급 전력 / 도시재난 수준
+        </div>
         <div class="db-level">SEVERE</div>
       </div>
 
       <div class="db-row">
         <div class="db-class">BLACK</div>
-        <div class="db-desc">국가재난급 균열</div>
+        <div class="db-desc">
+          국가재난급 균열
+        </div>
         <div class="db-level">CATASTROPHE</div>
       </div>
 
       <div class="zero">
-        <div class="zero-title">ZERO</div>
+
+        <div class="zero-title">
+          ZERO
+        </div>
+
         <div class="header-rule"></div>
+
         <div class="error">
           CLASSIFICATION : UNKNOWN<br>
           MEASUREMENT : FAILED<br>
-          ORIGIN : [ACCESS DENIED]<br>
+          ORIGIN : [ ACCESS DENIED ]<br>
           STATUS : UNDEFINED
         </div>
+
       </div>
     </section>
 
-    <!-- CLASSIFIED -->
+    <!-- ==============================
+         07 CLASSIFIED
+    ============================== -->
+
     <section class="page" id="classified">
-      <div class="eyebrow">ARCHIVE / 07 / CLASSIFIED</div>
+
+      <div class="eyebrow">
+        ARCHIVE / 07 / CLASSIFIED
+      </div>
+
       <h2>CLASSIFIED</h2>
-      <div class="ko-title">보안등급 제한 기록</div>
+
+      <div class="ko-title">
+        보안등급 제한 기록
+      </div>
+
       <div class="header-rule"></div>
 
-      <div class="classified-box">
-        <div class="lock-icon">◇</div>
-        <h3>SECURITY CLEARANCE REQUIRED</h3>
-        <p>
-          현재 계정의 보안등급으로 열람할 수 없는 기록입니다.<br>
-          인증 코드를 입력하십시오.
-        </p>
+      <div class="classified-terminal">
 
-        <input
-          class="password"
-          id="password"
-          type="password"
-          placeholder="ACCESS CODE"
-        >
+        <div class="classified-top">
 
-        <button class="access-btn" onclick="tryAccess()">[ ACCESS ]</button>
-        <div class="access-result" id="accessResult"></div>
+          <div>
+            <div class="classified-status">
+              DISCOVERED RECORDS
+            </div>
+
+            <div class="archive-count">
+              <span id="unlockCount">0</span>
+              <small>/ 4</small>
+            </div>
+          </div>
+
+          <div class="completion">
+            ARCHIVE COMPLETION<br>
+            <span id="completionPercent">0%</span>
+          </div>
+
+        </div>
+
+        <div class="code-area">
+
+          <input
+            class="password"
+            id="password"
+            type="text"
+            autocomplete="off"
+            placeholder="ACCESS CODE"
+            onkeydown="if(event.key==='Enter'){tryAccess();}"
+          >
+
+          <button
+            class="access-btn"
+            onclick="tryAccess()"
+          >
+            [ VERIFY ]
+          </button>
+
+        </div>
+
+        <div
+          class="access-result"
+          id="accessResult"
+        ></div>
+
       </div>
+
+      <div class="record-list">
+
+        <div
+          class="record-card locked"
+          id="record-name"
+          onclick="openRecord('name')"
+        >
+          <div class="record-number">
+            RECORD / 01
+          </div>
+
+          <div class="record-name">
+            [ UNDISCOVERED ]
+          </div>
+
+          <div class="record-state">
+            ACCESS KEY REQUIRED
+          </div>
+        </div>
+
+        <div
+          class="record-card locked"
+          id="record-key"
+          onclick="openRecord('key')"
+        >
+          <div class="record-number">
+            RECORD / 02
+          </div>
+
+          <div class="record-name">
+            [ UNDISCOVERED ]
+          </div>
+
+          <div class="record-state">
+            ACCESS KEY REQUIRED
+          </div>
+        </div>
+
+        <div
+          class="record-card locked"
+          id="record-resonance"
+          onclick="openRecord('resonance')"
+        >
+          <div class="record-number">
+            RECORD / 03
+          </div>
+
+          <div class="record-name">
+            [ UNDISCOVERED ]
+          </div>
+
+          <div class="record-state">
+            ACCESS KEY REQUIRED
+          </div>
+        </div>
+
+        <div
+          class="record-card locked"
+          id="record-remember"
+          onclick="openRecord('remember')"
+        >
+          <div class="record-number">
+            RECORD / 04
+          </div>
+
+          <div class="record-name">
+            [ UNDISCOVERED ]
+          </div>
+
+          <div class="record-state">
+            ACCESS KEY REQUIRED
+          </div>
+        </div>
+
+      </div>
+
+      <div class="record-view" id="recordView">
+
+        <div class="record-view-head">
+
+          <div>
+
+            <div
+              class="record-view-type"
+              id="recordViewType"
+            ></div>
+
+            <div
+              class="record-view-title"
+              id="recordViewTitle"
+            ></div>
+
+          </div>
+
+          <button
+            class="close-detail"
+            onclick="closeRecord()"
+          >
+            [ CLOSE ]
+          </button>
+
+        </div>
+
+        <div
+          class="document"
+          id="recordViewBody"
+        ></div>
+
+      </div>
+
+      <div
+        class="complete-message"
+        id="completeMessage"
+      >
+        [ ARCHIVE COMPLETION : 100% ]<br>
+        ALL AVAILABLE SEASON 1 RECORDS RECOVERED.<br>
+        ADDITIONAL DATA : [ NOT FOUND ]
+      </div>
+
     </section>
 
   </main>
 </div>
 
 <script>
-/* INTRO */
+
+/* ==============================
+   INTRO
+============================== */
+
 function enterArchive(){
-  document.getElementById('intro').classList.add('hide');
-  document.getElementById('archive').classList.add('show');
-  sessionStorage.setItem('echoEntered','1');
+
+  document
+    .getElementById('intro')
+    .classList.add('hide');
+
+  document
+    .getElementById('archive')
+    .classList.add('show');
+
+  sessionStorage.setItem(
+    'echoEntered',
+    '1'
+  );
 }
 
-/*
-새로고침할 때마다 인트로를 보고 싶다면 아래 4줄을 삭제하면 됩니다.
-현재는 같은 탭에서 새로고침 시 아카이브를 유지합니다.
-*/
-if(sessionStorage.getItem('echoEntered')){
-  document.getElementById('intro').classList.add('hide');
-  document.getElementById('archive').classList.add('show');
+if(
+  sessionStorage.getItem('echoEntered')
+){
+  document
+    .getElementById('intro')
+    .classList.add('hide');
+
+  document
+    .getElementById('archive')
+    .classList.add('show');
 }
 
-/* MENU */
+/* ==============================
+   PAGE MENU
+============================== */
+
 function openPage(id,button){
-  document.querySelectorAll('.page').forEach(page=>{
-    page.classList.remove('active');
+
+  document
+    .querySelectorAll('.page')
+    .forEach(page=>{
+      page.classList.remove('active');
+    });
+
+  document
+    .getElementById(id)
+    .classList.add('active');
+
+  document
+    .querySelectorAll('nav button')
+    .forEach(btn=>{
+      btn.classList.remove('active');
+    });
+
+  if(button){
+    button.classList.add('active');
+  }
+
+  document
+    .getElementById('sidebar')
+    .classList.remove('open');
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
   });
-
-  document.getElementById(id).classList.add('active');
-
-  document.querySelectorAll('nav button').forEach(btn=>{
-    btn.classList.remove('active');
-  });
-
-  if(button) button.classList.add('active');
-
-  document.getElementById('sidebar').classList.remove('open');
-  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function toggleMenu(){
-  document.getElementById('sidebar').classList.toggle('open');
+
+  document
+    .getElementById('sidebar')
+    .classList.toggle('open');
 }
 
-/* FACTIONS */
+/* ==============================
+   FACTIONS
+============================== */
+
 const factionData={
+
   aegis:{
     title:'AEGIS',
     body:`
       <table>
-        <tr><td>STATUS</td><td>ACTIVE</td></tr>
-        <tr><td>ESTABLISHED</td><td>Y-18</td></tr>
-        <tr><td>PURPOSE</td><td>균열 대응 / 각성자 관리 및 보호</td></tr>
-        <tr><td>01</td><td>균열 전투</td></tr>
-        <tr><td>02</td><td>가이드 관리 및 매칭</td></tr>
-        <tr><td>03</td><td>공명·균열 연구</td></tr>
-        <tr><td>04</td><td>감찰·각성자 범죄</td></tr>
-        <tr><td>05</td><td>정보·외부세력</td></tr>
-        <tr><td>00</td><td>[ ACCESS DENIED ]</td></tr>
+
+        <tr>
+          <td>STATUS</td>
+          <td>ACTIVE</td>
+        </tr>
+
+        <tr>
+          <td>ESTABLISHED</td>
+          <td>Y-18</td>
+        </tr>
+
+        <tr>
+          <td>PURPOSE</td>
+          <td>균열 대응 / 각성자 관리 및 보호</td>
+        </tr>
+
+        <tr>
+          <td>01</td>
+          <td>균열 전투</td>
+        </tr>
+
+        <tr>
+          <td>02</td>
+          <td>가이드 관리 및 매칭</td>
+        </tr>
+
+        <tr>
+          <td>03</td>
+          <td>공명·균열 연구</td>
+        </tr>
+
+        <tr>
+          <td>04</td>
+          <td>감찰·각성자 범죄</td>
+        </tr>
+
+        <tr>
+          <td>05</td>
+          <td>정보·외부세력</td>
+        </tr>
+
+        <tr>
+          <td>00</td>
+          <td>[ ACCESS DENIED ]</td>
+        </tr>
+
       </table>
     `
   },
 
   white:{
-    title:'WHITE NIGHT',
+    title:'백야 연구소',
     body:`
       <table>
-        <tr><td>STATUS</td><td>[ UNKNOWN ]</td></tr>
-        <tr><td>ESTABLISHED</td><td>Y-17</td></tr>
-        <tr><td>FIELD</td><td>정신파 / 공명 / 균열 연구</td></tr>
-        <tr><td>RECORD</td><td>[ DATA PARTIALLY DELETED ]</td></tr>
+
+        <tr>
+          <td>ENGLISH</td>
+          <td>WHITE NIGHT LABORATORY</td>
+        </tr>
+
+        <tr>
+          <td>STATUS</td>
+          <td>[ UNKNOWN ]</td>
+        </tr>
+
+        <tr>
+          <td>ESTABLISHED</td>
+          <td>Y-17</td>
+        </tr>
+
+        <tr>
+          <td>FIELD</td>
+          <td>정신파 / 공명 / 균열 연구</td>
+        </tr>
+
+        <tr>
+          <td>RECORD</td>
+          <td>[ DATA PARTIALLY DELETED ]</td>
+        </tr>
+
       </table>
     `
   },
@@ -1403,10 +2467,27 @@ const factionData={
     title:'LIBERA',
     body:`
       <table>
-        <tr><td>STATUS</td><td>ACTIVE</td></tr>
-        <tr><td>TYPE</td><td>각성자 해방조직</td></tr>
-        <tr><td>PRINCIPLE</td><td>누구도 타인의 삶을 결정할 수 없다.</td></tr>
-        <tr><td>INTERNAL</td><td>온건 / 강경 / 독립 노선 존재</td></tr>
+
+        <tr>
+          <td>STATUS</td>
+          <td>ACTIVE</td>
+        </tr>
+
+        <tr>
+          <td>TYPE</td>
+          <td>각성자 해방조직</td>
+        </tr>
+
+        <tr>
+          <td>PRINCIPLE</td>
+          <td>누구도 타인의 삶을 결정할 수 없다.</td>
+        </tr>
+
+        <tr>
+          <td>INTERNAL</td>
+          <td>온건 / 강경 / 독립 노선 존재</td>
+        </tr>
+
       </table>
     `
   },
@@ -1415,114 +2496,801 @@ const factionData={
     title:'NEST',
     body:`
       <table>
-        <tr><td>STATUS</td><td>ACTIVE</td></tr>
-        <tr><td>TYPE</td><td>지하 네트워크</td></tr>
-        <tr><td>USERS</td><td>미등록 각성자 / 브로커 / 도망자</td></tr>
-        <tr><td>SERVICE</td><td>정보 / 신분 / 은신처 / 의약품</td></tr>
+
+        <tr>
+          <td>STATUS</td>
+          <td>ACTIVE</td>
+        </tr>
+
+        <tr>
+          <td>TYPE</td>
+          <td>미등록 각성자 지하 네트워크</td>
+        </tr>
+
+        <tr>
+          <td>USERS</td>
+          <td>미등록 각성자 / 브로커 / 도망자</td>
+        </tr>
+
+        <tr>
+          <td>SERVICE</td>
+          <td>정보 / 신분 / 은신처 / 의약품</td>
+        </tr>
+
       </table>
     `
   },
 
   sanctuary:{
-    title:'SANCTUARY',
+    title:'성역 교단',
     body:`
       <table>
-        <tr><td>STATUS</td><td>ACTIVE</td></tr>
-        <tr><td>RIFT</td><td>THE DOOR</td></tr>
-        <tr><td>SENTINEL</td><td>THE SWORD</td></tr>
-        <tr><td>GUIDE</td><td>THE KEY</td></tr>
-        <tr><td>DOCTRINE</td><td>균열은 재앙이 아니라 문이다.</td></tr>
+
+        <tr>
+          <td>ENGLISH</td>
+          <td>SANCTUARY</td>
+        </tr>
+
+        <tr>
+          <td>STATUS</td>
+          <td>ACTIVE</td>
+        </tr>
+
+        <tr>
+          <td>RIFT</td>
+          <td>THE DOOR / 문</td>
+        </tr>
+
+        <tr>
+          <td>SENTINEL</td>
+          <td>THE SWORD / 검</td>
+        </tr>
+
+        <tr>
+          <td>GUIDE</td>
+          <td>THE KEY / 열쇠</td>
+        </tr>
+
+        <tr>
+          <td>DOCTRINE</td>
+          <td>균열은 재앙이 아니라 문이다.</td>
+        </tr>
+
       </table>
     `
   }
+
 };
 
 function showFaction(id){
-  const data=factionData[id];
-  document.getElementById('factionTitle').textContent=data.title;
-  document.getElementById('factionBody').innerHTML=data.body;
-  document.getElementById('factionDetail').classList.add('open');
+
+  const data=
+    factionData[id];
+
+  document
+    .getElementById('factionTitle')
+    .textContent=data.title;
+
+  document
+    .getElementById('factionBody')
+    .innerHTML=data.body;
+
+  document
+    .getElementById('factionDetail')
+    .classList.add('open');
+
   setTimeout(()=>{
-    document.getElementById('factionDetail').scrollIntoView({
-      behavior:'smooth',
-      block:'nearest'
-    });
+
+    document
+      .getElementById('factionDetail')
+      .scrollIntoView({
+        behavior:'smooth',
+        block:'nearest'
+      });
+
   },50);
 }
 
 function closeFaction(){
-  document.getElementById('factionDetail').classList.remove('open');
+
+  document
+    .getElementById('factionDetail')
+    .classList.remove('open');
 }
 
-/* CLASSIFIED */
+/* ==============================
+   CLASSIFIED DATA
+============================== */
+
+const ACCESS_CODES={
+
+  'NME-0047-SKY':'name',
+
+  'KEY-017-114':'key',
+
+  'RSN-FR-9998':'resonance',
+
+  'REM-NULL-WRU':'remember'
+
+};
+
+const RECORD_DATA={
+
+  name:{
+
+    title:'SUBJECT OBSERVATION LOG',
+
+    type:'WHITE NIGHT / SUBJECT RECORD',
+
+    card:'SUBJECT 00 / OBSERVATION LOG',
+
+    body:`
+      <div class="mono">
+        SUBJECT OBSERVATION LOG<br>
+        SUBJECT : 00<br>
+        OBSERVER : L.D.G.<br>
+        DATE : <span class="blackout">████████</span>
+      </div>
+
+      <div class="divider"></div>
+
+      Q. 원하는 것이 있습니까?
+      <br><br>
+
+      00은 질문을 이해하지 못했다.
+      <br><br>
+
+      같은 질문을 세 차례 반복한 뒤,
+      대상은 다음과 같이 답했다.
+
+      <div class="quote">
+        "뭘 해도 돼?"
+      </div>
+
+      질문 방식을 변경했다.
+      <br><br>
+
+      Q. 지금 하고 싶은 행동을 선택하십시오.
+      <br><br>
+
+      대상은 약 47초간 응답하지 않았다.
+      <br><br>
+
+      이후 창문을 가리켰다.
+
+      <div class="quote">
+        "저건 뭐야?"
+      </div>
+
+      Q. 하늘입니다.
+
+      <div class="quote">
+        "왜 파래?"
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="mono">
+        OBSERVATION NOTE
+      </div>
+
+      대상에게 선택지를 제공하는 행위가
+      실험 결과에 불필요한 변수를 발생시킨다는
+      의견이 제출되었다.
+
+      <br><br>
+
+      <span class="warning">
+        [ RECOMMENDATION ]<br>
+        선택형 질문 사용 중단.
+      </span>
+
+      <div class="divider"></div>
+
+      <div class="mono">
+        OBSERVER COMMENT
+      </div>
+
+      <span class="blackout">
+        DATA DELETED DATA DELETED
+      </span>
+    `
+  },
+
+  key:{
+
+    title:'ORACLE ARCHIVE',
+
+    type:'SANCTUARY / RESTRICTED RECORD',
+
+    card:'성역 교단 / 신탁기록',
+
+    body:`
+      <div class="mono">
+        ORACLE ARCHIVE<br>
+        RECORD : 017<br>
+        INTERPRETATION : RESTRICTED<br>
+        ORIGINAL SOURCE : UNKNOWN
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="doc-title">
+        신탁 원문 일부
+      </div>
+
+      <div class="quote">
+        "문이 열린 날,<br>
+        그것은 우리를 보았다."
+      </div>
+
+      <span class="blackout">
+        ██████████████████████
+      </span>
+
+      <div class="quote">
+        "열쇠는 문을 여는 자가 아니다."
+      </div>
+
+      <span class="blackout">
+        ███████████████████
+      </span>
+
+      <div class="quote">
+        "문이 열쇠를 선택한다."
+      </div>
+
+      <div class="divider"></div>
+
+      <span class="warning">
+        [ TRANSLATION DISPUTED ]
+      </span>
+
+      <br><br>
+
+      해당 문장은 현재 성역 교단의
+      공식 교리와 해석이 일치하지 않는다.
+
+      <br><br>
+
+      최초 번역자 기록 :
+      <span class="blackout">██████</span>
+
+      <br>
+
+      수정 승인 :
+      <span class="blackout">██████</span>
+    `
+  },
+
+  resonance:{
+
+    title:'FIRST RIFT OBSERVATION LOG',
+
+    type:'AEGIS / RESTRICTED ARCHIVE',
+
+    card:'FIRST RIFT / OBSERVATION LOG',
+
+    body:`
+      <div class="mono">
+        DOCUMENT ID : FR-00-01<br>
+        SECURITY LEVEL : █████<br>
+        DATE : Y-20<br>
+        SUBJECT : FIRST RIFT OBSERVATION
+      </div>
+
+      <div class="divider"></div>
+
+      최초균열 발생 직후,
+      미확인 정신파 신호가 관측되었다.
+
+      <br><br>
+
+      해당 파형은 당시 등록되어 있던
+      인간 정신파 데이터와 일치하지 않았다.
+
+      <br><br>
+
+      <span class="blackout">
+        DATA DELETED DATA DELETED
+      </span>
+
+      <br><br>
+
+      관측팀은 최초에는 신호가
+      균열 내부에서 발생한 것으로 판단했다.
+
+      <br><br>
+
+      그러나 분석 결과—
+
+      <br><br>
+
+      신호의 방향이 예상과 일치하지 않았다.
+
+      <div class="quote">
+        "접촉 대상이 우리를 먼저 인식했다."
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="mono">
+        UNIDENTIFIED MENTAL WAVE<br>
+        MATCH : 99.998%<br>
+        SOURCE : [ ACCESS DENIED ]
+      </div>
+    `
+  },
+
+  remember:{
+
+    title:'UNKNOWN ARCHIVE',
+
+    type:'SOURCE / NOT FOUND',
+
+    card:'UNKNOWN / UNIDENTIFIED RECORD',
+
+    body:`
+      <div class="mono">
+        AUTHORITY : NONE<br>
+        SOURCE : NONE<br>
+        DATE : NONE<br>
+        DATABASE : NOT FOUND
+      </div>
+
+      <div class="divider"></div>
+
+      이 기록은 AEGIS 데이터베이스에
+      존재하지 않습니다.
+
+      <br><br>
+
+      이 기록은 백야 연구소 데이터베이스에
+      존재하지 않습니다.
+
+      <br><br>
+
+      작성자는 존재하지 않습니다.
+
+      <div class="divider"></div>
+
+      <div class="unknown">
+        [ SIGNAL RECEIVED ]
+      </div>
+
+      <div class="unknown">
+        ████████████████████
+        <br><br>
+
+        WE REMEMBER YOU.
+
+        <br><br>
+        ████████████████████
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="mono">
+        MEMORY SOURCE : UNKNOWN
+      </div>
+
+      <div class="unknown">
+        &gt; Do you remember us?
+        <br><br>
+        _
+      </div>
+    `
+  }
+
+};
+
+/* ==============================
+   CLASSIFIED STORAGE
+============================== */
+
+let unlockedRecords=
+  JSON.parse(
+    localStorage.getItem(
+      'echoRiftUnlocked'
+    ) || '[]'
+  );
+
+function saveUnlocked(){
+
+  localStorage.setItem(
+    'echoRiftUnlocked',
+    JSON.stringify(unlockedRecords)
+  );
+}
+
+function refreshArchive(){
+
+  const ids=[
+    'name',
+    'key',
+    'resonance',
+    'remember'
+  ];
+
+  ids.forEach(id=>{
+
+    const card=
+      document.getElementById(
+        'record-'+id
+      );
+
+    const name=
+      card.querySelector(
+        '.record-name'
+      );
+
+    const state=
+      card.querySelector(
+        '.record-state'
+      );
+
+    if(
+      unlockedRecords.includes(id)
+    ){
+
+      card
+        .classList
+        .remove('locked');
+
+      card
+        .classList
+        .add('unlocked');
+
+      name.textContent=
+        RECORD_DATA[id].card;
+
+      state.textContent=
+        'ACCESS GRANTED';
+
+    }else{
+
+      card
+        .classList
+        .remove('unlocked');
+
+      card
+        .classList
+        .add('locked');
+
+      name.textContent=
+        '[ UNDISCOVERED ]';
+
+      state.textContent=
+        'ACCESS KEY REQUIRED';
+    }
+
+  });
+
+  const count=
+    unlockedRecords.length;
+
+  document
+    .getElementById('unlockCount')
+    .textContent=count;
+
+  const percent=
+    Math.round(
+      count / 4 * 100
+    );
+
+  document
+    .getElementById(
+      'completionPercent'
+    )
+    .textContent=
+    percent+'%';
+
+  if(count===4){
+
+    document
+      .getElementById(
+        'completeMessage'
+      )
+      .classList.add('show');
+
+  }else{
+
+    document
+      .getElementById(
+        'completeMessage'
+      )
+      .classList.remove('show');
+  }
+}
+
+/* ==============================
+   ACCESS CODE
+============================== */
+
 function tryAccess(){
-  const input=document.getElementById('password').value.trim();
-  const result=document.getElementById('accessResult');
 
-  /*
-  나중에 작품 속 실제 암호가 생기면 아래 DENIED 부분을
-  암호 조건으로 바꿀 예정입니다.
-  현재는 어떤 값을 입력해도 잠금 상태입니다.
-  */
+  const field=
+    document.getElementById(
+      'password'
+    );
 
-  result.textContent='[ ACCESS DENIED / CLEARANCE INSUFFICIENT ]';
+  const result=
+    document.getElementById(
+      'accessResult'
+    );
+
+  const code=
+    field.value
+      .trim()
+      .toUpperCase();
+
+  result
+    .classList
+    .remove('success');
+
+  if(!code){
+
+    result.textContent=
+      '[ ACCESS CODE REQUIRED ]';
+
+    return;
+  }
+
+  const recordId=
+    ACCESS_CODES[code];
+
+  if(!recordId){
+
+    result.textContent=
+      '[ ACCESS DENIED / INVALID KEY ]';
+
+    field.select();
+
+    return;
+  }
+
+  if(
+    unlockedRecords
+      .includes(recordId)
+  ){
+
+    result
+      .classList
+      .add('success');
+
+    result.textContent=
+      '[ RECORD ALREADY RECOVERED ]';
+
+    field.value='';
+
+    openRecord(recordId);
+
+    return;
+  }
+
+  unlockedRecords
+    .push(recordId);
+
+  saveUnlocked();
+
+  refreshArchive();
+
+  result
+    .classList
+    .add('success');
+
+  result.textContent=
+    '[ ACCESS GRANTED / RECORD RECOVERED ]';
+
+  field.value='';
 
   setTimeout(()=>{
-    result.textContent='';
-  },2800);
+
+    openRecord(recordId);
+
+  },450);
 }
 
-/* PARTICLES */
-const canvas=document.getElementById('particles');
-const ctx=canvas.getContext('2d');
+/* ==============================
+   RECORD VIEW
+============================== */
+
+function openRecord(id){
+
+  if(
+    !unlockedRecords.includes(id)
+  ){
+    return;
+  }
+
+  const data=
+    RECORD_DATA[id];
+
+  document
+    .getElementById(
+      'recordViewType'
+    )
+    .textContent=
+    data.type;
+
+  document
+    .getElementById(
+      'recordViewTitle'
+    )
+    .textContent=
+    data.title;
+
+  document
+    .getElementById(
+      'recordViewBody'
+    )
+    .innerHTML=
+    data.body;
+
+  const view=
+    document.getElementById(
+      'recordView'
+    );
+
+  view
+    .classList
+    .add('open');
+
+  setTimeout(()=>{
+
+    view.scrollIntoView({
+      behavior:'smooth',
+      block:'start'
+    });
+
+  },50);
+}
+
+function closeRecord(){
+
+  document
+    .getElementById(
+      'recordView'
+    )
+    .classList
+    .remove('open');
+}
+
+/* ==============================
+   PARTICLES
+============================== */
+
+const canvas=
+  document.getElementById(
+    'particles'
+  );
+
+const ctx=
+  canvas.getContext('2d');
+
 let particles=[];
 
 function resize(){
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
+
+  canvas.width=
+    window.innerWidth;
+
+  canvas.height=
+    window.innerHeight;
+
   createParticles();
 }
 
 function createParticles(){
-  particles=[];
-  const amount=Math.min(85,Math.floor(window.innerWidth/18));
 
-  for(let i=0;i<amount;i++){
+  particles=[];
+
+  const amount=
+    Math.min(
+      85,
+      Math.floor(
+        window.innerWidth / 18
+      )
+    );
+
+  for(
+    let i=0;
+    i<amount;
+    i++
+  ){
+
     particles.push({
-      x:Math.random()*canvas.width,
-      y:Math.random()*canvas.height,
-      r:Math.random()*1.2+.2,
-      a:Math.random()*.45+.08,
-      vx:(Math.random()-.5)*.08,
-      vy:(Math.random()-.5)*.08
+
+      x:
+        Math.random()
+        *canvas.width,
+
+      y:
+        Math.random()
+        *canvas.height,
+
+      r:
+        Math.random()
+        *1.2+.2,
+
+      a:
+        Math.random()
+        *.45+.08,
+
+      vx:
+        (Math.random()-.5)
+        *.08,
+
+      vy:
+        (Math.random()-.5)
+        *.08
+
     });
   }
 }
 
 function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
 
   particles.forEach(p=>{
+
     p.x+=p.vx;
     p.y+=p.vy;
 
-    if(p.x<0)p.x=canvas.width;
-    if(p.x>canvas.width)p.x=0;
-    if(p.y<0)p.y=canvas.height;
-    if(p.y>canvas.height)p.y=0;
+    if(p.x<0){
+      p.x=canvas.width;
+    }
+
+    if(p.x>canvas.width){
+      p.x=0;
+    }
+
+    if(p.y<0){
+      p.y=canvas.height;
+    }
+
+    if(p.y>canvas.height){
+      p.y=0;
+    }
 
     ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle=`rgba(170,220,255,${p.a})`;
+
+    ctx.arc(
+      p.x,
+      p.y,
+      p.r,
+      0,
+      Math.PI*2
+    );
+
+    ctx.fillStyle=
+      `rgba(170,220,255,${p.a})`;
+
     ctx.fill();
+
   });
 
-  requestAnimationFrame(animate);
+  requestAnimationFrame(
+    animate
+  );
 }
 
-window.addEventListener('resize',resize);
+window.addEventListener(
+  'resize',
+  resize
+);
+
 resize();
 animate();
+
+refreshArchive();
+
 </script>
 
 </body>
