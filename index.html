@@ -1429,6 +1429,74 @@ h2{
     gap:8px;
   }
 }
+
+  /* SOCIAL HOT TOPICS */
+
+.topic-list{
+  border-top:1px solid rgba(170,220,255,.11);
+}
+
+.topic-row{
+  display:grid;
+  grid-template-columns:55px 1fr;
+  gap:18px;
+  padding:21px 5px;
+  border-bottom:1px solid rgba(170,220,255,.08);
+  transition:.2s;
+}
+
+.topic-row:hover{
+  background:linear-gradient(
+    90deg,
+    rgba(120,200,255,.025),
+    transparent
+  );
+}
+
+.topic-num{
+  padding-top:3px;
+  color:#49697a;
+  font:9px 'Space Mono',monospace;
+}
+
+.topic-main{
+  min-width:0;
+}
+
+.topic-tag{
+  margin-bottom:7px;
+  color:#527487;
+  font:8px 'Space Mono',monospace;
+  letter-spacing:.1em;
+}
+
+.topic-title{
+  margin-bottom:9px;
+  color:#afc3cd;
+  font-size:13px;
+  font-weight:500;
+}
+
+.topic-copy{
+  max-width:820px;
+  color:#697d88;
+  font-size:10.5px;
+  line-height:1.85;
+}
+
+@media(max-width:800px){
+
+  .topic-row{
+    grid-template-columns:34px 1fr;
+    gap:10px;
+    padding:18px 2px;
+  }
+
+  .topic-copy{
+    font-size:10px;
+    line-height:1.8;
+  }
+}
   
 </style>
 </head>
@@ -2352,67 +2420,103 @@ h2{
 
   </div>
 
-  <!-- SOCIAL CONFLICT -->
+<!-- SOCIAL CONFLICT -->
 
-  <div class="awake-block">
+<div class="awake-block">
 
-    <div class="section-label">SOCIETY / CONFLICT</div>
-    <h3 class="awake-title">사회적 갈등</h3>
+  <div class="section-label">SOCIETY / HOT TOPICS</div>
+  <h3 class="awake-title">사회적 갈등</h3>
 
-    <div class="social-list">
+  <div class="topic-list">
 
-      <div class="social-row">
-        <div class="social-num">01</div>
-        <div class="social-title">보호인가, 통제인가</div>
-        <div class="social-copy">
-          AEGIS의 등록·관리체계를 둘러싼 자유권 논쟁.
+    <div class="topic-row">
+      <div class="topic-num">01</div>
+
+      <div class="topic-main">
+        <div class="topic-tag">RIGHTS · AEGIS</div>
+        <div class="topic-title">보호인가, 통제인가</div>
+        <div class="topic-copy">
+          각성자 등록제와 AEGIS의 관리 권한을 두고 논쟁이 계속되고 있다.
+          정부와 AEGIS는 균열 재난과 BREAK 대응을 위한 최소한의 안전장치라고 주장하지만,
+          반대 측은 능력·정신파·침식률까지 국가가 관리하는 것은 지나친 사생활 침해라고 비판한다.
         </div>
       </div>
+    </div>
 
-      <div class="social-row">
-        <div class="social-num">02</div>
-        <div class="social-title">센티넬에 대한 공포</div>
-        <div class="social-copy">
-          BREAK 위험 때문에 센티넬을 잠재적 재난으로 보는 사회적 시선.
+    <div class="topic-row">
+      <div class="topic-num">02</div>
+
+      <div class="topic-main">
+        <div class="topic-tag">PUBLIC SAFETY · SENTINEL</div>
+        <div class="topic-title">“언제 폭주할지 모르잖아요.”</div>
+        <div class="topic-copy">
+          고위험 센티넬의 BREAK 사고가 보도될 때마다 센티넬 전체를 잠재적 위험인물로 보는 여론이 되살아난다.
+          일부 시설과 고용현장에서는 고등급 센티넬을 기피하는 사례도 보고되며,
+          안전을 위한 구분인지 각성자 차별인지에 대한 논쟁이 이어지고 있다.
         </div>
       </div>
+    </div>
 
-      <div class="social-row">
-        <div class="social-num">03</div>
-        <div class="social-title">가이드의 도구화</div>
-        <div class="social-copy">
-          희소한 고등급 가이드에게 과도한 가이딩 의무가 집중되는 문제.
+    <div class="topic-row">
+      <div class="topic-num">03</div>
+
+      <div class="topic-main">
+        <div class="topic-tag">LABOR · GUIDE</div>
+        <div class="topic-title">사람인가, 인적 자원인가</div>
+        <div class="topic-copy">
+          고등급 센티넬에 비해 안정적으로 대응 가능한 고등급 가이드는 항상 부족하다.
+          한 명의 가이드에게 다수의 센티넬이 배정되거나 위험한 심층 가이딩이 반복되면서,
+          가이드의 휴식권과 가이딩 거부권을 보장해야 한다는 목소리가 커지고 있다.
         </div>
       </div>
+    </div>
 
-      <div class="social-row">
-        <div class="social-num">04</div>
-        <div class="social-title">등급 사회</div>
-        <div class="social-copy">
-          각성 등급이 직업·대우·사회적 영향력으로 이어지는 현상.
+    <div class="topic-row">
+      <div class="topic-num">04</div>
+
+      <div class="topic-main">
+        <div class="topic-tag">CLASS · EMPLOYMENT</div>
+        <div class="topic-title">등급이 곧 사람의 가치인가</div>
+        <div class="topic-copy">
+          같은 각성자라도 S급과 저등급 각성자가 받는 대우에는 큰 차이가 존재한다.
+          고등급 각성자는 막대한 보상과 사회적 영향력을 얻는 반면,
+          저등급 각성자는 위험한 현장에 투입되고도 충분한 보호를 받지 못한다는 비판이 나온다.
         </div>
       </div>
+    </div>
 
-      <div class="social-row">
-        <div class="social-num">05</div>
-        <div class="social-title">미등록 각성자</div>
-        <div class="social-copy">
-          제도권 밖 각성자의 의료·신분·생존 문제.
+    <div class="topic-row">
+      <div class="topic-num">05</div>
+
+      <div class="topic-main">
+        <div class="topic-tag">UNREGISTERED · UNDERGROUND</div>
+        <div class="topic-title">등록하지 않으면 존재할 수 없는 사람들</div>
+        <div class="topic-copy">
+          신분 노출이나 기관의 통제를 피해 등록을 거부하는 각성자들이 제도권 밖으로 밀려나고 있다.
+          이들은 정상적인 치료와 억제제 처방조차 받기 어려워 불법 시장에 의존하기도 하며,
+          등록제 자체가 오히려 지하사회를 키우고 있다는 지적도 나온다.
         </div>
       </div>
+    </div>
 
-      <div class="social-row">
-        <div class="social-num">06</div>
-        <div class="social-title">상성률과 관계</div>
-        <div class="social-copy">
-          높은 상성률을 연애·결혼의 당위로 보는 문화에 대한 논쟁.
+    <div class="topic-row">
+      <div class="topic-num">06</div>
+
+      <div class="topic-main">
+        <div class="topic-tag">MATCHING · RELATIONSHIP</div>
+        <div class="topic-title">“상성 92%인데 왜 만나지 않죠?”</div>
+        <div class="topic-copy">
+          높은 상성률을 가진 센티넬과 가이드가 공개될 경우 두 사람을 이상적인 파트너로 보는 사회적 압력이 발생하기도 한다.
+          상성률이 연애·결혼·전속계약의 근거처럼 소비되면서,
+          정신파의 적합성과 개인의 감정은 별개의 문제라는 반론도 커지고 있다.
         </div>
       </div>
-
     </div>
 
   </div>
 
+</div>
+  
 </section>
   
 <!-- CHARACTERS -->
