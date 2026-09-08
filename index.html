@@ -1648,6 +1648,26 @@ h2{
   }
 }
   
+
+/* ENTITY RECORD / CHARACTER ARCHIVE */
+.person-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.person{position:relative;min-height:0;padding:0;border:1px solid rgba(170,220,255,.12);background:linear-gradient(160deg,rgba(11,20,29,.82),rgba(5,10,15,.9));overflow:hidden;transition:transform .28s,border-color .28s,box-shadow .28s}
+.person:not(.locked){cursor:pointer}
+.person:not(.locked):hover{transform:translateY(-2px);border-color:rgba(168,220,255,.34);box-shadow:0 12px 34px rgba(0,0,0,.22)}
+.entity-top{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid rgba(170,220,255,.08);color:#486272;font:7.5px 'Space Mono',monospace;letter-spacing:.08em}
+.entity-status{color:#79a8bf}.entity-status:before{content:'';display:inline-block;width:4px;height:4px;margin-right:6px;border-radius:50%;background:#83cfff;box-shadow:0 0 7px rgba(131,207,255,.7);vertical-align:middle}
+.entity-image{position:relative;aspect-ratio:2/3;margin:14px 14px 0;border:1px solid rgba(170,220,255,.1);background:radial-gradient(circle at 50% 35%,rgba(110,185,225,.07),transparent 28%),repeating-linear-gradient(0deg,transparent 0,transparent 5px,rgba(170,220,255,.012) 6px),#070d13;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.entity-image:before,.entity-image:after{content:'';position:absolute;width:22px;height:22px;border-color:rgba(168,220,255,.2)}
+.entity-image:before{left:9px;top:9px;border-left:1px solid;border-top:1px solid}.entity-image:after{right:9px;bottom:9px;border-right:1px solid;border-bottom:1px solid}
+.entity-image img{width:100%;height:100%;object-fit:cover;display:block}
+.image-placeholder{text-align:center;color:#405965;font:8px/1.9 'Space Mono',monospace;letter-spacing:.1em}.image-placeholder b{display:block;color:#607e8d;font-weight:400}
+.entity-body{padding:18px 16px 16px}.person h3{margin:0 0 5px;font-size:19px}.person-eng{margin-bottom:15px}.entity-source{margin-top:14px;padding-top:11px;border-top:1px solid rgba(170,220,255,.07);color:#48616e;font:7.5px 'Space Mono',monospace;letter-spacing:.06em}
+.entity-detail{display:none;margin:0 16px 16px;padding:14px;border:1px solid rgba(170,220,255,.08);background:rgba(4,9,14,.72);animation:entityOpen .28s ease}.person.open .entity-detail{display:block}.entity-detail-title{margin-bottom:10px;color:#6f93a6;font:8px 'Space Mono',monospace;letter-spacing:.12em}.entity-note{color:#728792;font-size:10px;line-height:1.8}
+@keyframes entityOpen{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+.person.locked{padding:0}.person.locked .entity-image{filter:grayscale(1);opacity:.55}.person.locked .entity-status:before{background:#53636b;box-shadow:none}.person.locked h3{margin:0 0 8px}.person.locked .locked-block{margin:0;color:#41545f}
+.page.active .header-rule{animation:archiveSweep .75s ease both}@keyframes archiveSweep{from{transform:scaleX(.08);transform-origin:left;opacity:.2}to{transform:scaleX(1);transform-origin:left;opacity:1}}
+@media(max-width:800px){.person-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.entity-top{padding:9px 8px;font-size:6px}.entity-image{margin:8px 8px 0}.entity-body{padding:12px 9px}.person h3{font-size:14px}.person-eng{font-size:7px;margin-bottom:10px}.person-line{gap:5px;padding:5px 0;font-size:6.5px}.entity-source{font-size:5.8px;line-height:1.7}.entity-detail{margin:0 9px 10px;padding:10px}.entity-note{font-size:8px}.image-placeholder{font-size:6.5px}}
+
 </style>
 </head>
 
@@ -2723,251 +2743,105 @@ h2{
 </section>
   
 <!-- CHARACTERS -->
-
 <section class="page" id="characters">
-
-  <div class="eyebrow">ARCHIVE / 05 / PERSONNEL DATABASE</div>
-  <h2>CHARACTERS</h2>
-  <div class="ko-title">ECHO:RIFT 인물 데이터베이스</div>
-
-  <div class="header-rule"></div>
-
-  <div class="person-tools">
-
-    <input
-      id="personSearch"
-      class="searchbox"
-      type="text"
-      placeholder="SEARCH PERSONNEL"
-      oninput="filterPeople()"
-    >
-
-    <div class="filter-bar">
-      <button class="filter-btn active" data-filter="all" onclick="setPersonFilter('all',this)">ALL</button>
-      <button class="filter-btn" data-filter="aegis" onclick="setPersonFilter('aegis',this)">AEGIS</button>
-      <button class="filter-btn" data-filter="white" onclick="setPersonFilter('white',this)">백야 연구소</button>
-      <button class="filter-btn" data-filter="libera" onclick="setPersonFilter('libera',this)">LIBERA</button>
-      <button class="filter-btn" data-filter="nest" onclick="setPersonFilter('nest',this)">NEST</button>
-      <button class="filter-btn" data-filter="sanctuary" onclick="setPersonFilter('sanctuary',this)">성역 교단</button>
-    </div>
-
-    <div class="person-count">
-      <span id="personCount">0</span> RECORDS DISPLAYED
-    </div>
-
-  </div>
-
-  <div class="person-grid" id="personGrid">
-
-    <!-- AEGIS -->
-
-    <div class="person" data-group="aegis" data-search="강태윤 kang taeyoon aegis sentinel">
-      <div class="person-id">PERSONNEL / A-01</div>
-      <h3>강태윤</h3>
-      <div class="person-eng">KANG TAEYOON</div>
-      <div class="person-line"><span>CLASS</span><span>SENTINEL</span></div>
-      <div class="person-line"><span>RANK</span><span>S</span></div>
-      <div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div>
-      <div class="person-line"><span>ABILITY</span><span>GRAVITY</span></div>
-    </div>
-
-    <div class="person" data-group="aegis" data-search="윤시헌 yoon siheon aegis guide saint">
-      <div class="person-id">PERSONNEL / A-02</div>
-      <h3>윤시헌</h3>
-      <div class="person-eng">YOON SIHEON</div>
-      <div class="person-line"><span>CLASS</span><span>GUIDE</span></div>
-      <div class="person-line"><span>RANK</span><span>S</span></div>
-      <div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div>
-      <div class="person-line"><span>DESIGNATION</span><span>SAINT</span></div>
-    </div>
-
-    <div class="person" data-group="aegis" data-search="서정우 aegis">
-      <div class="person-id">PERSONNEL / A-03</div>
-      <h3>서정우</h3>
-      <div class="person-eng">SEO JEONGWOO</div>
-      <div class="person-line"><span>CLASS</span><span>SENTINEL</span></div>
-      <div class="person-line"><span>RANK</span><span>A</span></div>
-      <div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div>
-      <div class="person-line"><span>POSITION</span><span>제1국</span></div>
-    </div>
-
-    <div class="person" data-group="aegis" data-search="한세라 aegis medical">
-      <div class="person-id">PERSONNEL / A-04</div>
-      <h3>한세라</h3>
-      <div class="person-eng">HAN SERA</div>
-      <div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div>
-      <div class="person-line"><span>DIVISION</span><span>MEDICAL</span></div>
-      <div class="person-line"><span>POSITION</span><span>의료부 책임자</span></div>
-      <div class="person-line"><span>STATUS</span><span>ACTIVE</span></div>
-    </div>
-
-    <div class="person" data-group="aegis" data-search="서문재 aegis guide management">
-      <div class="person-id">PERSONNEL / A-05</div>
-      <h3>서문재</h3>
-      <div class="person-eng">SEOMUN JAE</div>
-      <div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div>
-      <div class="person-line"><span>DIVISION</span><span>GUIDE MANAGEMENT</span></div>
-      <div class="person-line"><span>POSITION</span><span>정신건강 관리</span></div>
-      <div class="person-line"><span>DETAIL</span><span>[ RESTRICTED ]</span></div>
-    </div>
-
-    <!-- WHITE NIGHT -->
-
-    <div class="person" data-group="white" data-search="subject 00 백야 white night">
-      <div class="person-id">SUBJECT FILE / 00</div>
-      <h3>SUBJECT 00</h3>
-      <div class="person-eng">NAME / [ NO DATA ]</div>
-      <div class="person-line"><span>CLASS</span><span>SENTINEL</span></div>
-      <div class="person-line"><span>RANK</span><span>EX</span></div>
-      <div class="person-line"><span>AFFILIATION</span><span>[ DATA DELETED ]</span></div>
-      <div class="person-line"><span>STATUS</span><span>UNKNOWN</span></div>
-    </div>
-
-    <div class="person" data-group="white" data-search="이도겸 lee dogyeom">
-      <div class="person-id">PERSONNEL / W-??</div>
-      <h3>이도겸</h3>
-      <div class="person-eng">LEE DOGYEOM</div>
-      <div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div>
-      <div class="person-line"><span>AFFILIATION</span><span>[ DATA DELETED ]</span></div>
-      <div class="person-line"><span>OCCUPATION</span><span>[ RESTRICTED ]</span></div>
-      <div class="person-line"><span>STATUS</span><span>UNKNOWN</span></div>
-    </div>
-
-    <div class="person locked" data-group="white" data-search="locked 백야">
-      <div class="person-id">PERSONNEL / W-██</div>
-      <h3>████████</h3>
-      <div class="locked-block">
-        IDENTITY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ CLASSIFIED ]<br>
-        CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>
-        STATUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;██████
-      </div>
-      <div class="lock-message">[ RECORD LOCKED ]</div>
-    </div>
-
-    <div class="person locked" data-group="white" data-search="locked 백야">
-      <div class="person-id">SUBJECT FILE / ██</div>
-      <h3>████████</h3>
-      <div class="locked-block">
-        IDENTITY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ DATA DELETED ]<br>
-        RECORD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ CORRUPTED ]<br>
-        STATUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN
-      </div>
-      <div class="lock-message">[ RECORD LOCKED ]</div>
-    </div>
-
-    <!-- LIBERA -->
-
-    <div class="person" data-group="libera" data-search="차이현 cha yihyeon libera">
-      <div class="person-id">PERSONNEL / L-01</div>
-      <h3>차이현</h3>
-      <div class="person-eng">CHA YIHYEON</div>
-      <div class="person-line"><span>CLASS</span><span>SENTINEL</span></div>
-      <div class="person-line"><span>RANK</span><span>A</span></div>
-      <div class="person-line"><span>AFFILIATION</span><span>FORMER LIBERA</span></div>
-      <div class="person-line"><span>ABILITY</span><span>ELECTRICITY</span></div>
-    </div>
-
-    <div class="person" data-group="libera" data-search="백도진 baek dojin libera">
-      <div class="person-id">PERSONNEL / L-02</div>
-      <h3>백도진</h3>
-      <div class="person-eng">BAEK DOJIN</div>
-      <div class="person-line"><span>CLASS</span><span>SENTINEL</span></div>
-      <div class="person-line"><span>RANK</span><span>A</span></div>
-      <div class="person-line"><span>AFFILIATION</span><span>LIBERA</span></div>
-      <div class="person-line"><span>STATUS</span><span>ACTIVE</span></div>
-    </div>
-
-    <div class="person locked" data-group="libera" data-search="locked libera">
-      <div class="person-id">PERSONNEL / L-██</div>
-      <h3>████████</h3>
-      <div class="locked-block">
-        IDENTITY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ CLASSIFIED ]<br>
-        CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>
-        STATUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACTIVE
-      </div>
-      <div class="lock-message">[ RECORD LOCKED ]</div>
-    </div>
-
-    <div class="person locked" data-group="libera" data-search="locked libera">
-      <div class="person-id">PERSONNEL / L-██</div>
-      <h3>████████</h3>
-      <div class="locked-block">
-        IDENTITY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ CLASSIFIED ]<br>
-        CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>
-        STATUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN
-      </div>
-      <div class="lock-message">[ RECORD LOCKED ]</div>
-    </div>
-
-    <!-- NEST -->
-
-    <div class="person" data-group="nest" data-search="장미라 jang mira nest">
-      <div class="person-id">PERSONNEL / N-01</div>
-      <h3>장미라</h3>
-      <div class="person-eng">JANG MIRA</div>
-      <div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div>
-      <div class="person-line"><span>AFFILIATION</span><span>NEST</span></div>
-      <div class="person-line"><span>ROLE</span><span>INFORMATION BROKER</span></div>
-      <div class="person-line"><span>STATUS</span><span>ACTIVE</span></div>
-    </div>
-
-    <div class="person locked" data-group="nest" data-search="locked nest">
-      <div class="person-id">PERSONNEL / N-██</div>
-      <h3>████████</h3>
-      <div class="locked-block">[ PERSONNEL DATA RESTRICTED ]</div>
-      <div class="lock-message">[ RECORD LOCKED ]</div>
-    </div>
-
-    <div class="person locked" data-group="nest" data-search="locked nest">
-      <div class="person-id">PERSONNEL / N-██</div>
-      <h3>████████</h3>
-      <div class="locked-block">[ PERSONNEL DATA RESTRICTED ]</div>
-      <div class="lock-message">[ RECORD LOCKED ]</div>
-    </div>
-
-    <div class="person locked" data-group="nest" data-search="locked nest">
-      <div class="person-id">PERSONNEL / N-██</div>
-      <h3>████████</h3>
-      <div class="locked-block">[ PERSONNEL DATA RESTRICTED ]</div>
-      <div class="lock-message">[ RECORD LOCKED ]</div>
-    </div>
-
-    <!-- SANCTUARY -->
-
-    <div class="person" data-group="sanctuary" data-search="마리아 한 maria han 성역 sanctuary">
-      <div class="person-id">PERSONNEL / S-01</div>
-      <h3>마리아 한</h3>
-      <div class="person-eng">MARIA HAN</div>
-      <div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div>
-      <div class="person-line"><span>AFFILIATION</span><span>성역 교단</span></div>
-      <div class="person-line"><span>POSITION</span><span>[ RESTRICTED ]</span></div>
-      <div class="person-line"><span>STATUS</span><span>ACTIVE</span></div>
-    </div>
-
-    <div class="person locked" data-group="sanctuary" data-search="locked 성역 sanctuary">
-      <div class="person-id">PERSONNEL / S-██</div>
-      <h3>████████</h3>
-      <div class="locked-block">[ PERSONNEL DATA RESTRICTED ]</div>
-      <div class="lock-message">[ RECORD LOCKED ]</div>
-    </div>
-
-    <div class="person locked" data-group="sanctuary" data-search="locked 성역 sanctuary">
-      <div class="person-id">PERSONNEL / S-██</div>
-      <h3>████████</h3>
-      <div class="locked-block">[ PERSONNEL DATA RESTRICTED ]</div>
-      <div class="lock-message">[ RECORD LOCKED ]</div>
-    </div>
-
-    <div class="person locked" data-group="sanctuary" data-search="locked 성역 sanctuary">
-      <div class="person-id">PERSONNEL / S-██</div>
-      <h3>████████</h3>
-      <div class="locked-block">[ PERSONNEL DATA RESTRICTED ]</div>
-      <div class="lock-message">[ RECORD LOCKED ]</div>
-    </div>
-
-  </div>
-
-</section>
+<div class="eyebrow">ARCHIVE / 05 / ENTITY DATABASE</div><h2>CHARACTERS</h2><div class="ko-title">ECHO:RIFT 인물 식별 기록</div><div class="header-rule"></div>
+<div class="person-tools"><input id="personSearch" class="searchbox" type="text" placeholder="SEARCH ENTITY RECORD" oninput="filterPeople()"><div class="filter-bar"><button class="filter-btn active" data-filter="all" onclick="setPersonFilter('all',this)">ALL</button><button class="filter-btn" data-filter="aegis" onclick="setPersonFilter('aegis',this)">AEGIS</button><button class="filter-btn" data-filter="white" onclick="setPersonFilter('white',this)">백야 연구소</button><button class="filter-btn" data-filter="libera" onclick="setPersonFilter('libera',this)">LIBERA</button><button class="filter-btn" data-filter="nest" onclick="setPersonFilter('nest',this)">NEST</button><button class="filter-btn" data-filter="sanctuary" onclick="setPersonFilter('sanctuary',this)">성역 교단</button></div><div class="person-count"><span id="personCount">0</span> RECORDS DISPLAYED</div></div>
+<div class="person-grid" id="personGrid"><div class="person" data-group="aegis" data-search="강태윤 kang taeyoon aegis sentinel" onclick="toggleEntity(this)">
+<div class="entity-top"><span>ENTITY RECORD / ER-A01</span><span class="entity-status">ACTIVE</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-body"><h3>강태윤</h3><div class="person-eng">KANG TAEYOON</div><div class="person-line"><span>CLASS</span><span>SENTINEL · S</span></div><div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div><div class="person-line"><span>ABILITY</span><span>GRAVITY CONTROL</span></div><div class="entity-source">SOURCE / AEGIS PERSONNEL DATABASE</div></div>
+<div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">AEGIS 제1특수부대 핵심 전투인원. 고위험 균열 대응 기록 다수.</div></div>
+</div><div class="person" data-group="aegis" data-search="윤시헌 yoon siheon aegis guide saint" onclick="toggleEntity(this)">
+<div class="entity-top"><span>ENTITY RECORD / ER-A02</span><span class="entity-status">ACTIVE</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-body"><h3>윤시헌</h3><div class="person-eng">YOON SIHEON</div><div class="person-line"><span>CLASS</span><span>GUIDE · S</span></div><div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div><div class="person-line"><span>DESIGNATION</span><span>SAINT</span></div><div class="entity-source">SOURCE / AEGIS PERSONNEL DATABASE</div></div>
+<div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">광역 정신 안정화 능력을 보유한 S급 가이드. 대외적으로 ‘성자’라는 호칭으로 알려져 있다.</div></div>
+</div><div class="person" data-group="aegis" data-search="서정우 seo jeongwoo aegis" onclick="toggleEntity(this)">
+<div class="entity-top"><span>ENTITY RECORD / ER-A03</span><span class="entity-status">ACTIVE</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-body"><h3>서정우</h3><div class="person-eng">SEO JEONGWOO</div><div class="person-line"><span>CLASS</span><span>SENTINEL · A</span></div><div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div><div class="person-line"><span>POSITION</span><span>1ST BUREAU</span></div><div class="entity-source">SOURCE / AEGIS PERSONNEL DATABASE</div></div>
+<div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">AEGIS 제1국 소속 현장 인원.</div></div>
+</div><div class="person" data-group="aegis" data-search="한세라 han sera aegis medical" onclick="toggleEntity(this)">
+<div class="entity-top"><span>ENTITY RECORD / ER-A04</span><span class="entity-status">ACTIVE</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-body"><h3>한세라</h3><div class="person-eng">HAN SERA</div><div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div><div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div><div class="person-line"><span>POSITION</span><span>MEDICAL CHIEF</span></div><div class="entity-source">SOURCE / AEGIS MEDICAL DATABASE</div></div>
+<div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">각성자 의료 및 현장 후송 체계를 담당하는 의료부 책임자.</div></div>
+</div><div class="person" data-group="aegis" data-search="서문재 seomun jae aegis guide management" onclick="toggleEntity(this)">
+<div class="entity-top"><span>ENTITY RECORD / ER-A05</span><span class="entity-status">ACTIVE</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-body"><h3>서문재</h3><div class="person-eng">SEOMUN JAE</div><div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div><div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div><div class="person-line"><span>POSITION</span><span>GUIDE MANAGEMENT</span></div><div class="entity-source">SOURCE / AEGIS PERSONNEL DATABASE</div></div>
+<div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">가이드 정신건강 및 장기 관리 업무 담당. 일부 세부 기록은 제한되어 있다.</div></div>
+</div><div class="person" data-group="white" data-search="subject 00 백야 white night" onclick="toggleEntity(this)">
+<div class="entity-top"><span>ENTITY RECORD / ER-W00</span><span class="entity-status">PARTIAL DATA</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-body"><h3>SUBJECT 00</h3><div class="person-eng">NAME / [ NO DATA ]</div><div class="person-line"><span>CLASS</span><span>SENTINEL · EX</span></div><div class="person-line"><span>AFFILIATION</span><span>[ DATA DELETED ]</span></div><div class="person-line"><span>STATUS</span><span>UNKNOWN</span></div><div class="entity-source">SOURCE / RECOVERED LAB DATA</div></div>
+<div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">등록 신원 및 출생 기록을 확인할 수 없다. 일부 백야 연구소 자료에서 SUBJECT 00으로 식별된다.</div></div>
+</div><div class="person" data-group="white" data-search="이도겸 lee dogyeom white night" onclick="toggleEntity(this)">
+<div class="entity-top"><span>ENTITY RECORD / ER-W??</span><span class="entity-status">PARTIAL DATA</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-body"><h3>이도겸</h3><div class="person-eng">LEE DOGYEOM</div><div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div><div class="person-line"><span>AFFILIATION</span><span>[ DATA DELETED ]</span></div><div class="person-line"><span>STATUS</span><span>UNKNOWN</span></div><div class="entity-source">SOURCE / RECOVERED LAB DATA</div></div>
+<div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">백야 연구소 관련 복구 자료에서 이름이 확인된다. 상세 직무 기록은 제한되어 있다.</div></div>
+</div><div class="person locked" data-group="white" data-search="locked white">
+<div class="entity-top"><span>ENTITY RECORD / ER-W██</span><span class="entity-status">LOCKED</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
+<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / RECOVERED LAB DATA</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+</div><div class="person locked" data-group="white" data-search="locked white">
+<div class="entity-top"><span>ENTITY RECORD / ER-W██</span><span class="entity-status">LOCKED</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
+<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / CORRUPTED SUBJECT DATA</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+</div><div class="person" data-group="libera" data-search="차이현 cha yihyeon libera" onclick="toggleEntity(this)">
+<div class="entity-top"><span>ENTITY RECORD / ER-L01</span><span class="entity-status">IDENTIFIED</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-body"><h3>차이현</h3><div class="person-eng">CHA YIHYEON</div><div class="person-line"><span>CLASS</span><span>SENTINEL · A</span></div><div class="person-line"><span>AFFILIATION</span><span>FORMER LIBERA</span></div><div class="person-line"><span>ABILITY</span><span>ELECTRICITY</span></div><div class="entity-source">SOURCE / INTELLIGENCE REPORT</div></div>
+<div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">전 LIBERA 소속 센티넬. 현재 활동 경로는 복수 기관의 관찰 대상이다.</div></div>
+</div><div class="person" data-group="libera" data-search="백도진 baek dojin libera" onclick="toggleEntity(this)">
+<div class="entity-top"><span>ENTITY RECORD / ER-L02</span><span class="entity-status">IDENTIFIED</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-body"><h3>백도진</h3><div class="person-eng">BAEK DOJIN</div><div class="person-line"><span>CLASS</span><span>SENTINEL · A</span></div><div class="person-line"><span>AFFILIATION</span><span>LIBERA</span></div><div class="person-line"><span>STATUS</span><span>ACTIVE</span></div><div class="entity-source">SOURCE / INTELLIGENCE REPORT</div></div>
+<div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">LIBERA 관련 정보보고서에서 지속적으로 확인되는 인물.</div></div>
+</div><div class="person locked" data-group="libera" data-search="locked libera">
+<div class="entity-top"><span>ENTITY RECORD / ER-L██</span><span class="entity-status">LOCKED</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
+<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / INTELLIGENCE REPORT</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+</div><div class="person locked" data-group="libera" data-search="locked libera">
+<div class="entity-top"><span>ENTITY RECORD / ER-L██</span><span class="entity-status">LOCKED</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
+<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / INTELLIGENCE REPORT</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+</div><div class="person" data-group="nest" data-search="장미라 jang mira nest" onclick="toggleEntity(this)">
+<div class="entity-top"><span>ENTITY RECORD / ER-N01</span><span class="entity-status">UNVERIFIED</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-body"><h3>장미라</h3><div class="person-eng">JANG MIRA</div><div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div><div class="person-line"><span>AFFILIATION</span><span>NEST</span></div><div class="person-line"><span>ROLE</span><span>INFORMATION BROKER</span></div><div class="entity-source">SOURCE / UNVERIFIED UNDERGROUND RECORD</div></div>
+<div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">NEST 및 미등록 각성자 네트워크와 접점이 있는 정보 브로커.</div></div>
+</div><div class="person locked" data-group="nest" data-search="locked nest">
+<div class="entity-top"><span>ENTITY RECORD / ER-N██</span><span class="entity-status">LOCKED</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
+<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / UNVERIFIED RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+</div><div class="person locked" data-group="nest" data-search="locked nest">
+<div class="entity-top"><span>ENTITY RECORD / ER-N██</span><span class="entity-status">LOCKED</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
+<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / UNVERIFIED RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+</div><div class="person locked" data-group="nest" data-search="locked nest">
+<div class="entity-top"><span>ENTITY RECORD / ER-N██</span><span class="entity-status">LOCKED</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
+<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / UNVERIFIED RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+</div><div class="person" data-group="sanctuary" data-search="마리아 한 maria han 성역 sanctuary" onclick="toggleEntity(this)">
+<div class="entity-top"><span>ENTITY RECORD / ER-S01</span><span class="entity-status">VERIFIED</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-body"><h3>마리아 한</h3><div class="person-eng">MARIA HAN</div><div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div><div class="person-line"><span>AFFILIATION</span><span>SANCTUARY</span></div><div class="person-line"><span>POSITION</span><span>HIGH PRIEST</span></div><div class="entity-source">SOURCE / SANCTUARY PUBLIC RECORD</div></div>
+<div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">성역 교단의 공개 기록에서 확인되는 고위 성직자.</div></div>
+</div><div class="person locked" data-group="sanctuary" data-search="locked sanctuary">
+<div class="entity-top"><span>ENTITY RECORD / ER-S██</span><span class="entity-status">LOCKED</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
+<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / SANCTUARY RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+</div><div class="person locked" data-group="sanctuary" data-search="locked sanctuary">
+<div class="entity-top"><span>ENTITY RECORD / ER-S██</span><span class="entity-status">LOCKED</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
+<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / SANCTUARY RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+</div><div class="person locked" data-group="sanctuary" data-search="locked sanctuary">
+<div class="entity-top"><span>ENTITY RECORD / ER-S██</span><span class="entity-status">LOCKED</span></div>
+<div class="entity-image"><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
+<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / SANCTUARY RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+</div></div></section>
 
 <!-- RIFT DATABASE -->
 
@@ -3210,6 +3084,13 @@ function toggleFaction(head){
   if(!alreadyOpen){
     item.classList.add('open');
   }
+}
+
+function toggleEntity(card){
+  if(card.classList.contains('locked')) return;
+  const wasOpen=card.classList.contains('open');
+  document.querySelectorAll('.person.open').forEach(el=>el.classList.remove('open'));
+  if(!wasOpen) card.classList.add('open');
 }
 
 /* PERSONNEL FILTER */
