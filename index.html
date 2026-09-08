@@ -1326,6 +1326,110 @@ h2{
     gap:7px;
   }
 }
+  /* LEGAL DOCUMENT */
+
+.legal-document{
+  border:1px solid rgba(170,220,255,.16);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(12,19,26,.88),
+      rgba(6,11,16,.88)
+    );
+}
+
+.legal-header{
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  padding:26px 28px 22px;
+  border-bottom:1px solid rgba(170,220,255,.13);
+}
+
+.legal-code{
+  margin-bottom:10px;
+  color:#567487;
+  font:8px 'Space Mono',monospace;
+  letter-spacing:.13em;
+}
+
+.legal-title{
+  color:#d7e5ec;
+  font-size:18px;
+  font-weight:500;
+}
+
+.legal-status{
+  flex-shrink:0;
+  padding-left:22px;
+  border-left:1px solid rgba(170,220,255,.12);
+  color:#688493;
+  font:8px/1.9 'Space Mono',monospace;
+}
+
+.legal-meta{
+  padding:12px 28px;
+  border-bottom:1px solid rgba(170,220,255,.08);
+  background:rgba(140,200,230,.025);
+  color:#566d79;
+  font-size:9px;
+}
+
+.legal-article{
+  display:grid;
+  grid-template-columns:75px 1fr;
+  gap:20px;
+  padding:22px 28px;
+  border-bottom:1px solid rgba(170,220,255,.07);
+}
+
+.article-no{
+  color:#789cad;
+  font-size:12px;
+  font-weight:500;
+}
+
+.article-body strong{
+  display:block;
+  margin-bottom:10px;
+  color:#aebfc8;
+  font-size:12px;
+  font-weight:500;
+}
+
+.article-body p{
+  margin:6px 0;
+  color:#6d808b;
+  font-size:10px;
+  line-height:1.85;
+}
+
+.legal-footer{
+  padding:17px 28px;
+  background:rgba(130,190,220,.018);
+  color:#526873;
+  font-size:9px;
+  line-height:1.8;
+}
+
+@media(max-width:800px){
+
+  .legal-header{
+    flex-direction:column;
+  }
+
+  .legal-status{
+    padding:14px 0 0;
+    border-left:0;
+    border-top:1px solid rgba(170,220,255,.1);
+  }
+
+  .legal-article{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+}
+  
 </style>
 </head>
 
@@ -1811,6 +1915,8 @@ h2{
 
   <div class="header-rule"></div>
 
+  <!-- SENTINEL / GUIDE -->
+
   <div class="awake-block">
 
     <div class="section-label">CLASSIFICATION / TYPE</div>
@@ -1840,6 +1946,8 @@ h2{
     </div>
 
   </div>
+
+  <!-- RANK -->
 
   <div class="awake-block">
 
@@ -1874,140 +1982,7 @@ h2{
 
   </div>
 
-  <div class="awake-block">
-
-    <div class="section-label">SENTINEL / EROSION</div>
-    <h3 class="awake-title">침식도와 BREAK</h3>
-
-    <div class="info-card wide">
-
-      <div class="info-code">EROSION INDEX / 0–100%</div>
-
-      <p>
-        센티넬의 이능 사용과 정신적 과부하가 누적되며 발생하는
-        정신파 불안정 수치.
-      </p>
-
-      <div class="erosion-list">
-
-        <div class="erosion-row">
-          <div class="er-percent">0–20%</div>
-          <div class="er-name">안정</div>
-          <div class="er-desc">일상생활과 이능 운용에 특별한 이상 없음.</div>
-        </div>
-
-        <div class="erosion-row">
-          <div class="er-percent">21–40%</div>
-          <div class="er-name">과민</div>
-          <div class="er-desc">감각 과민, 피로, 신경 반응 증가.</div>
-        </div>
-
-        <div class="erosion-row">
-          <div class="er-percent">41–60%</div>
-          <div class="er-name">불안정</div>
-          <div class="er-desc">감정 및 이능 제어 난도가 증가.</div>
-        </div>
-
-        <div class="erosion-row">
-          <div class="er-percent">61–80%</div>
-          <div class="er-name">위험</div>
-          <div class="er-desc">즉각적인 안정화와 가이딩이 권고됨.</div>
-        </div>
-
-        <div class="erosion-row">
-          <div class="er-percent">81–99%</div>
-          <div class="er-name">폭주 직전</div>
-          <div class="er-desc">자아·판단력 손상 위험이 매우 높음.</div>
-        </div>
-
-        <div class="erosion-row">
-          <div class="er-percent">100%</div>
-          <div class="er-name">BREAK</div>
-          <div class="er-desc">완전 폭주. 정상적인 자기통제 상실.</div>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="awake-block">
-
-    <div class="section-label">MEDICAL / SUPPRESSANT</div>
-    <h3 class="awake-title">억제제</h3>
-
-    <div class="info-grid">
-
-      <div class="info-card">
-        <div class="info-code">FUNCTION</div>
-        <h4>일시적 억제</h4>
-        <p>
-          정신파의 과활성과 이능 반응을 억제해
-          침식 악화를 늦춘다.
-          현장이나 즉시 가이딩을 받을 수 없는 상황에서 사용된다.
-        </p>
-      </div>
-
-      <div class="info-card">
-        <div class="info-code">LIMITATION</div>
-        <h4>침식 제거 불가</h4>
-        <p>
-          이미 발생한 침식을 회복시키지는 않는다.
-          억제제는 치료제가 아니라 시간을 벌기 위한 임시조치다.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="awake-block">
-
-    <div class="section-label">GUIDING / METHODS</div>
-    <h3 class="awake-title">가이딩</h3>
-
-    <div class="info-grid">
-
-      <div class="info-card">
-        <div class="info-code">LEVEL 01</div>
-        <h4>비접촉 가이딩</h4>
-        <p>
-          일정 거리에서 정신파를 조율하는 방식.
-          신체접촉 부담이 적지만 효율은 상대적으로 낮다.
-        </p>
-      </div>
-
-      <div class="info-card">
-        <div class="info-code">LEVEL 02</div>
-        <h4>접촉 가이딩</h4>
-        <p>
-          손이나 팔 등의 접촉을 통해 정신파 전달 효율을 높이는
-          가장 일반적인 안정화 방식.
-        </p>
-      </div>
-
-      <div class="info-card">
-        <div class="info-code">LEVEL 03</div>
-        <h4>심층 가이딩</h4>
-        <p>
-          정신파 깊은 층까지 직접 접속하는 고강도 방식.
-          감정이나 기억이 서로 노출될 위험이 있다.
-        </p>
-      </div>
-
-      <div class="info-card">
-        <div class="info-code">SIDE EFFECT</div>
-        <h4>역류</h4>
-        <p>
-          센티넬의 감정·기억·감각 또는 침식 부담 일부가
-          가이드에게 역으로 전달되는 현상.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
+  <!-- COMPATIBILITY -->
 
   <div class="awake-block">
 
@@ -2064,12 +2039,63 @@ h2{
       </div>
 
       <p style="margin-top:18px;">
-        ※ 상성률 100%는 특별한 관계나 완전한 결합을 뜻하지 않는다.
+        ※ 상성률 100%는 특별한 관계나 완전한 결합을 의미하지 않는다.
       </p>
 
     </div>
 
   </div>
+
+  <!-- GUIDING -->
+
+  <div class="awake-block">
+
+    <div class="section-label">GUIDING / METHODS</div>
+    <h3 class="awake-title">가이딩</h3>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <div class="info-code">LEVEL 01</div>
+        <h4>비접촉 가이딩</h4>
+        <p>
+          일정 거리에서 정신파를 조율하는 방식.
+          신체접촉 부담이 적지만 효율은 상대적으로 낮다.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-code">LEVEL 02</div>
+        <h4>접촉 가이딩</h4>
+        <p>
+          손이나 팔 등의 접촉을 통해 정신파 전달 효율을 높이는
+          가장 일반적인 안정화 방식.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-code">LEVEL 03</div>
+        <h4>심층 가이딩</h4>
+        <p>
+          정신파 깊은 층까지 직접 접속하는 고강도 방식.
+          감정이나 기억이 서로 노출될 위험이 있다.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-code">SIDE EFFECT</div>
+        <h4>역류</h4>
+        <p>
+          센티넬의 감정·기억·감각 또는 침식 부담 일부가
+          가이드에게 역으로 전달되는 현상.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- IMPRINT -->
 
   <div class="awake-block">
 
@@ -2095,61 +2121,58 @@ h2{
 
   </div>
 
+  <!-- EROSION -->
+
   <div class="awake-block">
 
-    <div class="section-label">REGULATION / RIGHTS</div>
-    <h3 class="awake-title">각성자 관련 법과 권리</h3>
+    <div class="section-label">SENTINEL / EROSION</div>
+    <h3 class="awake-title">침식률과 BREAK</h3>
 
     <div class="info-card wide">
 
-      <div class="law-list">
+      <div class="info-code">EROSION INDEX / 0–100%</div>
 
-        <div class="law">
-          <div class="law-num">01</div>
-          <p>
-            확인된 각성자는 공공 안전과 의료지원을 위해
-            각성 사실과 능력 분류를 관계기관에 등록한다.
-          </p>
+      <p>
+        센티넬의 이능 사용과 정신적 과부하가 누적되며 발생하는
+        정신파 불안정 수치.
+      </p>
+
+      <div class="erosion-list">
+
+        <div class="erosion-row">
+          <div class="er-percent">0–20%</div>
+          <div class="er-name">안정</div>
+          <div class="er-desc">일상생활과 이능 운용에 특별한 이상 없음.</div>
         </div>
 
-        <div class="law">
-          <div class="law-num">02</div>
-          <p>
-            공공장소에서의 위험한 이능 사용은
-            재난 대응·정당방위·허가 상황을 제외하고 제한된다.
-          </p>
+        <div class="erosion-row">
+          <div class="er-percent">21–40%</div>
+          <div class="er-name">과민</div>
+          <div class="er-desc">감각 과민, 피로, 신경 반응 증가.</div>
         </div>
 
-        <div class="law">
-          <div class="law-num">03</div>
-          <p>
-            가이딩은 원칙적으로 당사자의 동의를 필요로 한다.
-            강압적 심층 가이딩은 금지된다.
-          </p>
+        <div class="erosion-row">
+          <div class="er-percent">41–60%</div>
+          <div class="er-name">불안정</div>
+          <div class="er-desc">감정 및 이능 제어 난도가 증가.</div>
         </div>
 
-        <div class="law">
-          <div class="law-num">04</div>
-          <p>
-            상대의 의사에 반해 각인을 유도하거나
-            정신파 의존관계를 고의로 형성하는 행위는 금지된다.
-          </p>
+        <div class="erosion-row">
+          <div class="er-percent">61–80%</div>
+          <div class="er-name">위험</div>
+          <div class="er-desc">즉각적인 안정화와 가이딩이 권고됨.</div>
         </div>
 
-        <div class="law">
-          <div class="law-num">05</div>
-          <p>
-            대규모 균열 재난에서는 각성자 전력에 대한
-            긴급동원 절차가 발동될 수 있다.
-          </p>
+        <div class="erosion-row">
+          <div class="er-percent">81–99%</div>
+          <div class="er-name">폭주 직전</div>
+          <div class="er-desc">자아·판단력 손상 위험이 매우 높음.</div>
         </div>
 
-        <div class="law">
-          <div class="law-num">06</div>
-          <p>
-            침식도, 상성률, 정신파 및 가이딩 기록은
-            보호가 필요한 개인 의료·신상정보로 분류된다.
-          </p>
+        <div class="erosion-row">
+          <div class="er-percent">100%</div>
+          <div class="er-name">BREAK</div>
+          <div class="er-desc">완전 폭주. 정상적인 자기통제 상실.</div>
         </div>
 
       </div>
@@ -2157,6 +2180,179 @@ h2{
     </div>
 
   </div>
+
+  <!-- SUPPRESSANT -->
+
+  <div class="awake-block">
+
+    <div class="section-label">MEDICAL / SUPPRESSANT</div>
+    <h3 class="awake-title">억제제</h3>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <div class="info-code">FUNCTION</div>
+        <h4>일시적 억제</h4>
+        <p>
+          정신파의 과활성과 이능 반응을 억제해
+          침식 악화를 늦춘다.
+          즉시 가이딩을 받을 수 없는 상황에서 사용된다.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-code">LIMITATION</div>
+        <h4>침식 제거 불가</h4>
+        <p>
+          이미 발생한 침식을 회복시키지는 않는다.
+          억제제는 치료제가 아니라 시간을 벌기 위한 임시조치다.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- LAW -->
+
+  <div class="awake-block">
+
+    <div class="section-label">LEGAL ARCHIVE / AWAKENED RIGHTS</div>
+    <h3 class="awake-title">각성자 법률 및 권리</h3>
+
+    <div class="legal-document">
+
+      <div class="legal-header">
+
+        <div>
+          <div class="legal-code">
+            INTERNATIONAL AWAKENED MANAGEMENT ACT
+          </div>
+
+          <div class="legal-title">
+            국제 각성자 관리 및 권리보호 기본협약
+          </div>
+        </div>
+
+        <div class="legal-status">
+          STATUS&nbsp;&nbsp;IN FORCE<br>
+          CLASS&nbsp;&nbsp;&nbsp;PUBLIC<br>
+          REV.&nbsp;&nbsp;&nbsp;&nbsp;Y-03
+        </div>
+
+      </div>
+
+      <div class="legal-meta">
+        AEGIS 협약국 공통 기준 · 국가별 세부법령 별도 적용
+      </div>
+
+      <div class="legal-article">
+
+        <div class="article-no">제1조</div>
+
+        <div class="article-body">
+          <strong>각성자 등록 및 보호</strong>
+          <p>
+            ① 각성 사실이 확인된 자는 공공 안전 및 의료지원에 필요한 범위에서
+            각성 유형·등급·능력 분류를 관계기관에 등록하여야 한다.
+          </p>
+          <p>
+            ② 등록정보는 본 협약이 정하는 목적 외의 용도로 사용할 수 없다.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="legal-article">
+
+        <div class="article-no">제2조</div>
+
+        <div class="article-body">
+          <strong>이능 사용의 제한</strong>
+          <p>
+            ① 각성자는 공공의 생명·신체 또는 시설에 중대한 위험을 초래할 수 있는
+            이능을 정당한 사유 없이 사용할 수 없다.
+          </p>
+          <p>
+            ② 균열 대응, 구조, 정당방위 또는 적법한 직무수행에 따른 사용은 예외로 한다.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="legal-article">
+
+        <div class="article-no">제3조</div>
+
+        <div class="article-body">
+          <strong>가이딩 동의 원칙</strong>
+          <p>
+            ① 가이딩은 원칙적으로 센티넬과 가이드 당사자의 자유로운 동의를 필요로 한다.
+          </p>
+          <p>
+            ② 비동의 심층 가이딩 또는 정신영역에 대한 강제접속은 금지한다.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="legal-article">
+
+        <div class="article-no">제4조</div>
+
+        <div class="article-body">
+          <strong>각인 및 정신파 의존의 강제 금지</strong>
+          <p>
+            상대방의 의사에 반하여 정신파 각인을 유도하거나
+            특정 개체에 대한 의존관계를 고의로 형성하는 행위를 금지한다.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="legal-article">
+
+        <div class="article-no">제5조</div>
+
+        <div class="article-body">
+          <strong>각성자 의료정보의 보호</strong>
+          <p>
+            침식률·정신파 기록·상성률·가이딩 이력 및 관련 의료기록은
+            보호 대상 개인정보로 분류하며,
+            본인 동의 또는 법률상 사유 없이 제3자에게 제공할 수 없다.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="legal-article">
+
+        <div class="article-no">제6조</div>
+
+        <div class="article-body">
+          <strong>긴급 균열 대응조치</strong>
+          <p>
+            ① 대규모 균열 재난이 발생한 경우 협약국은
+            일정 요건 아래 등록 각성자에 대한 긴급지원 요청을 발령할 수 있다.
+          </p>
+          <p>
+            ② 해당 조치의 범위와 강제성은 국가별 법률에 따르며,
+            이를 둘러싼 인권·동원 논쟁은 현재까지 계속되고 있다.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="legal-footer">
+        ※ 본 문서는 공개 열람용 요약본입니다.
+        세부 시행령·국가별 특별법·재난시행규칙은 별도 법령집을 따릅니다.
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SOCIAL CONFLICT -->
 
   <div class="awake-block">
 
@@ -2218,7 +2414,7 @@ h2{
   </div>
 
 </section>
-
+  
 <!-- CHARACTERS -->
 
 <section class="page" id="characters">
