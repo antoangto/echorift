@@ -12,19 +12,13 @@
 
 :root{
   --bg:#05080d;
-  --bg2:#080d14;
   --panel:rgba(9,16,24,.78);
-  --panel2:rgba(12,21,30,.7);
   --line:rgba(170,220,255,.12);
   --line2:rgba(170,220,255,.28);
   --text:#dbe8ef;
   --muted:#718591;
-  --muted2:#506773;
   --blue:#a8dcff;
   --blue2:#69bfff;
-  --gold:#c4aa70;
-  --green:#86b7a0;
-  --danger:#a97982;
 }
 
 *{box-sizing:border-box}
@@ -45,13 +39,8 @@ body{
   overflow-x:hidden;
 }
 
-button,input{
-  font:inherit;
-}
-
-button{
-  -webkit-tap-highlight-color:transparent;
-}
+button,input{font:inherit}
+button{-webkit-tap-highlight-color:transparent}
 
 #particles{
   position:fixed;
@@ -369,16 +358,16 @@ h2{
 }
 
 .world-quote{
-  margin:55px 0 18px;
+  margin:48px 0 18px;
   padding-left:23px;
   border-left:1px solid var(--blue);
   color:#c6d8e1;
-  font-size:clamp(18px,3vw,26px);
+  font-size:clamp(18px,3vw,25px);
   line-height:1.8;
 }
 
 .world-section{
-  margin-top:65px;
+  margin-top:55px;
 }
 
 .section-label{
@@ -389,7 +378,7 @@ h2{
 }
 
 .world-section h3{
-  margin:0 0 24px;
+  margin:0 0 22px;
   color:#d5e4eb;
   font-size:22px;
   font-weight:400;
@@ -402,7 +391,7 @@ h2{
 }
 
 .info-card{
-  min-height:190px;
+  min-height:180px;
   padding:24px;
   border:1px solid var(--line);
   background:rgba(8,14,20,.65);
@@ -432,132 +421,38 @@ h2{
   line-height:1.9;
 }
 
-.rank-line{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  margin:22px 0 16px;
-}
-
-.rank-chip{
-  min-width:36px;
-  padding:7px 8px;
-  border:1px solid var(--line);
-  color:#7695a6;
-  text-align:center;
-  font:9px 'Space Mono',monospace;
-}
-
-.rank-chip.ex{
-  border-color:rgba(170,220,255,.28);
-  color:#bfd9e7;
-}
-
-.erosion-list{
-  margin-top:19px;
-}
-
-.erosion-row{
+.world-flow{
   display:grid;
-  grid-template-columns:80px 120px 1fr;
-  gap:14px;
-  padding:10px 0;
-  border-top:1px solid rgba(170,220,255,.07);
-  align-items:center;
-}
-
-.er-percent{
-  color:#79a1b7;
-  font:9px 'Space Mono',monospace;
-}
-
-.er-name{
-  color:#a3b7c1;
-  font-size:11px;
-}
-
-.er-desc{
-  color:#5f737e;
-  font-size:10px;
-  line-height:1.6;
-}
-
-.compat-table{
-  margin-top:18px;
-}
-
-.compat-row{
-  display:grid;
-  grid-template-columns:90px 120px 1fr;
-  gap:15px;
-  padding:10px 0;
-  border-top:1px solid rgba(170,220,255,.07);
-}
-
-.compat-row span:first-child{
-  color:#79a1b7;
-  font:9px 'Space Mono',monospace;
-}
-
-.compat-row span:nth-child(2){
-  color:#9dafb8;
-  font-size:10px;
-}
-
-.compat-row span:last-child{
-  color:#627681;
-  font-size:10px;
-}
-
-.law-list{
-  display:grid;
-  gap:9px;
-  margin-top:18px;
-}
-
-.law{
-  display:grid;
-  grid-template-columns:45px 1fr;
-  gap:15px;
-  padding:13px 0;
-  border-top:1px solid rgba(170,220,255,.07);
-}
-
-.law-num{
-  color:#527789;
-  font:9px 'Space Mono',monospace;
-}
-
-.law p{
-  margin:0;
-}
-
-.conflict-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
   gap:10px;
 }
 
-.conflict{
-  min-height:150px;
-  padding:20px;
-  border:1px solid var(--line);
-  background:rgba(8,14,20,.6);
+.flow-row{
+  display:grid;
+  grid-template-columns:160px 1fr;
+  gap:20px;
+  padding:18px 4px;
+  border-bottom:1px solid rgba(170,220,255,.08);
 }
 
-.conflict b{
-  display:block;
-  margin-bottom:12px;
-  color:#aebfc7;
-  font-weight:400;
-  font-size:12px;
+.flow-label{
+  color:#6a93a8;
+  font:9px 'Space Mono',monospace;
 }
 
-.conflict p{
-  margin:0;
-  color:#627681;
-  font-size:10px;
+.flow-copy{
+  color:#70838e;
+  font-size:11px;
   line-height:1.8;
+}
+
+.world-note{
+  margin-top:25px;
+  padding:20px;
+  border-left:1px solid rgba(170,220,255,.25);
+  background:rgba(8,14,20,.45);
+  color:#748894;
+  font-size:11px;
+  line-height:1.9;
 }
 
 /* TIMELINE */
@@ -579,7 +474,7 @@ h2{
 
 .event{
   position:relative;
-  padding:0 0 40px 20px;
+  padding:0 0 38px 20px;
 }
 
 .event:before{
@@ -621,7 +516,62 @@ h2{
   user-select:none;
 }
 
-/* FACTIONS ACCORDION */
+.story-node{
+  margin-top:18px;
+  padding:23px 25px;
+  border:1px solid rgba(160,220,255,.22);
+  background:linear-gradient(120deg,rgba(15,29,41,.7),rgba(6,11,17,.7));
+}
+
+.story-node.locked{
+  border-color:rgba(170,220,255,.08);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.012) 0,
+      rgba(255,255,255,.012) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    rgba(7,11,16,.65);
+}
+
+.story-node-top{
+  color:#527386;
+  font:8px 'Space Mono',monospace;
+  letter-spacing:.12em;
+}
+
+.story-node h4{
+  margin:16px 0 4px;
+  color:#d4e3eb;
+  font:20px 'Space Mono',monospace;
+  font-weight:400;
+}
+
+.story-node-sub{
+  color:#8197a3;
+  font-size:11px;
+}
+
+.story-node-copy{
+  margin-top:14px;
+  color:#8b9da7;
+  font-size:12px;
+}
+
+.story-node.locked h4,
+.story-node.locked .story-node-copy{
+  color:#485a64;
+}
+
+.story-node-state{
+  margin-top:14px;
+  color:#445a66;
+  font:8px 'Space Mono',monospace;
+}
+
+/* FACTIONS */
 
 .faction-list{
   display:grid;
@@ -721,89 +671,148 @@ h2{
   font:9px 'Space Mono',monospace;
 }
 
-/* STORIES */
+/* AWAKENED */
 
-.story-main{
-  padding:34px 32px;
-  border:1px solid rgba(160,220,255,.25);
-  background:linear-gradient(120deg,rgba(15,29,41,.78),rgba(6,11,17,.76));
+.awake-block{
+  margin-bottom:58px;
 }
 
-.story-main-side{
-  margin-bottom:30px;
-  color:#577284;
-  font:9px 'Space Mono',monospace;
-  letter-spacing:.14em;
-}
-
-.story-main h3{
-  margin:0;
-  color:#e0edf4;
-  font:30px 'Space Mono',monospace;
+.awake-title{
+  margin:0 0 20px;
+  color:#d5e4eb;
+  font-size:22px;
   font-weight:400;
 }
 
-.story-ko{
-  margin-top:7px;
-  color:#90a7b4;
-}
-
-.season-tag{
-  display:inline-block;
-  margin-top:22px;
-  padding:6px 10px;
-  border:1px solid rgba(150,215,255,.2);
-  color:#82abc1;
-  font:8px 'Space Mono',monospace;
-}
-
-.story-copy{
-  margin-top:18px;
-  color:#83949e;
-  font-size:13px;
-}
-
-.corrupt-title{
-  margin:50px 0 14px;
-  color:#465d6a;
-  font:8px 'Space Mono',monospace;
-  letter-spacing:.2em;
-}
-
-.corrupt-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-
-.corrupt-card{
-  min-height:140px;
+.rank-line{
   display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1px solid rgba(170,220,255,.07);
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255,255,255,.015) 0,
-      rgba(255,255,255,.015) 1px,
-      transparent 1px,
-      transparent 4px
-    ),
-    rgba(7,11,16,.64);
-  text-align:center;
+  gap:7px;
+  flex-wrap:wrap;
+  margin:22px 0 16px;
 }
 
-.corrupt-code,
-.corrupt-status{
-  color:#3d515c;
+.rank-chip{
+  min-width:36px;
+  padding:7px 8px;
+  border:1px solid var(--line);
+  color:#7695a6;
+  text-align:center;
+  font:9px 'Space Mono',monospace;
+}
+
+.rank-chip.ex{
+  border-color:rgba(170,220,255,.28);
+  color:#bfd9e7;
+}
+
+.erosion-list{
+  margin-top:19px;
+}
+
+.erosion-row{
+  display:grid;
+  grid-template-columns:80px 120px 1fr;
+  gap:14px;
+  padding:10px 0;
+  border-top:1px solid rgba(170,220,255,.07);
+  align-items:center;
+}
+
+.er-percent{
+  color:#79a1b7;
+  font:9px 'Space Mono',monospace;
+}
+
+.er-name{
+  color:#a3b7c1;
+  font-size:11px;
+}
+
+.er-desc{
+  color:#5f737e;
+  font-size:10px;
+  line-height:1.6;
+}
+
+.compat-table{
+  margin-top:18px;
+}
+
+.compat-row{
+  display:grid;
+  grid-template-columns:90px 120px 1fr;
+  gap:15px;
+  padding:10px 0;
+  border-top:1px solid rgba(170,220,255,.07);
+}
+
+.compat-row span:first-child{
+  color:#79a1b7;
+  font:9px 'Space Mono',monospace;
+}
+
+.compat-row span:nth-child(2){
+  color:#9dafb8;
+  font-size:10px;
+}
+
+.compat-row span:last-child{
+  color:#627681;
+  font-size:10px;
+}
+
+.law-list{
+  display:grid;
+  gap:0;
+  margin-top:18px;
+}
+
+.law{
+  display:grid;
+  grid-template-columns:45px 1fr;
+  gap:15px;
+  padding:13px 0;
+  border-top:1px solid rgba(170,220,255,.07);
+}
+
+.law-num{
+  color:#527789;
+  font:9px 'Space Mono',monospace;
+}
+
+.law p{
+  margin:0;
+  color:#71848f;
+  font-size:11px;
+  line-height:1.8;
+}
+
+.social-list{
+  border-top:1px solid rgba(170,220,255,.08);
+}
+
+.social-row{
+  display:grid;
+  grid-template-columns:55px 180px 1fr;
+  gap:16px;
+  padding:14px 0;
+  border-bottom:1px solid rgba(170,220,255,.07);
+}
+
+.social-num{
+  color:#4e7184;
   font:8px 'Space Mono',monospace;
 }
 
-.corrupt-name{
-  margin:13px 0 9px;
-  color:#586a74;
-  font:12px 'Space Mono',monospace;
+.social-title{
+  color:#9eb1bb;
+  font-size:11px;
+}
+
+.social-copy{
+  color:#627681;
+  font-size:10px;
+  line-height:1.7;
 }
 
 /* PERSONNEL */
@@ -1255,8 +1264,6 @@ h2{
   }
 
   .info-grid,
-  .conflict-grid,
-  .corrupt-grid,
   .person-grid,
   .record-list{
     grid-template-columns:1fr;
@@ -1266,14 +1273,27 @@ h2{
     grid-column:auto;
   }
 
+  .flow-row{
+    grid-template-columns:1fr;
+    gap:6px;
+  }
+
   .erosion-row{
-    grid-template-columns:70px 95px 1fr;
+    grid-template-columns:70px 90px 1fr;
     gap:8px;
   }
 
   .compat-row{
-    grid-template-columns:70px 90px 1fr;
+    grid-template-columns:70px 85px 1fr;
     gap:8px;
+  }
+
+  .social-row{
+    grid-template-columns:40px 1fr;
+  }
+
+  .social-copy{
+    grid-column:2;
   }
 
   .faction-row{
@@ -1297,14 +1317,15 @@ h2{
     gap:18px;
   }
 
-  .completion{text-align:left}
+  .completion{
+    text-align:left;
+  }
 
   .intro-status{
     flex-direction:column;
     gap:7px;
   }
 }
-
 </style>
 </head>
 
@@ -1384,8 +1405,8 @@ h2{
       <span class="nav-num">03</span>FACTIONS
     </button>
 
-    <button onclick="openPage('stories',this)">
-      <span class="nav-num">04</span>STORIES
+    <button onclick="openPage('awakened',this)">
+      <span class="nav-num">04</span>AWAKENED
     </button>
 
     <button onclick="openPage('characters',this)">
@@ -1425,466 +1446,78 @@ h2{
   <div class="world-hero">
     <p class="lead">
       약 20년 전, 세계 각지에 정체불명의 <strong>균열</strong>이 발생했다.
-      균열 너머에서 출현한 이형 존재는 기존 생물학으로 설명할 수 없었으며,
+      균열 너머에서 기존 생물학으로 설명할 수 없는 이형 존재들이 출현했고,
       인류는 그들을 <strong>Aberrant</strong>라 명명했다.
       <br><br>
-      동시에 일부 인간에게 기존 과학으로 설명할 수 없는 변화가 나타났다.
-      강화된 신체와 이능을 지닌 <strong>센티넬</strong>,
-      그리고 정신파를 통해 그들을 안정시키는 <strong>가이드</strong>.
-      두 종류의 각성자는 균열 이후 인류 사회의 핵심 전력이자
-      새로운 갈등의 중심이 되었다.
+      같은 시기, 일부 인간에게 비정상적인 신체·정신파 변화가 나타났다.
+      이능과 강화된 감각을 가진 <strong>센티넬</strong>,
+      그리고 그들의 불안정한 정신파를 안정시키는 <strong>가이드</strong>.
+      <br><br>
+      균열은 세계의 국경과 군사체계뿐 아니라
+      인간의 권리, 의료, 직업, 관계와 사회질서까지 바꾸었다.
     </p>
   </div>
 
   <div class="world-quote">
-    살아남기 위해 만들어진 제도는<br>
-    때때로 살아가는 방식을 결정하기 시작했다.
+    균열은 재난을 만들었고,<br>
+    인류는 살아남기 위해 새로운 질서를 만들었다.
   </div>
-
-  <!-- AWAKENED -->
 
   <div class="world-section">
 
-    <div class="section-label">WORLD DATA / AWAKENED</div>
-    <h3>각성자</h3>
+    <div class="section-label">WORLD / SUMMARY</div>
+    <h3>세계의 변화</h3>
 
-    <div class="info-grid">
+    <div class="world-flow">
 
-      <div class="info-card">
-        <div class="info-code">CLASS / SENTINEL</div>
-        <h4>센티넬</h4>
-        <p>
-          일반인을 크게 뛰어넘는 신체능력과 감각,
-          개인마다 다른 고유 이능을 지닌 각성자.
-          <br><br>
-          이능을 사용할수록 정신과 신경계에
-          '침식'이라 불리는 부담이 축적된다.
-          침식이 임계점에 도달하면 자아와 판단력을 잃고
-          BREAK 상태에 빠질 수 있다.
-        </p>
+      <div class="flow-row">
+        <div class="flow-label">THE GREAT RIFT</div>
+        <div class="flow-copy">
+          약 20년 전 발생한 전 세계적 균열 현상.
+          현대 각성자 사회의 출발점으로 기록된다.
+        </div>
       </div>
 
-      <div class="info-card">
-        <div class="info-code">CLASS / GUIDE</div>
-        <h4>가이드</h4>
-        <p>
-          특수한 정신파를 통해 센티넬의 불안정한 정신파와
-          침식을 안정화할 수 있는 각성자.
-          <br><br>
-          가이딩은 만능 치료가 아니다.
-          과도하거나 깊은 가이딩은 가이드에게
-          상대의 감정·기억·침식이 역으로 전달되는
-          '역류'를 일으킬 수 있다.
-        </p>
+      <div class="flow-row">
+        <div class="flow-label">ABERRANT</div>
+        <div class="flow-copy">
+          균열을 통해 출현하는 이형 존재의 총칭.
+          형태와 행동양식은 균열마다 다르다.
+        </div>
       </div>
 
-    </div>
-  </div>
-
-  <!-- RANK -->
-
-  <div class="world-section">
-
-    <div class="section-label">WORLD DATA / RANK</div>
-    <h3>각성 등급</h3>
-
-    <div class="info-card wide">
-
-      <div class="info-code">AWAKENED CLASSIFICATION</div>
-
-      <div class="rank-line">
-        <div class="rank-chip">F</div>
-        <div class="rank-chip">E</div>
-        <div class="rank-chip">D</div>
-        <div class="rank-chip">C</div>
-        <div class="rank-chip">B</div>
-        <div class="rank-chip">A</div>
-        <div class="rank-chip">S</div>
-        <div class="rank-chip ex">EX</div>
+      <div class="flow-row">
+        <div class="flow-label">AWAKENED</div>
+        <div class="flow-copy">
+          대균열 이후 등장한 센티넬과 가이드.
+          현재는 의료·재난·치안·군사 영역에서 중요한 사회집단을 이룬다.
+        </div>
       </div>
 
-      <p>
-        F부터 S까지의 등급은 이능 출력, 안정성, 지속 가능성,
-        정신파 규모와 실제 균열 대응능력 등을 종합해 책정한다.
-        높은 등급일수록 사회적 영향력과 위험관리 수준도 함께 높아진다.
-        <br><br>
-        <strong style="color:#b8d0dc;font-weight:400;">EX</strong>는
-        S보다 강하다는 뜻의 상위등급이 아니다.
-        기존 측정법이나 분류기준으로 정상적인 평가가 불가능한
-        예외 개체에 부여되는 특수 분류다.
-      </p>
-
-    </div>
-  </div>
-
-  <!-- EROSION -->
-
-  <div class="world-section">
-
-    <div class="section-label">WORLD DATA / EROSION</div>
-    <h3>침식도</h3>
-
-    <div class="info-card wide">
-
-      <div class="info-code">SENTINEL EROSION INDEX / 0–100%</div>
-
-      <p>
-        센티넬의 이능 사용과 정신적 과부하가 누적되며 발생하는
-        정신파 불안정 수치. 개인차가 존재하며,
-        높은 침식도가 반드시 즉각적인 폭주를 뜻하지는 않는다.
-      </p>
-
-      <div class="erosion-list">
-
-        <div class="erosion-row">
-          <div class="er-percent">0–20%</div>
-          <div class="er-name">안정</div>
-          <div class="er-desc">일상생활과 이능 운용에 특별한 이상 없음.</div>
+      <div class="flow-row">
+        <div class="flow-label">AEGIS SYSTEM</div>
+        <div class="flow-copy">
+          균열 대응과 각성자 보호·관리를 위해 설립된 국제 체계.
+          필수적인 보호기관이라는 평가와 과도한 통제기관이라는 비판이 공존한다.
         </div>
+      </div>
 
-        <div class="erosion-row">
-          <div class="er-percent">21–40%</div>
-          <div class="er-name">과민</div>
-          <div class="er-desc">감각 과민, 피로, 신경 반응 증가.</div>
+      <div class="flow-row">
+        <div class="flow-label">UNREGISTERED</div>
+        <div class="flow-copy">
+          제도권 밖에 존재하는 미등록 각성자.
+          일부는 신분을 숨기고 생활하며 비공식 네트워크에 의존한다.
         </div>
-
-        <div class="erosion-row">
-          <div class="er-percent">41–60%</div>
-          <div class="er-name">불안정</div>
-          <div class="er-desc">감정 및 이능 제어 난도가 눈에 띄게 상승.</div>
-        </div>
-
-        <div class="erosion-row">
-          <div class="er-percent">61–80%</div>
-          <div class="er-name">위험</div>
-          <div class="er-desc">즉각적인 안정화와 가이딩이 권고되는 단계.</div>
-        </div>
-
-        <div class="erosion-row">
-          <div class="er-percent">81–99%</div>
-          <div class="er-name">폭주 직전</div>
-          <div class="er-desc">자아·판단력 손상 위험. 고위험 관찰 대상으로 분류.</div>
-        </div>
-
-        <div class="erosion-row">
-          <div class="er-percent">100%</div>
-          <div class="er-name">BREAK</div>
-          <div class="er-desc">완전 폭주. 정상적인 자기통제 상실.</div>
-        </div>
-
       </div>
 
     </div>
-  </div>
 
-  <!-- SUPPRESSANT -->
-
-  <div class="world-section">
-
-    <div class="section-label">WORLD DATA / MEDICAL</div>
-    <h3>억제제</h3>
-
-    <div class="info-grid">
-
-      <div class="info-card">
-        <div class="info-code">EROSION SUPPRESSANT</div>
-        <h4>기능</h4>
-        <p>
-          정신파의 과활성 및 이능 반응을 일시적으로 억제해
-          침식 악화를 늦추기 위한 약물.
-          임무 현장이나 가이딩을 즉시 받을 수 없는 상황에서 사용된다.
-        </p>
-      </div>
-
-      <div class="info-card">
-        <div class="info-code">MEDICAL WARNING</div>
-        <h4>한계</h4>
-        <p>
-          억제제는 이미 발생한 침식을 제거하지 않는다.
-          근본적인 회복 수단이 아니라 시간을 벌기 위한 임시조치다.
-          장기간 억제제만으로 상태를 유지하는 것은 권장되지 않는다.
-        </p>
-      </div>
-
+    <div class="world-note">
+      각성자의 등급, 침식, 가이딩, 상성률, 각인 및 관련 법률은
+      <strong style="color:#b6cbd6;font-weight:400;">AWAKENED</strong>
+      문서에서 확인할 수 있다.
     </div>
-  </div>
 
-  <!-- GUIDING -->
-
-  <div class="world-section">
-
-    <div class="section-label">WORLD DATA / GUIDING</div>
-    <h3>가이딩과 역류</h3>
-
-    <div class="info-grid">
-
-      <div class="info-card">
-        <div class="info-code">GUIDING / LEVEL 01</div>
-        <h4>비접촉 가이딩</h4>
-        <p>
-          일정 거리에서 정신파를 조율하는 가장 기본적인 방식.
-          신체 접촉 부담이 적지만 효율과 안정화 속도는 상대적으로 낮다.
-        </p>
-      </div>
-
-      <div class="info-card">
-        <div class="info-code">GUIDING / LEVEL 02</div>
-        <h4>접촉 가이딩</h4>
-        <p>
-          손, 팔 등 신체 접촉을 통해 정신파 전달 효율을 높인다.
-          일반적인 의료·현장 안정화에서 널리 사용되는 방식이다.
-        </p>
-      </div>
-
-      <div class="info-card">
-        <div class="info-code">GUIDING / LEVEL 03</div>
-        <h4>심층 가이딩</h4>
-        <p>
-          정신파의 깊은 층까지 직접 접속하는 고강도 방식.
-          높은 안정화 효과를 기대할 수 있으나
-          기억과 감정이 서로 노출될 가능성이 커진다.
-        </p>
-      </div>
-
-      <div class="info-card">
-        <div class="info-code">SIDE EFFECT / BACKFLOW</div>
-        <h4>역류</h4>
-        <p>
-          센티넬의 감정, 기억, 감각 또는 침식 부담 일부가
-          가이드에게 역으로 유입되는 현상.
-          반복되는 역류는 가이드 자신의 감정과 타인의 감정을
-          구별하기 어렵게 만들 수 있다.
-        </p>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- COMPATIBILITY -->
-
-  <div class="world-section">
-
-    <div class="section-label">WORLD DATA / COMPATIBILITY</div>
-    <h3>상성률</h3>
-
-    <div class="info-card wide">
-
-      <div class="info-code">SENTINEL × GUIDE MATCHING INDEX</div>
-
-      <p>
-        센티넬과 가이드의 정신파가 얼마나 안정적으로 맞물리는지를
-        수치화한 지표. 상성률은 능력의 강함이나 연애감정과는 무관하다.
-        같은 두 사람이라도 건강상태와 침식 정도 등에 따라
-        측정값이 조금씩 변할 수 있다.
-      </p>
-
-      <div class="compat-table">
-
-        <div class="compat-row">
-          <span>0–29%</span>
-          <span>LOW</span>
-          <span>가이딩 효율이 매우 낮거나 불안정함.</span>
-        </div>
-
-        <div class="compat-row">
-          <span>30–49%</span>
-          <span>AVAILABLE</span>
-          <span>기본적인 안정화 가능.</span>
-        </div>
-
-        <div class="compat-row">
-          <span>50–69%</span>
-          <span>STABLE</span>
-          <span>일반적인 정기 매칭 범위.</span>
-        </div>
-
-        <div class="compat-row">
-          <span>70–84%</span>
-          <span>HIGH</span>
-          <span>높은 가이딩 효율과 안정성을 보임.</span>
-        </div>
-
-        <div class="compat-row">
-          <span>85–94%</span>
-          <span>VERY HIGH</span>
-          <span>희귀한 고상성 조합.</span>
-        </div>
-
-        <div class="compat-row">
-          <span>95%+</span>
-          <span>EXCEPTIONAL</span>
-          <span>극히 드물며 반복 측정과 별도 관찰이 권고됨.</span>
-        </div>
-
-      </div>
-
-      <p style="margin-top:20px;">
-        ※ 상성률 100%는 특별한 관계나 완전한 결합을 뜻하지 않는다.
-        상성률과 개인적 관계는 서로 별개의 요소로 취급된다.
-      </p>
-
-    </div>
-  </div>
-
-  <!-- IMPRINT -->
-
-  <div class="world-section">
-
-    <div class="section-label">WORLD DATA / IMPRINT</div>
-    <h3>각인</h3>
-
-    <div class="info-card wide">
-
-      <div class="info-code">MENTAL WAVE IMPRINT</div>
-
-      <p>
-        특정 센티넬과 가이드가 장기간 반복적으로 깊은 가이딩을 주고받을 경우,
-        서로의 정신파가 상대의 파형을 익숙한 안정 신호로 인식하는 현상.
-        통상적으로 '각인'이라 불린다.
-        <br><br>
-        각인은 운명적 짝이나 연애관계를 의미하지 않으며,
-        법적 배우자 관계와도 무관하다.
-        그러나 각인 이후 특정 상대의 가이딩 효율이 크게 높아지거나
-        다른 파형에 적응하는 데 시간이 걸릴 수 있어
-        의료적·윤리적 관리 대상이 된다.
-        <br><br>
-        본인의 동의 없이 각인을 의도적으로 유도하는 행위는
-        중대한 인권침해로 취급된다.
-      </p>
-
-    </div>
-  </div>
-
-  <!-- LAW -->
-
-  <div class="world-section">
-
-    <div class="section-label">WORLD DATA / LAW</div>
-    <h3>각성자 관련 법과 협약</h3>
-
-    <div class="info-card wide">
-
-      <div class="info-code">INTERNATIONAL AWAKENED RIGHTS FRAMEWORK</div>
-
-      <p>
-        세부 법률은 국가별로 다르지만,
-        AEGIS 협약국은 다음 원칙을 공통적인 기준으로 삼는다.
-      </p>
-
-      <div class="law-list">
-
-        <div class="law">
-          <div class="law-num">01</div>
-          <p>
-            확인된 각성자는 공공 안전과 의료지원을 위해
-            각성 사실 및 능력 분류를 관계기관에 등록한다.
-          </p>
-        </div>
-
-        <div class="law">
-          <div class="law-num">02</div>
-          <p>
-            센티넬의 이능은 재난 대응, 정당방위 및 허가된 상황을 제외하고
-            공공장소에서의 위험한 사용이 제한된다.
-          </p>
-        </div>
-
-        <div class="law">
-          <div class="law-num">03</div>
-          <p>
-            가이딩은 원칙적으로 당사자의 동의를 필요로 한다.
-            강압적 가이딩과 비동의 심층 정신접촉은 금지된다.
-          </p>
-        </div>
-
-        <div class="law">
-          <div class="law-num">04</div>
-          <p>
-            타인의 의사에 반해 각인을 유도하거나
-            정신파 의존관계를 고의로 형성하는 행위는 금지된다.
-          </p>
-        </div>
-
-        <div class="law">
-          <div class="law-num">05</div>
-          <p>
-            RED·BLACK급 등 대규모 재난 시에는
-            각성자 전력에 대한 긴급동원 절차가 발동될 수 있다.
-            이 제도는 현재까지도 가장 큰 사회적 논쟁 중 하나다.
-          </p>
-        </div>
-
-        <div class="law">
-          <div class="law-num">06</div>
-          <p>
-            정신파 기록, 상성률, 침식도, 가이딩 기록은
-            보호가 필요한 개인 의료·신상정보로 분류된다.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-
-  <!-- SOCIAL -->
-
-  <div class="world-section">
-
-    <div class="section-label">WORLD DATA / SOCIETY</div>
-    <h3>사회적 갈등</h3>
-
-    <div class="conflict-grid">
-
-      <div class="conflict">
-        <b>보호인가, 관리인가</b>
-        <p>
-          AEGIS의 등록과 통제가 각성자를 보호하기 위한 필수장치인지,
-          개인의 자유를 제한하는 감시체계인지에 대한 논쟁이 계속되고 있다.
-        </p>
-      </div>
-
-      <div class="conflict">
-        <b>센티넬에 대한 공포</b>
-        <p>
-          강력한 이능과 BREAK 위험 때문에
-          센티넬을 잠재적인 재난으로 보는 시선이 존재한다.
-        </p>
-      </div>
-
-      <div class="conflict">
-        <b>가이드의 도구화</b>
-        <p>
-          희소한 고등급 가이드에게 과도한 업무와
-          특정 센티넬 전담을 요구하는 관행이 인권 문제로 지적된다.
-        </p>
-      </div>
-
-      <div class="conflict">
-        <b>등급 사회</b>
-        <p>
-          고등급 각성자에게 권한과 책임이 집중되는 반면
-          저등급 각성자가 사회적으로 과소평가된다는 비판이 있다.
-        </p>
-      </div>
-
-      <div class="conflict">
-        <b>미등록 각성자</b>
-        <p>
-          제도권을 불신하거나 신원을 숨겨야 하는 각성자들은
-          공식 의료와 가이딩 서비스를 이용하기 어렵다.
-        </p>
-      </div>
-
-      <div class="conflict">
-        <b>상성률과 관계</b>
-        <p>
-          높은 상성률을 개인적 관계의 당위성으로 해석하는 문화가 남아 있어,
-          매칭과 연애·결혼을 분리해야 한다는 목소리가 커지고 있다.
-        </p>
-      </div>
-
-    </div>
   </div>
 
 </section>
@@ -1895,7 +1528,7 @@ h2{
 
   <div class="eyebrow">ARCHIVE / 02 / TIMELINE</div>
   <h2>TIMELINE</h2>
-  <div class="ko-title">공개 역사 기록</div>
+  <div class="ko-title">세계 역사 및 기록 시점</div>
 
   <div class="header-rule"></div>
 
@@ -1904,43 +1537,148 @@ h2{
     <div class="event">
       <div class="year">Y-20</div>
       <h3>THE GREAT RIFT</h3>
-      <p>세계 각지에서 최초의 대규모 균열 현상 발생.</p>
+      <p>
+        세계 각지에서 최초의 대규모 균열 현상 발생.
+        이후 센티넬과 가이드의 존재가 공식적으로 보고되기 시작한다.
+      </p>
     </div>
 
     <div class="event">
       <div class="year">Y-18</div>
-      <h3>AEGIS</h3>
-      <p>국제 각성자·균열 관리기관 AEGIS 설립.</p>
+      <h3>AEGIS ESTABLISHED</h3>
+      <p>
+        국제 각성자·균열 관리기관 AEGIS 설립.
+      </p>
     </div>
 
     <div class="event">
       <div class="year">Y-17</div>
-      <h3>백야 연구소</h3>
-      <p>정신파와 균열을 연구하는 연구기관의 설립 기록.</p>
+      <h3>WHITE NIGHT LABORATORY</h3>
+      <p>
+        정신파·공명·균열 연구기관 백야 연구소 설립 기록.
+      </p>
     </div>
 
     <div class="event">
       <div class="year">Y-08</div>
       <h3>[ DATA CORRUPTED ]</h3>
       <p><span class="redacted">ACCESS DENIED ARCHIVE RECORD</span></p>
+
+      <div class="story-node locked">
+        <div class="story-node-top">STORY RECORD / LOCKED</div>
+        <h4>█████ █████</h4>
+        <div class="story-node-sub">ARCHIVE DATE / Y-08</div>
+        <div class="story-node-copy">
+          [ RECORD NOT YET AVAILABLE ]
+        </div>
+        <div class="story-node-state">[ SIGNAL LOST ]</div>
+      </div>
     </div>
 
     <div class="event">
       <div class="year">Y-06</div>
       <h3>LIBERA</h3>
-      <p>AEGIS 관리체계에 반대하는 각성자 세력 등장.</p>
+      <p>
+        AEGIS 중심 각성자 관리체계에 반대하는 세력이 조직화되기 시작한다.
+      </p>
     </div>
 
     <div class="event">
       <div class="year">Y-05</div>
       <h3>NEST</h3>
-      <p>미등록 각성자 중심 지하 네트워크 형성.</p>
+      <p>
+        미등록 각성자와 브로커 중심의 지하 네트워크가 현재의 형태를 갖추기 시작한다.
+      </p>
+    </div>
+
+    <div class="event">
+      <div class="year">Y-01 → Y0</div>
+      <h3>[ RESTRICTED RECORD ]</h3>
+      <p>
+        일부 각성자 세력 내부에서 대규모 이탈과 조직변동이 보고됨.
+      </p>
+
+      <div class="story-node locked">
+        <div class="story-node-top">STORY RECORD / LOCKED</div>
+        <h4>████ █████</h4>
+        <div class="story-node-sub">ARCHIVE DATE / Y-01 ~ Y0</div>
+        <div class="story-node-copy">
+          [ RECORD NOT YET AVAILABLE ]
+        </div>
+        <div class="story-node-state">[ ACCESS DENIED ]</div>
+      </div>
     </div>
 
     <div class="event">
       <div class="year">Y0 / CURRENT</div>
       <h3>UNKNOWN WAVE</h3>
-      <p>분류되지 않은 정신파 관련 이상현상 보고.</p>
+      <p>
+        기존 분류체계와 일치하지 않는 정신파 및 균열 이상현상이 보고되기 시작한다.
+      </p>
+
+      <div class="story-node">
+        <div class="story-node-top">STORY RECORD / ACTIVE / AEGIS SIDE</div>
+        <h4>RESONANCE</h4>
+        <div class="story-node-sub">공명 · SEASON 1</div>
+        <div class="story-node-copy">
+          균열이 나를 알아보기 시작했다.
+        </div>
+        <div class="story-node-state">[ ARCHIVE AVAILABLE ]</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="year">Y+01</div>
+      <h3>[ FUTURE RECORD DETECTED ]</h3>
+      <p>
+        현재 권한으로 열람할 수 없는 미래 기록.
+      </p>
+
+      <div class="story-node locked">
+        <div class="story-node-top">STORY RECORD / LOCKED</div>
+        <h4>████████</h4>
+        <div class="story-node-sub">ARCHIVE DATE / Y+01</div>
+        <div class="story-node-copy">
+          [ DATA UNAVAILABLE ]
+        </div>
+        <div class="story-node-state">[ SIGNAL UNAVAILABLE ]</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="year">Y+01 → Y+02</div>
+      <h3>[ FUTURE RECORD DETECTED ]</h3>
+      <p>
+        미등록 각성자 네트워크 관련 기록 일부가 봉인되어 있다.
+      </p>
+
+      <div class="story-node locked">
+        <div class="story-node-top">STORY RECORD / LOCKED</div>
+        <h4>████████ ██████</h4>
+        <div class="story-node-sub">ARCHIVE DATE / Y+01 ~ Y+02</div>
+        <div class="story-node-copy">
+          [ DATA CORRUPTED ]
+        </div>
+        <div class="story-node-state">[ ARCHIVE LOCKED ]</div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="year">Y+02</div>
+      <h3>[ FUTURE RECORD DETECTED ]</h3>
+      <p>
+        종교집단 관련 대규모 이상현상 기록.
+      </p>
+
+      <div class="story-node locked">
+        <div class="story-node-top">STORY RECORD / LOCKED</div>
+        <h4>████████</h4>
+        <div class="story-node-sub">ARCHIVE DATE / Y+02</div>
+        <div class="story-node-copy">
+          [ RECORD NOT YET AVAILABLE ]
+        </div>
+        <div class="story-node-state">[ ACCESS DENIED ]</div>
+      </div>
     </div>
 
   </div>
@@ -1970,7 +1708,6 @@ h2{
 
       <div class="faction-panel">
         <div class="faction-inner">
-
           <div class="faction-row"><span>ESTABLISHED</span><span>Y-18</span></div>
           <div class="faction-row"><span>PURPOSE</span><span>균열 대응 / 각성자 보호 및 관리</span></div>
           <div class="faction-row"><span>제1국</span><span>균열 전투 및 현장 대응</span></div>
@@ -1979,7 +1716,6 @@ h2{
           <div class="faction-row"><span>제4국</span><span>감찰·각성자 범죄</span></div>
           <div class="faction-row"><span>제5국</span><span>정보·외부세력</span></div>
           <div class="faction-row"><span>제0국</span><span>[ ACCESS DENIED ]</span></div>
-
         </div>
       </div>
     </div>
@@ -1995,12 +1731,10 @@ h2{
 
       <div class="faction-panel">
         <div class="faction-inner">
-
           <div class="faction-row"><span>ESTABLISHED</span><span>Y-17</span></div>
           <div class="faction-row"><span>FIELD</span><span>정신파 / 공명 / 균열 연구</span></div>
           <div class="faction-row"><span>STATUS</span><span>[ UNKNOWN ]</span></div>
           <div class="faction-row"><span>RECORD</span><span>[ DATA PARTIALLY DELETED ]</span></div>
-
         </div>
       </div>
     </div>
@@ -2016,12 +1750,10 @@ h2{
 
       <div class="faction-panel">
         <div class="faction-inner">
-
           <div class="faction-row"><span>TYPE</span><span>각성자 해방조직</span></div>
           <div class="faction-row"><span>PRINCIPLE</span><span>누구도 타인의 삶을 결정할 수 없다.</span></div>
           <div class="faction-row"><span>INTERNAL</span><span>온건 / 강경 / 독립 노선 존재</span></div>
           <div class="faction-row"><span>STATUS</span><span>ACTIVE</span></div>
-
         </div>
       </div>
     </div>
@@ -2037,12 +1769,10 @@ h2{
 
       <div class="faction-panel">
         <div class="faction-inner">
-
           <div class="faction-row"><span>TYPE</span><span>비공식 지하 네트워크</span></div>
           <div class="faction-row"><span>USERS</span><span>미등록 각성자 / 브로커 / 도망자</span></div>
           <div class="faction-row"><span>SERVICE</span><span>정보 / 신분 / 은신처 / 의약품</span></div>
           <div class="faction-row"><span>STATUS</span><span>ACTIVE</span></div>
-
         </div>
       </div>
     </div>
@@ -2058,13 +1788,11 @@ h2{
 
       <div class="faction-panel">
         <div class="faction-inner">
-
           <div class="faction-row"><span>RIFT</span><span>THE DOOR / 문</span></div>
           <div class="faction-row"><span>SENTINEL</span><span>THE SWORD / 검</span></div>
           <div class="faction-row"><span>GUIDE</span><span>THE KEY / 열쇠</span></div>
           <div class="faction-row"><span>DOCTRINE</span><span>균열은 재앙이 아니라 문이다.</span></div>
           <div class="faction-row"><span>STATUS</span><span>ACTIVE</span></div>
-
         </div>
       </div>
     </div>
@@ -2073,58 +1801,418 @@ h2{
 
 </section>
 
-<!-- STORIES -->
+<!-- AWAKENED -->
 
-<section class="page" id="stories">
+<section class="page" id="awakened">
 
-  <div class="eyebrow">ARCHIVE / 04 / STORIES</div>
-  <h2>STORIES</h2>
-  <div class="ko-title">ECHO:RIFT 기록</div>
+  <div class="eyebrow">ARCHIVE / 04 / AWAKENED SYSTEM</div>
+  <h2>AWAKENED</h2>
+  <div class="ko-title">각성자 시스템 및 관련 제도</div>
 
   <div class="header-rule"></div>
 
-  <div class="story-main">
-    <div class="story-main-side">AEGIS SIDE / CURRENT RECORD</div>
-    <h3>RESONANCE</h3>
-    <div class="story-ko">공명</div>
-    <div class="season-tag">SEASON 1</div>
-    <div class="story-copy">균열이 나를 알아보기 시작했다.</div>
+  <div class="awake-block">
+
+    <div class="section-label">CLASSIFICATION / TYPE</div>
+    <h3 class="awake-title">센티넬과 가이드</h3>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <div class="info-code">CLASS / SENTINEL</div>
+        <h4>센티넬</h4>
+        <p>
+          일반인을 뛰어넘는 신체능력과 감각,
+          개인마다 다른 고유 이능을 가진 각성자.
+          이능 사용과 정신적 과부하가 반복될수록 침식이 축적된다.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-code">CLASS / GUIDE</div>
+        <h4>가이드</h4>
+        <p>
+          특수 정신파를 통해 센티넬의 불안정한 정신파를 안정시키는 각성자.
+          과도한 가이딩은 가이드 본인에게도 정신적 부담을 남길 수 있다.
+        </p>
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="corrupt-title">UNAVAILABLE ARCHIVE RECORDS</div>
+  <div class="awake-block">
 
-  <div class="corrupt-grid">
+    <div class="section-label">CLASSIFICATION / RANK</div>
+    <h3 class="awake-title">각성 등급</h3>
 
-    <div class="corrupt-card">
-      <div>
-        <div class="corrupt-code">RECORD / ██-01</div>
-        <div class="corrupt-name">████ █████</div>
-        <div class="corrupt-status">[ SIGNAL LOST ]</div>
+    <div class="info-card wide">
+
+      <div class="info-code">AWAKENED RANK</div>
+
+      <div class="rank-line">
+        <div class="rank-chip">F</div>
+        <div class="rank-chip">E</div>
+        <div class="rank-chip">D</div>
+        <div class="rank-chip">C</div>
+        <div class="rank-chip">B</div>
+        <div class="rank-chip">A</div>
+        <div class="rank-chip">S</div>
+        <div class="rank-chip ex">EX</div>
       </div>
+
+      <p>
+        F부터 S까지의 등급은 이능 출력, 정신파 규모,
+        안정성, 지속 가능성, 실제 대응능력 등을 종합하여 책정한다.
+        <br><br>
+        EX는 S보다 강한 상위등급이 아니라,
+        기존 측정법과 분류기준만으로 평가하기 어려운
+        예외 개체에 부여되는 특수분류다.
+      </p>
+
     </div>
 
-    <div class="corrupt-card">
-      <div>
-        <div class="corrupt-code">RECORD / ██-02</div>
-        <div class="corrupt-name">███████ ███</div>
-        <div class="corrupt-status">[ DATA CORRUPTED ]</div>
+  </div>
+
+  <div class="awake-block">
+
+    <div class="section-label">SENTINEL / EROSION</div>
+    <h3 class="awake-title">침식도와 BREAK</h3>
+
+    <div class="info-card wide">
+
+      <div class="info-code">EROSION INDEX / 0–100%</div>
+
+      <p>
+        센티넬의 이능 사용과 정신적 과부하가 누적되며 발생하는
+        정신파 불안정 수치.
+      </p>
+
+      <div class="erosion-list">
+
+        <div class="erosion-row">
+          <div class="er-percent">0–20%</div>
+          <div class="er-name">안정</div>
+          <div class="er-desc">일상생활과 이능 운용에 특별한 이상 없음.</div>
+        </div>
+
+        <div class="erosion-row">
+          <div class="er-percent">21–40%</div>
+          <div class="er-name">과민</div>
+          <div class="er-desc">감각 과민, 피로, 신경 반응 증가.</div>
+        </div>
+
+        <div class="erosion-row">
+          <div class="er-percent">41–60%</div>
+          <div class="er-name">불안정</div>
+          <div class="er-desc">감정 및 이능 제어 난도가 증가.</div>
+        </div>
+
+        <div class="erosion-row">
+          <div class="er-percent">61–80%</div>
+          <div class="er-name">위험</div>
+          <div class="er-desc">즉각적인 안정화와 가이딩이 권고됨.</div>
+        </div>
+
+        <div class="erosion-row">
+          <div class="er-percent">81–99%</div>
+          <div class="er-name">폭주 직전</div>
+          <div class="er-desc">자아·판단력 손상 위험이 매우 높음.</div>
+        </div>
+
+        <div class="erosion-row">
+          <div class="er-percent">100%</div>
+          <div class="er-name">BREAK</div>
+          <div class="er-desc">완전 폭주. 정상적인 자기통제 상실.</div>
+        </div>
+
       </div>
+
     </div>
 
-    <div class="corrupt-card">
-      <div>
-        <div class="corrupt-code">RECORD / ██-03</div>
-        <div class="corrupt-name">███ ████████</div>
-        <div class="corrupt-status">[ ACCESS DENIED ]</div>
+  </div>
+
+  <div class="awake-block">
+
+    <div class="section-label">MEDICAL / SUPPRESSANT</div>
+    <h3 class="awake-title">억제제</h3>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <div class="info-code">FUNCTION</div>
+        <h4>일시적 억제</h4>
+        <p>
+          정신파의 과활성과 이능 반응을 억제해
+          침식 악화를 늦춘다.
+          현장이나 즉시 가이딩을 받을 수 없는 상황에서 사용된다.
+        </p>
       </div>
+
+      <div class="info-card">
+        <div class="info-code">LIMITATION</div>
+        <h4>침식 제거 불가</h4>
+        <p>
+          이미 발생한 침식을 회복시키지는 않는다.
+          억제제는 치료제가 아니라 시간을 벌기 위한 임시조치다.
+        </p>
+      </div>
+
     </div>
 
-    <div class="corrupt-card">
-      <div>
-        <div class="corrupt-code">RECORD / ██-04</div>
-        <div class="corrupt-name">█████ █████</div>
-        <div class="corrupt-status">[ UNKNOWN RECORD ]</div>
+  </div>
+
+  <div class="awake-block">
+
+    <div class="section-label">GUIDING / METHODS</div>
+    <h3 class="awake-title">가이딩</h3>
+
+    <div class="info-grid">
+
+      <div class="info-card">
+        <div class="info-code">LEVEL 01</div>
+        <h4>비접촉 가이딩</h4>
+        <p>
+          일정 거리에서 정신파를 조율하는 방식.
+          신체접촉 부담이 적지만 효율은 상대적으로 낮다.
+        </p>
       </div>
+
+      <div class="info-card">
+        <div class="info-code">LEVEL 02</div>
+        <h4>접촉 가이딩</h4>
+        <p>
+          손이나 팔 등의 접촉을 통해 정신파 전달 효율을 높이는
+          가장 일반적인 안정화 방식.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-code">LEVEL 03</div>
+        <h4>심층 가이딩</h4>
+        <p>
+          정신파 깊은 층까지 직접 접속하는 고강도 방식.
+          감정이나 기억이 서로 노출될 위험이 있다.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-code">SIDE EFFECT</div>
+        <h4>역류</h4>
+        <p>
+          센티넬의 감정·기억·감각 또는 침식 부담 일부가
+          가이드에게 역으로 전달되는 현상.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="awake-block">
+
+    <div class="section-label">MATCHING / COMPATIBILITY</div>
+    <h3 class="awake-title">상성률</h3>
+
+    <div class="info-card wide">
+
+      <div class="info-code">SENTINEL × GUIDE MATCHING INDEX</div>
+
+      <p>
+        센티넬과 가이드의 정신파가 얼마나 안정적으로 맞물리는지를 나타내는 지표.
+        능력의 강함이나 연애감정과는 별개다.
+      </p>
+
+      <div class="compat-table">
+
+        <div class="compat-row">
+          <span>0–29%</span>
+          <span>LOW</span>
+          <span>가이딩 효율이 낮거나 불안정함.</span>
+        </div>
+
+        <div class="compat-row">
+          <span>30–49%</span>
+          <span>AVAILABLE</span>
+          <span>기본적인 안정화 가능.</span>
+        </div>
+
+        <div class="compat-row">
+          <span>50–69%</span>
+          <span>STABLE</span>
+          <span>일반적인 정기 매칭 범위.</span>
+        </div>
+
+        <div class="compat-row">
+          <span>70–84%</span>
+          <span>HIGH</span>
+          <span>높은 가이딩 효율과 안정성.</span>
+        </div>
+
+        <div class="compat-row">
+          <span>85–94%</span>
+          <span>VERY HIGH</span>
+          <span>희귀한 고상성 조합.</span>
+        </div>
+
+        <div class="compat-row">
+          <span>95%+</span>
+          <span>EXCEPTIONAL</span>
+          <span>극히 드물며 별도 관찰이 권고됨.</span>
+        </div>
+
+      </div>
+
+      <p style="margin-top:18px;">
+        ※ 상성률 100%는 특별한 관계나 완전한 결합을 뜻하지 않는다.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="awake-block">
+
+    <div class="section-label">MENTAL WAVE / IMPRINT</div>
+    <h3 class="awake-title">각인</h3>
+
+    <div class="info-card wide">
+
+      <div class="info-code">MENTAL WAVE IMPRINT</div>
+
+      <p>
+        특정 센티넬과 가이드가 장기간 깊은 가이딩을 반복할 경우,
+        서로의 정신파를 익숙한 안정 신호로 인식하게 되는 현상.
+        <br><br>
+        각인은 운명적 짝이나 연애관계를 의미하지 않는다.
+        각인 이후 특정 상대의 가이딩 효율이 높아지거나
+        다른 파형에 적응하는 데 시간이 필요할 수 있다.
+        <br><br>
+        비동의 각인 유도는 중대한 인권침해로 취급된다.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="awake-block">
+
+    <div class="section-label">REGULATION / RIGHTS</div>
+    <h3 class="awake-title">각성자 관련 법과 권리</h3>
+
+    <div class="info-card wide">
+
+      <div class="law-list">
+
+        <div class="law">
+          <div class="law-num">01</div>
+          <p>
+            확인된 각성자는 공공 안전과 의료지원을 위해
+            각성 사실과 능력 분류를 관계기관에 등록한다.
+          </p>
+        </div>
+
+        <div class="law">
+          <div class="law-num">02</div>
+          <p>
+            공공장소에서의 위험한 이능 사용은
+            재난 대응·정당방위·허가 상황을 제외하고 제한된다.
+          </p>
+        </div>
+
+        <div class="law">
+          <div class="law-num">03</div>
+          <p>
+            가이딩은 원칙적으로 당사자의 동의를 필요로 한다.
+            강압적 심층 가이딩은 금지된다.
+          </p>
+        </div>
+
+        <div class="law">
+          <div class="law-num">04</div>
+          <p>
+            상대의 의사에 반해 각인을 유도하거나
+            정신파 의존관계를 고의로 형성하는 행위는 금지된다.
+          </p>
+        </div>
+
+        <div class="law">
+          <div class="law-num">05</div>
+          <p>
+            대규모 균열 재난에서는 각성자 전력에 대한
+            긴급동원 절차가 발동될 수 있다.
+          </p>
+        </div>
+
+        <div class="law">
+          <div class="law-num">06</div>
+          <p>
+            침식도, 상성률, 정신파 및 가이딩 기록은
+            보호가 필요한 개인 의료·신상정보로 분류된다.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="awake-block">
+
+    <div class="section-label">SOCIETY / CONFLICT</div>
+    <h3 class="awake-title">사회적 갈등</h3>
+
+    <div class="social-list">
+
+      <div class="social-row">
+        <div class="social-num">01</div>
+        <div class="social-title">보호인가, 통제인가</div>
+        <div class="social-copy">
+          AEGIS의 등록·관리체계를 둘러싼 자유권 논쟁.
+        </div>
+      </div>
+
+      <div class="social-row">
+        <div class="social-num">02</div>
+        <div class="social-title">센티넬에 대한 공포</div>
+        <div class="social-copy">
+          BREAK 위험 때문에 센티넬을 잠재적 재난으로 보는 사회적 시선.
+        </div>
+      </div>
+
+      <div class="social-row">
+        <div class="social-num">03</div>
+        <div class="social-title">가이드의 도구화</div>
+        <div class="social-copy">
+          희소한 고등급 가이드에게 과도한 가이딩 의무가 집중되는 문제.
+        </div>
+      </div>
+
+      <div class="social-row">
+        <div class="social-num">04</div>
+        <div class="social-title">등급 사회</div>
+        <div class="social-copy">
+          각성 등급이 직업·대우·사회적 영향력으로 이어지는 현상.
+        </div>
+      </div>
+
+      <div class="social-row">
+        <div class="social-num">05</div>
+        <div class="social-title">미등록 각성자</div>
+        <div class="social-copy">
+          제도권 밖 각성자의 의료·신분·생존 문제.
+        </div>
+      </div>
+
+      <div class="social-row">
+        <div class="social-num">06</div>
+        <div class="social-title">상성률과 관계</div>
+        <div class="social-copy">
+          높은 상성률을 연애·결혼의 당위로 보는 문화에 대한 논쟁.
+        </div>
+      </div>
+
     </div>
 
   </div>
