@@ -1940,7 +1940,7 @@ h2{
   transition:max-height .45s ease,margin .45s ease,padding .45s ease,opacity .3s ease,border-width .45s ease;
 }
 .person.open .entity-detail{
-  max-height:220px;
+  max-height:2200px;
   margin:0 16px 16px;
   padding:14px;
   opacity:1;
@@ -1977,6 +1977,136 @@ h2{
   overflow:hidden !important;
   opacity:0 !important;
   border-width:0 !important;
+}
+
+
+/* AEGIS STANDARD UNIFORM ARCHIVE */
+.uniform-archive{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  margin-top:20px;
+}
+.uniform-record{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(170,220,255,.11);
+  background:linear-gradient(180deg,rgba(10,18,25,.78),rgba(4,9,14,.9));
+}
+.uniform-record:before{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(115deg,transparent 38%,rgba(190,230,250,.055) 49%,transparent 60%);
+  transform:translateX(-120%);
+  transition:transform .9s ease;
+  z-index:2;
+}
+.uniform-record:hover:before{transform:translateX(120%)}
+.uniform-image-wrap{
+  position:relative;
+  aspect-ratio:2/3;
+  overflow:hidden;
+  background:#e9e9e9;
+  border-bottom:1px solid rgba(170,220,255,.09);
+}
+.uniform-image-wrap img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.uniform-type{
+  position:absolute;
+  left:11px;top:11px;
+  z-index:3;
+  padding:5px 7px;
+  background:rgba(2,6,10,.8);
+  border:1px solid rgba(190,225,242,.18);
+  color:#c8dde7;
+  font:7px 'Space Mono',monospace;
+  letter-spacing:.12em;
+  backdrop-filter:blur(4px);
+}
+.uniform-copy{padding:14px 15px 16px}
+.uniform-copy .uniform-code{
+  margin-bottom:7px;color:#526f7e;font:7px 'Space Mono',monospace;letter-spacing:.1em;
+}
+.uniform-copy h4{margin:0 0 7px;color:#d6e3e9;font-size:14px;font-weight:400}
+.uniform-copy p{margin:0;color:#6f838e;font-size:10px;line-height:1.75}
+.uniform-note{
+  margin-top:15px;padding:11px 13px;border-left:1px solid rgba(170,220,255,.18);
+  background:rgba(8,15,21,.48);color:#667b86;font-size:9px;line-height:1.75;
+}
+
+/* YOON SIHEON / SPECIAL ATTIRE RECORD */
+.attire-record{
+  margin-top:14px;
+  border-top:1px solid rgba(170,220,255,.08);
+  padding-top:12px;
+}
+.attire-toggle{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 11px;
+  border:1px solid rgba(210,185,100,.14);
+  background:rgba(10,12,12,.5);
+  color:#b9cbd4;
+  cursor:pointer;
+  text-align:left;
+  font:8px 'Space Mono',monospace;
+  letter-spacing:.08em;
+}
+.attire-toggle:hover{border-color:rgba(228,201,112,.3);background:rgba(20,18,10,.38)}
+.attire-toggle .attire-plus{color:#d9bd68;font-size:12px;transition:transform .3s ease}
+.attire-record.open .attire-plus{transform:rotate(45deg)}
+.attire-panel{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:max-height .65s ease,opacity .35s ease,margin .65s ease;
+}
+.attire-record.open .attire-panel{max-height:1800px;opacity:1;margin-top:12px}
+.attire-meta{
+  display:grid;
+  grid-template-columns:130px 1fr;
+  gap:7px 14px;
+  padding:12px 0;
+  border-top:1px solid rgba(170,220,255,.06);
+  border-bottom:1px solid rgba(170,220,255,.06);
+  font:8px 'Space Mono',monospace;
+}
+.attire-meta span:nth-child(odd){color:#536c78}
+.attire-meta span:nth-child(even){color:#9aaeb8}
+.attire-gallery{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-top:12px;
+}
+.attire-shot{
+  overflow:hidden;
+  border:1px solid rgba(170,220,255,.08);
+  background:#e8e8e8;
+}
+.attire-shot img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block}
+.attire-shot figcaption{
+  padding:7px 8px;background:#070b0e;color:#607580;
+  font:6.5px 'Space Mono',monospace;letter-spacing:.07em;
+}
+.attire-desc{margin-top:12px;color:#718792;font-size:9.5px;line-height:1.85}
+.attire-warning{
+  margin-top:10px;padding:9px 10px;border-left:1px solid rgba(227,197,101,.35);
+  color:#8e835e;background:rgba(46,38,12,.12);
+  font:7px 'Space Mono',monospace;line-height:1.7;
+}
+
+@media(max-width:720px){
+  .uniform-archive{grid-template-columns:1fr;gap:14px}
+  .uniform-record{max-width:430px;margin:0 auto;width:100%}
+  .attire-gallery{grid-template-columns:1fr}
+  .attire-meta{grid-template-columns:95px 1fr}
 }
 
 .page.active .header-rule{animation:archiveSweep .75s ease both}
@@ -2799,6 +2929,54 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 
   </div>
 
+
+  <!-- AEGIS STANDARD UNIFORM -->
+
+  <div class="awake-block">
+
+    <div class="section-label">AEGIS / STANDARD UNIFORM</div>
+    <h3 class="awake-title">AEGIS 표준 제복</h3>
+
+    <div class="info-card wide">
+      <div class="info-code">PERSONNEL EQUIPMENT / STANDARD ISSUE</div>
+      <p>
+        AEGIS 현장 인원의 역할 식별과 임무 수행을 위해 지정된 표준 제복.
+        센티넬과 가이드는 동일한 제복 체계를 공유하되, 주조색과 세부 배색으로 병과를 구분한다.
+      </p>
+
+      <div class="uniform-archive">
+        <article class="uniform-record">
+          <div class="uniform-image-wrap">
+            <span class="uniform-type">SENTINEL / STANDARD</span>
+            <img src="https://imgbs.com/uploads/b4cf0312954456ff.png" alt="AEGIS 센티넬 표준 제복" loading="lazy">
+          </div>
+          <div class="uniform-copy">
+            <div class="uniform-code">UNIFORM CLASS / SENTINEL</div>
+            <h4>센티넬 표준 제복</h4>
+            <p>흑색을 주조색으로 사용하는 AEGIS 센티넬 표준 제복. 전투 및 고위험 균열 대응 인원의 식별 체계를 따른다.</p>
+          </div>
+        </article>
+
+        <article class="uniform-record">
+          <div class="uniform-image-wrap">
+            <span class="uniform-type">GUIDE / STANDARD</span>
+            <img src="https://imgbs.com/uploads/d8618b15dcaa677f.png" alt="AEGIS 가이드 표준 제복" loading="lazy">
+          </div>
+          <div class="uniform-copy">
+            <div class="uniform-code">UNIFORM CLASS / GUIDE</div>
+            <h4>가이드 표준 제복</h4>
+            <p>백색을 주조색으로 하고 흑색 공통 장비를 병용하는 AEGIS 가이드 표준 제복. 가이딩 및 현장 지원 인원의 식별 체계를 따른다.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="uniform-note">
+        ※ 제복의 색상은 각성 등급을 나타내지 않는다. 개인 또는 특수 직위에 지정된 비표준 의전복은 별도 기록으로 관리된다.
+      </div>
+    </div>
+
+  </div>
+
   <!-- RANK -->
 
   <div class="awake-block">
@@ -3431,7 +3609,44 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 <div class="entity-top"><span>ENTITY RECORD / ER-A02</span></div>
 <div class="entity-image"><span class="entity-status">ACTIVE</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
 <div class="entity-body"><h3>윤시헌</h3><div class="person-eng">YOON SIHEON</div><div class="person-line"><span>CLASS</span><span>GUIDE · S</span></div><div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div><div class="person-line"><span>DESIGNATION</span><span>SAINT</span></div><div class="entity-source">SOURCE / AEGIS PERSONNEL DATABASE</div></div>
-<div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">광역 정신 안정화 능력을 보유한 S급 가이드. 대외적으로 ‘성자’라는 호칭으로 알려져 있다.</div></div>
+<div class="entity-detail">
+  <div class="entity-detail-title">ARCHIVE NOTE</div>
+  <div class="entity-note">광역 정신 안정화 능력을 보유한 S급 가이드. 대외적으로 ‘성자’라는 호칭으로 알려져 있다.</div>
+
+  <div class="attire-record" onclick="event.stopPropagation()">
+    <button class="attire-toggle" type="button" onclick="toggleAttire(this,event)">
+      <span>[ SPECIAL ATTIRE RECORD ] &nbsp; SAINT CEREMONIAL ATTIRE</span>
+      <span class="attire-plus">＋</span>
+    </button>
+    <div class="attire-panel">
+      <div class="attire-meta">
+        <span>DESIGNATION</span><span>SAINT CEREMONIAL ATTIRE</span>
+        <span>ASSIGNED TO</span><span>YOON SIHEON</span>
+        <span>CLASS</span><span>SPECIAL CEREMONIAL ATTIRE</span>
+        <span>STATUS</span><span>AUTHORIZED</span>
+      </div>
+
+      <div class="attire-gallery">
+        <figure class="attire-shot">
+          <img src="https://imgbs.com/uploads/91fad204a730e577.jpg" alt="윤시헌 성자 의전복 기록 이미지" loading="lazy">
+          <figcaption>ARCHIVE IMAGE / CEREMONIAL ATTIRE</figcaption>
+        </figure>
+        <figure class="attire-shot">
+          <img src="https://imgbs.com/uploads/from-pixai-475a43ca.png" alt="성자 의전복을 착용한 윤시헌" loading="lazy">
+          <figcaption>PUBLIC RECORD / YOON SIHEON</figcaption>
+        </figure>
+      </div>
+
+      <div class="attire-desc">
+        AEGIS가 공식 행사 및 대외 활동을 위해 윤시헌에게 지정한 전용 의전복.
+        표준 가이드 제복과 달리 백색을 중심으로 금색 장식을 사용하며, 대외적으로 알려진 ‘성자’의 공식 이미지를 반영한다.
+      </div>
+      <div class="attire-warning">
+        ※ 본 복식은 가이드의 계급 또는 각성 등급을 의미하지 않으며, AEGIS 표준 제복 규정에 포함되지 않습니다.
+      </div>
+    </div>
+  </div>
+</div>
 </div><div class="person" data-group="aegis" data-search="서정우 seo jeongwoo aegis" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-A03</span></div>
 <div class="entity-image"><span class="entity-status">ACTIVE</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
@@ -3821,6 +4036,13 @@ function toggleFaction(head){
   if(!alreadyOpen){
     item.classList.add('open');
   }
+}
+
+function toggleAttire(button,event){
+  if(event) event.stopPropagation();
+  const record=button.closest('.attire-record');
+  if(!record) return;
+  record.classList.toggle('open');
 }
 
 function toggleEntity(card){
