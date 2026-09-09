@@ -1954,21 +1954,30 @@ h2{
 }
 .entity-note{color:#728792;font-size:10px;line-height:1.8}
 
-/* 잠긴 기록 */
+
+/* 잠긴 카드도 공개 카드와 동일한 이름 2줄 구조를 유지 */
+.person.locked .entity-body{min-height:0}
+.person.locked .locked-eng{visibility:hidden;pointer-events:none}
+
+/* 잠긴 기록 — 공개 인물 카드와 동일하게 기본 상태에서는 접힌 카드만 표시 */
 .person.locked{padding:0}
 .person.locked .entity-image{filter:grayscale(1);opacity:.58}
 .person.locked .entity-status{color:#596d77;border-color:rgba(130,160,175,.1)}
 .person.locked .entity-status:before{background:#53636b;box-shadow:none;animation:none}
-.person.locked h3{margin:0 0 8px;color:#42535d;letter-spacing:.2em}
-.person.locked .locked-block{margin:13px 0 0;color:#41545f}
-.person.locked .entity-source{
-  max-height:none;
-  margin-top:12px;
-  padding-top:10px;
-  opacity:1;
-  border-top-width:1px;
+.person.locked h3{margin:0 0 5px;color:#42535d;letter-spacing:.2em}
+
+/* 잠긴 슬롯의 하단 정보는 처음부터 노출하지 않는다.
+   ER 번호 + 이미지 + 잠긴 이름만 보이고 상세 영역은 접힌 상태 유지 */
+.person.locked .locked-block,
+.person.locked .entity-source,
+.person.locked .lock-message{
+  max-height:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  overflow:hidden !important;
+  opacity:0 !important;
+  border-width:0 !important;
 }
-.person.locked .lock-message{margin-top:12px}
 
 .page.active .header-rule{animation:archiveSweep .75s ease both}
 @keyframes archiveSweep{
@@ -3451,11 +3460,11 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 </div><div class="person locked" data-group="white" data-search="locked white">
 <div class="entity-top"><span>ENTITY RECORD / ER-W██</span></div>
 <div class="entity-image"><span class="entity-status">LOCKED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
-<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / RECOVERED LAB DATA</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+<div class="entity-body"><h3>████████</h3><div class="person-eng locked-eng" aria-hidden="true">&nbsp;</div><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / RECOVERED LAB DATA</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
 </div><div class="person locked" data-group="white" data-search="locked white">
 <div class="entity-top"><span>ENTITY RECORD / ER-W██</span></div>
 <div class="entity-image"><span class="entity-status">LOCKED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
-<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / CORRUPTED SUBJECT DATA</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+<div class="entity-body"><h3>████████</h3><div class="person-eng locked-eng" aria-hidden="true">&nbsp;</div><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / CORRUPTED SUBJECT DATA</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
 </div><div class="person" data-group="libera" data-search="차이현 cha yihyeon libera" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-L01</span></div>
 <div class="entity-image"><span class="entity-status">IDENTIFIED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
@@ -3469,11 +3478,11 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 </div><div class="person locked" data-group="libera" data-search="locked libera">
 <div class="entity-top"><span>ENTITY RECORD / ER-L██</span></div>
 <div class="entity-image"><span class="entity-status">LOCKED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
-<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / INTELLIGENCE REPORT</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+<div class="entity-body"><h3>████████</h3><div class="person-eng locked-eng" aria-hidden="true">&nbsp;</div><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / INTELLIGENCE REPORT</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
 </div><div class="person locked" data-group="libera" data-search="locked libera">
 <div class="entity-top"><span>ENTITY RECORD / ER-L██</span></div>
 <div class="entity-image"><span class="entity-status">LOCKED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
-<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / INTELLIGENCE REPORT</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+<div class="entity-body"><h3>████████</h3><div class="person-eng locked-eng" aria-hidden="true">&nbsp;</div><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / INTELLIGENCE REPORT</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
 </div><div class="person" data-group="nest" data-search="장미라 jang mira nest" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-N01</span></div>
 <div class="entity-image"><span class="entity-status">UNVERIFIED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
@@ -3482,15 +3491,15 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 </div><div class="person locked" data-group="nest" data-search="locked nest">
 <div class="entity-top"><span>ENTITY RECORD / ER-N██</span></div>
 <div class="entity-image"><span class="entity-status">LOCKED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
-<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / UNVERIFIED RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+<div class="entity-body"><h3>████████</h3><div class="person-eng locked-eng" aria-hidden="true">&nbsp;</div><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / UNVERIFIED RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
 </div><div class="person locked" data-group="nest" data-search="locked nest">
 <div class="entity-top"><span>ENTITY RECORD / ER-N██</span></div>
 <div class="entity-image"><span class="entity-status">LOCKED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
-<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / UNVERIFIED RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+<div class="entity-body"><h3>████████</h3><div class="person-eng locked-eng" aria-hidden="true">&nbsp;</div><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / UNVERIFIED RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
 </div><div class="person locked" data-group="nest" data-search="locked nest">
 <div class="entity-top"><span>ENTITY RECORD / ER-N██</span></div>
 <div class="entity-image"><span class="entity-status">LOCKED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
-<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / UNVERIFIED RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+<div class="entity-body"><h3>████████</h3><div class="person-eng locked-eng" aria-hidden="true">&nbsp;</div><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / UNVERIFIED RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
 </div><div class="person" data-group="sanctuary" data-search="마리아 한 maria han 성역 sanctuary" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-S01</span></div>
 <div class="entity-image"><span class="entity-status">VERIFIED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
@@ -3499,15 +3508,15 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 </div><div class="person locked" data-group="sanctuary" data-search="locked sanctuary">
 <div class="entity-top"><span>ENTITY RECORD / ER-S██</span></div>
 <div class="entity-image"><span class="entity-status">LOCKED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
-<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / SANCTUARY RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+<div class="entity-body"><h3>████████</h3><div class="person-eng locked-eng" aria-hidden="true">&nbsp;</div><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / SANCTUARY RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
 </div><div class="person locked" data-group="sanctuary" data-search="locked sanctuary">
 <div class="entity-top"><span>ENTITY RECORD / ER-S██</span></div>
 <div class="entity-image"><span class="entity-status">LOCKED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
-<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / SANCTUARY RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+<div class="entity-body"><h3>████████</h3><div class="person-eng locked-eng" aria-hidden="true">&nbsp;</div><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / SANCTUARY RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
 </div><div class="person locked" data-group="sanctuary" data-search="locked sanctuary">
 <div class="entity-top"><span>ENTITY RECORD / ER-S██</span></div>
 <div class="entity-image"><span class="entity-status">LOCKED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>NO IMAGE</b>IDENTITY WITHHELD</div></div>
-<div class="entity-body"><h3>████████</h3><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / SANCTUARY RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
+<div class="entity-body"><h3>████████</h3><div class="person-eng locked-eng" aria-hidden="true">&nbsp;</div><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / SANCTUARY RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
 </div></div></section>
 
 <!-- CLASSIFIED -->
