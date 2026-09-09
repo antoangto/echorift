@@ -2496,6 +2496,17 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
   .image-viewer img{max-width:94vw!important;max-height:84dvh!important;width:auto!important;height:auto!important;object-fit:contain!important}
 }
 
+
+/* ENTITY RECORD CHARACTER PHOTOS */
+.entity-image img.entity-record-photo{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center top;
+  display:block!important;
+  cursor:zoom-in;
+}
+
 </style>
 </head>
 
@@ -3655,12 +3666,12 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 <div class="person-tools"><input id="personSearch" class="searchbox" type="text" placeholder="SEARCH ENTITY RECORD" oninput="filterPeople()"><div class="filter-bar"><button class="filter-btn active" data-filter="all" onclick="setPersonFilter('all',this)">ALL</button><button class="filter-btn" data-filter="aegis" onclick="setPersonFilter('aegis',this)">AEGIS</button><button class="filter-btn" data-filter="white" onclick="setPersonFilter('white',this)">백야 연구소</button><button class="filter-btn" data-filter="libera" onclick="setPersonFilter('libera',this)">LIBERA</button><button class="filter-btn" data-filter="nest" onclick="setPersonFilter('nest',this)">NEST</button><button class="filter-btn" data-filter="sanctuary" onclick="setPersonFilter('sanctuary',this)">성역 교단</button></div><div class="person-count"><span id="personCount">0</span> RECORDS DISPLAYED</div></div>
 <div class="person-grid" id="personGrid"><div class="person" data-group="aegis" data-search="강태윤 kang taeyoon aegis sentinel" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-A01</span></div>
-<div class="entity-image"><span class="entity-status">ACTIVE</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-image"><span class="entity-status">ACTIVE</span><span class="entity-scan" aria-hidden="true"></span><img class="zoomable-image entity-record-photo" data-full="https://imgbs.com/uploads/chatgpt-image-2026-9-9-faf902b2.png" src="https://imgbs.com/uploads/chatgpt-image-2026-9-9-faf902b2.png" alt="강태윤 아카이브 인물 이미지" loading="eager" decoding="async"></div>
 <div class="entity-body"><h3>강태윤</h3><div class="person-eng">KANG TAEYOON</div><div class="person-line"><span>CLASS</span><span>SENTINEL · S</span></div><div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div><div class="person-line"><span>ABILITY</span><span>GRAVITY CONTROL</span></div><div class="entity-source">SOURCE / AEGIS PERSONNEL DATABASE</div></div>
 <div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">AEGIS 제1특수부대 핵심 전투인원. 고위험 균열 대응 기록 다수.</div></div>
 </div><div class="person" data-group="aegis" data-search="윤시헌 yoon siheon aegis guide saint" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-A02</span></div>
-<div class="entity-image"><span class="entity-status">ACTIVE</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-image"><span class="entity-status">ACTIVE</span><span class="entity-scan" aria-hidden="true"></span><img class="zoomable-image entity-record-photo" data-full="https://imgbs.com/uploads/from-pixai-360a084c.png" src="https://imgbs.com/uploads/from-pixai-360a084c.png" alt="윤시헌 아카이브 인물 이미지" loading="eager" decoding="async"></div>
 <div class="entity-body"><h3>윤시헌</h3><div class="person-eng">YOON SIHEON</div><div class="person-line"><span>CLASS</span><span>GUIDE · S</span></div><div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div><div class="person-line"><span>DESIGNATION</span><span>SAINT</span></div><div class="entity-source">SOURCE / AEGIS PERSONNEL DATABASE</div></div>
 <div class="entity-detail">
   <div class="entity-detail-title">ARCHIVE NOTE</div>
@@ -3702,27 +3713,27 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 </div>
 </div><div class="person" data-group="aegis" data-search="서정우 seo jeongwoo aegis" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-A03</span></div>
-<div class="entity-image"><span class="entity-status">ACTIVE</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-image"><span class="entity-status">ACTIVE</span><span class="entity-scan" aria-hidden="true"></span><img class="zoomable-image entity-record-photo" data-full="https://imgbs.com/uploads/from-pixai-4f141163.png" src="https://imgbs.com/uploads/from-pixai-4f141163.png" alt="서정우 아카이브 인물 이미지" loading="eager" decoding="async"></div>
 <div class="entity-body"><h3>서정우</h3><div class="person-eng">SEO JEONGWOO</div><div class="person-line"><span>CLASS</span><span>SENTINEL · A</span></div><div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div><div class="person-line"><span>POSITION</span><span>1ST BUREAU</span></div><div class="entity-source">SOURCE / AEGIS PERSONNEL DATABASE</div></div>
 <div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">AEGIS 제1국 소속 현장 인원.</div></div>
 </div><div class="person" data-group="aegis" data-search="한세라 han sera aegis medical" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-A04</span></div>
-<div class="entity-image"><span class="entity-status">ACTIVE</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-image"><span class="entity-status">ACTIVE</span><span class="entity-scan" aria-hidden="true"></span><img class="zoomable-image entity-record-photo" data-full="https://imgbs.com/uploads/from-pixai-d0472aec.png" src="https://imgbs.com/uploads/from-pixai-d0472aec.png" alt="한세라 아카이브 인물 이미지" loading="eager" decoding="async"></div>
 <div class="entity-body"><h3>한세라</h3><div class="person-eng">HAN SERA</div><div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div><div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div><div class="person-line"><span>POSITION</span><span>MEDICAL CHIEF</span></div><div class="entity-source">SOURCE / AEGIS MEDICAL DATABASE</div></div>
 <div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">각성자 의료 및 현장 후송 체계를 담당하는 의료부 책임자.</div></div>
 </div><div class="person" data-group="aegis" data-search="서문재 seomun jae aegis guide management" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-A05</span></div>
-<div class="entity-image"><span class="entity-status">ACTIVE</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-image"><span class="entity-status">ACTIVE</span><span class="entity-scan" aria-hidden="true"></span><img class="zoomable-image entity-record-photo" data-full="https://imgbs.com/uploads/from-pixai-fa2d72e7.png" src="https://imgbs.com/uploads/from-pixai-fa2d72e7.png" alt="서문재 아카이브 인물 이미지" loading="eager" decoding="async"></div>
 <div class="entity-body"><h3>서문재</h3><div class="person-eng">SEOMUN JAE</div><div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div><div class="person-line"><span>AFFILIATION</span><span>AEGIS</span></div><div class="person-line"><span>POSITION</span><span>GUIDE MANAGEMENT</span></div><div class="entity-source">SOURCE / AEGIS PERSONNEL DATABASE</div></div>
 <div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">가이드 정신건강 및 장기 관리 업무 담당. 일부 세부 기록은 제한되어 있다.</div></div>
 </div><div class="person" data-group="white" data-search="subject 00 백야 white night" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-W00</span></div>
-<div class="entity-image"><span class="entity-status">PARTIAL DATA</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-image"><span class="entity-status">PARTIAL DATA</span><span class="entity-scan" aria-hidden="true"></span><img class="zoomable-image entity-record-photo" data-full="https://imgbs.com/uploads/from-pixai-4499b9ec.png" src="https://imgbs.com/uploads/from-pixai-4499b9ec.png" alt="SUBJECT 00 아카이브 인물 이미지" loading="eager" decoding="async"></div>
 <div class="entity-body"><h3>SUBJECT 00</h3><div class="person-eng">NAME / [ NO DATA ]</div><div class="person-line"><span>CLASS</span><span>SENTINEL · EX</span></div><div class="person-line"><span>AFFILIATION</span><span>[ DATA DELETED ]</span></div><div class="person-line"><span>STATUS</span><span>UNKNOWN</span></div><div class="entity-source">SOURCE / RECOVERED LAB DATA</div></div>
 <div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">등록 신원 및 출생 기록을 확인할 수 없다. 일부 백야 연구소 자료에서 SUBJECT 00으로 식별된다.</div></div>
 </div><div class="person" data-group="white" data-search="이도겸 lee dogyeom white night" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-W??</span></div>
-<div class="entity-image"><span class="entity-status">PARTIAL DATA</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-image"><span class="entity-status">PARTIAL DATA</span><span class="entity-scan" aria-hidden="true"></span><img class="zoomable-image entity-record-photo" data-full="https://imgbs.com/uploads/from-pixai-250211d0.png" src="https://imgbs.com/uploads/from-pixai-250211d0.png" alt="이도겸 아카이브 인물 이미지" loading="eager" decoding="async"></div>
 <div class="entity-body"><h3>이도겸</h3><div class="person-eng">LEE DOGYEOM</div><div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div><div class="person-line"><span>AFFILIATION</span><span>[ DATA DELETED ]</span></div><div class="person-line"><span>STATUS</span><span>UNKNOWN</span></div><div class="entity-source">SOURCE / RECOVERED LAB DATA</div></div>
 <div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">백야 연구소 관련 복구 자료에서 이름이 확인된다. 상세 직무 기록은 제한되어 있다.</div></div>
 </div><div class="person locked" data-group="white" data-search="locked white">
@@ -3735,12 +3746,12 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 <div class="entity-body"><h3>████████</h3><div class="person-eng locked-eng" aria-hidden="true">&nbsp;</div><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / CORRUPTED SUBJECT DATA</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
 </div><div class="person" data-group="libera" data-search="차이현 cha yihyeon libera former unaffiliated" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-L01</span></div>
-<div class="entity-image"><span class="entity-status">IDENTIFIED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-image"><span class="entity-status">IDENTIFIED</span><span class="entity-scan" aria-hidden="true"></span><img class="zoomable-image entity-record-photo" data-full="https://imgbs.com/uploads/from-pixai-9dd366ce.png" src="https://imgbs.com/uploads/from-pixai-9dd366ce.png" alt="차이현 아카이브 인물 이미지" loading="eager" decoding="async"></div>
 <div class="entity-body"><h3>차이현</h3><div class="person-eng">CHA YIHYEON</div><div class="person-line"><span>CLASS</span><span>SENTINEL · A</span></div><div class="person-line"><span>AFFILIATION</span><span>NONE</span></div><div class="person-line"><span>FORMER</span><span>LIBERA</span></div><div class="person-line"><span>ABILITY</span><span>ELECTRICITY · SUPER-SPEED</span></div><div class="entity-source">SOURCE / INTELLIGENCE REPORT</div></div>
 <div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">전 LIBERA 소속 센티넬. 현재 어느 조직에도 소속되어 있지 않다. AEGIS 정식 소속 이력은 없으며, 사건에 따라 제한적으로 접촉·협력할 가능성이 있는 관찰 대상이다.</div></div>
 </div><div class="person" data-group="libera" data-search="백도진 baek dojin libera" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-L02</span></div>
-<div class="entity-image"><span class="entity-status">IDENTIFIED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-image"><span class="entity-status">IDENTIFIED</span><span class="entity-scan" aria-hidden="true"></span><img class="zoomable-image entity-record-photo" data-full="https://imgbs.com/uploads/from-pixai-79c9526c.png" src="https://imgbs.com/uploads/from-pixai-79c9526c.png" alt="백도진 아카이브 인물 이미지" loading="eager" decoding="async"></div>
 <div class="entity-body"><h3>백도진</h3><div class="person-eng">BAEK DOJIN</div><div class="person-line"><span>CLASS</span><span>SENTINEL · A</span></div><div class="person-line"><span>AFFILIATION</span><span>LIBERA</span></div><div class="person-line"><span>STATUS</span><span>ACTIVE</span></div><div class="entity-source">SOURCE / INTELLIGENCE REPORT</div></div>
 <div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">LIBERA 관련 정보보고서에서 지속적으로 확인되는 인물.</div></div>
 </div><div class="person locked" data-group="libera" data-search="locked libera">
@@ -3753,7 +3764,7 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 <div class="entity-body"><h3>████████</h3><div class="person-eng locked-eng" aria-hidden="true">&nbsp;</div><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / INTELLIGENCE REPORT</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
 </div><div class="person" data-group="nest" data-search="장미라 jang mira nest" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-N01</span></div>
-<div class="entity-image"><span class="entity-status">UNVERIFIED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-image"><span class="entity-status">UNVERIFIED</span><span class="entity-scan" aria-hidden="true"></span><img class="zoomable-image entity-record-photo" data-full="https://imgbs.com/uploads/from-pixai-b11b11b2.png" src="https://imgbs.com/uploads/from-pixai-b11b11b2.png" alt="장미라 아카이브 인물 이미지" loading="eager" decoding="async"></div>
 <div class="entity-body"><h3>장미라</h3><div class="person-eng">JANG MIRA</div><div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div><div class="person-line"><span>AFFILIATION</span><span>NEST</span></div><div class="person-line"><span>ROLE</span><span>INFORMATION BROKER</span></div><div class="entity-source">SOURCE / UNVERIFIED UNDERGROUND RECORD</div></div>
 <div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">NEST 및 미등록 각성자 네트워크와 접점이 있는 정보 브로커.</div></div>
 </div><div class="person locked" data-group="nest" data-search="locked nest">
@@ -3770,7 +3781,7 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 <div class="entity-body"><h3>████████</h3><div class="person-eng locked-eng" aria-hidden="true">&nbsp;</div><div class="locked-block">IDENTITY&nbsp;&nbsp;[ RESTRICTED ]<br>CLASS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ ACCESS DENIED ]<br>STATUS&nbsp;&nbsp;&nbsp;&nbsp;UNKNOWN</div><div class="entity-source">SOURCE / UNVERIFIED RECORD</div><div class="lock-message">[ RECORD LOCKED ]</div></div>
 </div><div class="person" data-group="sanctuary" data-search="마리아 한 maria han 성역 sanctuary" onclick="toggleEntity(this)">
 <div class="entity-top"><span>ENTITY RECORD / ER-S01</span></div>
-<div class="entity-image"><span class="entity-status">VERIFIED</span><span class="entity-scan" aria-hidden="true"></span><div class="image-placeholder"><b>ARCHIVE IMAGE</b>2:3 / IMAGE PENDING</div></div>
+<div class="entity-image"><span class="entity-status">VERIFIED</span><span class="entity-scan" aria-hidden="true"></span><img class="zoomable-image entity-record-photo" data-full="https://imgbs.com/uploads/from-pixai-e5094671.png" src="https://imgbs.com/uploads/from-pixai-e5094671.png" alt="마리아 한 아카이브 인물 이미지" loading="eager" decoding="async"></div>
 <div class="entity-body"><h3>마리아 한</h3><div class="person-eng">MARIA HAN</div><div class="person-line"><span>CLASS</span><span>NON-AWAKENED</span></div><div class="person-line"><span>AFFILIATION</span><span>SANCTUARY</span></div><div class="person-line"><span>POSITION</span><span>HIGH PRIEST</span></div><div class="entity-source">SOURCE / SANCTUARY PUBLIC RECORD</div></div>
 <div class="entity-detail"><div class="entity-detail-title">ARCHIVE NOTE</div><div class="entity-note">성역 교단의 공개 기록에서 확인되는 고위 성직자.</div></div>
 </div><div class="person locked" data-group="sanctuary" data-search="locked sanctuary">
