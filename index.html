@@ -2079,9 +2079,30 @@ body[data-page="classified"] .page-atmosphere{background:radial-gradient(circle 
 /* NEST: terminal lines and drop in brightness */
 #factions .faction-item:nth-child(4).open{border-color:rgba(150,170,180,.28);background:rgba(3,8,12,.88)}
 #factions .faction-item:nth-child(4).open:before{background:repeating-linear-gradient(0deg,transparent 0 8px,rgba(160,180,190,.035) 9px);animation:nestTerminal 1.15s steps(5) both}
-/* SANCTUARY: slow gold bloom */
-#factions .faction-item:nth-child(5).open{border-color:rgba(220,188,114,.35);box-shadow:0 0 32px rgba(216,185,114,.055)}
-#factions .faction-item:nth-child(5).open:before{background:radial-gradient(circle at 78% 24%,rgba(225,194,121,.18),transparent 20%),radial-gradient(circle at 25% 85%,rgba(225,194,121,.06),transparent 16%);animation:sanctuaryGlow 1.9s ease both}
+/* SANCTUARY: luminous sacred gold bloom */
+#factions .faction-item:nth-child(5).open{
+  border-color:rgba(255,220,105,.68);
+  box-shadow:
+    0 0 18px rgba(255,216,86,.18),
+    0 0 46px rgba(255,216,86,.09),
+    inset 0 0 24px rgba(255,226,130,.035);
+}
+#factions .faction-item:nth-child(5).open .faction-head h3{
+  color:#ffe7a3;
+  text-shadow:0 0 14px rgba(255,215,88,.28);
+}
+#factions .faction-item:nth-child(5).open .faction-code,
+#factions .faction-item:nth-child(5).open .faction-eng{
+  color:#f4c95f;
+}
+#factions .faction-item:nth-child(5).open:before{
+  background:
+    radial-gradient(circle at 78% 24%,rgba(255,226,118,.34),transparent 19%),
+    radial-gradient(circle at 25% 85%,rgba(255,210,70,.16),transparent 18%),
+    linear-gradient(115deg,transparent 0 38%,rgba(255,235,160,.10) 49%,transparent 60%);
+  animation:sanctuaryGlow 2.15s ease both;
+  filter:saturate(1.18);
+}
 @keyframes factionScan{0%{transform:translateY(-55%);opacity:0}20%{opacity:1}100%{transform:translateY(80%);opacity:0}}
 @keyframes whiteNoise{0%{opacity:0}35%{opacity:.9;transform:translateX(2px)}65%{opacity:.25;transform:translateX(-2px)}100%{opacity:0}}
 @keyframes liberaInterfere{0%{transform:translateX(-58%);opacity:0}25%{opacity:1}100%{transform:translateX(60%);opacity:0}}
@@ -2167,10 +2188,10 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 /* AWAKENED: unmistakable F→EX acquisition sequence. */
 #awakened .rank-line{position:relative;padding:6px 0 12px}
 #awakened .rank-line:after{content:'';position:absolute;left:0;right:100%;bottom:3px;height:1px;background:linear-gradient(90deg,rgba(155,220,250,.8),rgba(155,220,250,.08));box-shadow:0 0 8px rgba(155,220,250,.42);opacity:0}
-#awakened.page-live .rank-line:after{animation:rankLineAcquireV3 1.95s ease .08s forwards}
+#awakened .rank-line.rank-scan-live:after{animation:rankLineAcquireV3 2.25s ease .08s forwards}
 #awakened .rank-chip{opacity:.34;transform:translateY(2px)}
-#awakened.page-live .rank-chip.rank-seq{animation:rankChipAcquireV3 .72s cubic-bezier(.2,.7,.2,1) forwards}
-#awakened.page-live .rank-chip.rank-seq:after{content:'';position:absolute;inset:-1px;background:linear-gradient(180deg,transparent,rgba(190,233,252,.24),transparent);transform:translateY(-110%);animation:rankChipScanV3 .62s ease forwards;pointer-events:none}
+#awakened .rank-line.rank-scan-live .rank-chip.rank-seq{animation:rankChipAcquireV3 .82s cubic-bezier(.2,.7,.2,1) forwards}
+#awakened .rank-line.rank-scan-live .rank-chip.rank-seq:after{content:'';position:absolute;inset:-1px;background:linear-gradient(180deg,transparent,rgba(190,233,252,.28),transparent);transform:translateY(-110%);animation:rankChipScanV3 .72s ease forwards;pointer-events:none}
 @keyframes rankChipAcquireV3{0%{opacity:.26;transform:translateY(3px);border-color:rgba(170,220,255,.10);box-shadow:none}42%{opacity:1;color:#e7f6fd;border-color:rgba(190,232,252,.8);box-shadow:0 0 22px rgba(130,210,247,.24),inset 0 0 14px rgba(130,210,247,.07)}100%{opacity:1;transform:none;color:#9fc2d3;border-color:rgba(170,220,255,.20);box-shadow:none}}
 @keyframes rankChipScanV3{0%{transform:translateY(-120%);opacity:0}22%{opacity:1}100%{transform:translateY(120%);opacity:0}}
 @keyframes rankLineAcquireV3{0%{right:100%;opacity:0}10%{opacity:1}100%{right:0;opacity:.65}}
@@ -3565,6 +3586,7 @@ function activatePage(id){
   document.querySelectorAll('.page').forEach(p=>{p.classList.remove('active','page-live')});
   page.classList.add('active');
   document.body.dataset.page=id;
+  if(id==='awakened') resetAwakenedRankScan();
 
   const changed=id!==lastPage;
   if(changed){
@@ -3614,8 +3636,43 @@ document.querySelectorAll('#database .db-row').forEach((row,i)=>{
 });
 document.querySelectorAll('#awakened .rank-chip').forEach((chip,i)=>{
   chip.classList.add('rank-seq');
-  chip.style.animationDelay=(0.12+i*0.20)+'s';
+  chip.style.animationDelay=(0.12+i*0.24)+'s';
 });
+
+/* AWAKENED rank scan now starts when the rank strip actually enters the viewport,
+   so visitors can read the introduction first and still see F→EX being acquired. */
+const awakenedRankLine=document.querySelector('#awakened .rank-line');
+let awakenedRankPlayed=false;
+function resetAwakenedRankScan(){
+  awakenedRankPlayed=false;
+  if(!awakenedRankLine) return;
+  awakenedRankLine.classList.remove('rank-scan-live');
+  void awakenedRankLine.offsetWidth;
+}
+function playAwakenedRankScan(){
+  if(!awakenedRankLine || awakenedRankPlayed) return;
+  if(!document.getElementById('awakened')?.classList.contains('active')) return;
+  awakenedRankPlayed=true;
+  awakenedRankLine.classList.remove('rank-scan-live');
+  void awakenedRankLine.offsetWidth;
+  awakenedRankLine.classList.add('rank-scan-live');
+}
+if(awakenedRankLine && 'IntersectionObserver' in window){
+  const awakenedRankObserver=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting && entry.intersectionRatio>=0.45){
+        playAwakenedRankScan();
+      }
+    });
+  },{threshold:[0,.45,.7]});
+  awakenedRankObserver.observe(awakenedRankLine);
+}else if(awakenedRankLine){
+  window.addEventListener('scroll',()=>{
+    if(awakenedRankPlayed) return;
+    const r=awakenedRankLine.getBoundingClientRect();
+    if(r.top<window.innerHeight*.78 && r.bottom>window.innerHeight*.25) playAwakenedRankScan();
+  },{passive:true});
+}
 
 /* FACTION ACCORDION */
 
