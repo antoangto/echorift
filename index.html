@@ -2103,10 +2103,45 @@ h2{
 }
 
 @media(max-width:720px){
-  .uniform-archive{grid-template-columns:1fr;gap:14px}
-  .uniform-record{max-width:430px;margin:0 auto;width:100%}
-  .attire-gallery{grid-template-columns:1fr}
+  /* 모바일에서도 두 제복/두 의전복 이미지를 한 화면에서 비교할 수 있도록 2열 유지 */
+  .uniform-archive{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .uniform-record{max-width:none;margin:0;width:100%}
+  .uniform-copy{padding:10px 9px 12px}
+  .uniform-copy h4{font-size:11px;line-height:1.35}
+  .uniform-copy p{font-size:8px;line-height:1.6}
+  .uniform-copy .uniform-code{font-size:6px}
+  .uniform-type{left:6px;top:6px;padding:4px 5px;font-size:5.5px}
+  .attire-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .attire-shot figcaption{padding:6px 5px;font-size:5.5px;line-height:1.4}
   .attire-meta{grid-template-columns:95px 1fr}
+}
+
+/* IMAGE VIEWER */
+.uniform-image-wrap img,.attire-shot img{cursor:zoom-in}
+.image-viewer{
+  position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;
+  padding:24px;background:rgba(0,0,0,.94);backdrop-filter:blur(12px);
+  opacity:0;visibility:hidden;transition:opacity .28s ease,visibility .28s ease;
+}
+.image-viewer.open{opacity:1;visibility:visible}
+.image-viewer img{
+  display:block;max-width:min(92vw,900px);max-height:88vh;width:auto;height:auto;object-fit:contain;
+  box-shadow:0 0 0 1px rgba(190,225,242,.18),0 0 60px rgba(120,190,225,.12);
+  transform:scale(.965);transition:transform .28s ease;
+}
+.image-viewer.open img{transform:scale(1)}
+.image-viewer-close{
+  position:absolute;right:18px;top:16px;width:42px;height:42px;border:1px solid rgba(190,225,242,.2);
+  background:rgba(4,8,12,.8);color:#d8e7ee;font:20px 'Space Mono',monospace;cursor:pointer;
+}
+.image-viewer-hint{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);color:#617985;
+  font:7px 'Space Mono',monospace;letter-spacing:.12em;white-space:nowrap;
+}
+@media(max-width:720px){
+  .image-viewer{padding:14px}
+  .image-viewer img{max-width:94vw;max-height:86vh}
+  .image-viewer-close{right:10px;top:10px}
 }
 
 .page.active .header-rule{animation:archiveSweep .75s ease both}
@@ -2948,7 +2983,7 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
         <article class="uniform-record">
           <div class="uniform-image-wrap">
             <span class="uniform-type">SENTINEL / STANDARD</span>
-            <img src="https://imgbs.com/uploads/b4cf0312954456ff.png" alt="AEGIS 센티넬 표준 제복" loading="lazy">
+            <img onclick="openImageViewer(this.src,event)" src="https://imgbs.com/uploads/b4cf0312954456ff.png" alt="AEGIS 센티넬 표준 제복" loading="lazy">
           </div>
           <div class="uniform-copy">
             <div class="uniform-code">UNIFORM CLASS / SENTINEL</div>
@@ -2960,7 +2995,7 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
         <article class="uniform-record">
           <div class="uniform-image-wrap">
             <span class="uniform-type">GUIDE / STANDARD</span>
-            <img src="https://imgbs.com/uploads/d8618b15dcaa677f.png" alt="AEGIS 가이드 표준 제복" loading="lazy">
+            <img onclick="openImageViewer(this.src,event)" src="https://imgbs.com/uploads/d8618b15dcaa677f.png" alt="AEGIS 가이드 표준 제복" loading="lazy">
           </div>
           <div class="uniform-copy">
             <div class="uniform-code">UNIFORM CLASS / GUIDE</div>
@@ -3628,11 +3663,11 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 
       <div class="attire-gallery">
         <figure class="attire-shot">
-          <img src="https://imgbs.com/uploads/91fad204a730e577.jpg" alt="윤시헌 성자 의전복 기록 이미지" loading="lazy">
+          <img onclick="openImageViewer(this.src,event)" src="https://imgbs.com/uploads/91fad204a730e577.jpg" alt="윤시헌 성자 의전복 기록 이미지" loading="lazy">
           <figcaption>ARCHIVE IMAGE / CEREMONIAL ATTIRE</figcaption>
         </figure>
         <figure class="attire-shot">
-          <img src="https://imgbs.com/uploads/from-pixai-475a43ca.png" alt="성자 의전복을 착용한 윤시헌" loading="lazy">
+          <img onclick="openImageViewer(this.src,event)" src="https://imgbs.com/uploads/from-pixai-475a43ca.png" alt="성자 의전복을 착용한 윤시헌" loading="lazy">
           <figcaption>PUBLIC RECORD / YOON SIHEON</figcaption>
         </figure>
       </div>
@@ -3839,6 +3874,12 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 </main>
 </div>
 
+<div class="image-viewer" id="imageViewer" onclick="closeImageViewer(event)">
+  <button class="image-viewer-close" type="button" aria-label="이미지 닫기" onclick="closeImageViewer(event,true)">×</button>
+  <img id="imageViewerImg" src="" alt="확대 이미지" onclick="event.stopPropagation()">
+  <div class="image-viewer-hint">CLICK OUTSIDE / ESC TO CLOSE</div>
+</div>
+
 <script>
 
 /* INTRO */
@@ -4037,6 +4078,30 @@ function toggleFaction(head){
     item.classList.add('open');
   }
 }
+
+function openImageViewer(src,event){
+  if(event) event.stopPropagation();
+  const viewer=document.getElementById('imageViewer');
+  const image=document.getElementById('imageViewerImg');
+  if(!viewer||!image) return;
+  image.src=src;
+  viewer.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeImageViewer(event,force){
+  if(event) event.stopPropagation();
+  const viewer=document.getElementById('imageViewer');
+  if(!viewer) return;
+  if(force || !event || event.target===viewer){
+    viewer.classList.remove('open');
+    document.body.style.overflow='';
+  }
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeImageViewer(null,true);
+});
 
 function toggleAttire(button,event){
   if(event) event.stopPropagation();
