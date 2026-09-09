@@ -2478,6 +2478,24 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 #timeline .current-event .year{font-size:11px;font-weight:700}
 
 
+
+/* MOBILE-SAFE IMAGE GALLERY / VIEWER */
+.attire-shot{margin:0;min-width:0}
+.attire-shot img,.uniform-image-wrap img,.zoomable-image{
+  display:block!important;width:100%!important;height:auto;opacity:1!important;visibility:visible!important;
+  cursor:zoom-in;touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;
+}
+.attire-shot img{aspect-ratio:2/3;object-fit:cover}
+@media(max-width:720px){
+  .attire-gallery,.uniform-archive{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:7px!important}
+  .attire-shot,.uniform-record{min-width:0!important;width:100%!important}
+  .attire-record.open .attire-panel{max-height:2600px!important;overflow:visible!important}
+  .person.open .entity-detail{max-height:3200px!important;overflow:visible!important}
+  .image-viewer{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;z-index:2147483647!important;padding:12px!important}
+  .image-viewer.open{display:flex!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important}
+  .image-viewer img{max-width:94vw!important;max-height:84dvh!important;width:auto!important;height:auto!important;object-fit:contain!important}
+}
+
 </style>
 </head>
 
@@ -2983,7 +3001,7 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
         <article class="uniform-record">
           <div class="uniform-image-wrap">
             <span class="uniform-type">SENTINEL / STANDARD</span>
-            <img onclick="openImageViewer(this.src,event)" src="https://imgbs.com/uploads/b4cf0312954456ff.png" alt="AEGIS 센티넬 표준 제복" loading="lazy">
+            <img class="zoomable-image" data-full="https://imgbs.com/uploads/b4cf0312954456ff.png" src="https://imgbs.com/uploads/b4cf0312954456ff.png" alt="AEGIS 센티넬 표준 제복" loading="lazy">
           </div>
           <div class="uniform-copy">
             <div class="uniform-code">UNIFORM CLASS / SENTINEL</div>
@@ -2995,7 +3013,7 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
         <article class="uniform-record">
           <div class="uniform-image-wrap">
             <span class="uniform-type">GUIDE / STANDARD</span>
-            <img onclick="openImageViewer(this.src,event)" src="https://imgbs.com/uploads/d8618b15dcaa677f.png" alt="AEGIS 가이드 표준 제복" loading="lazy">
+            <img class="zoomable-image" data-full="https://imgbs.com/uploads/d8618b15dcaa677f.png" src="https://imgbs.com/uploads/d8618b15dcaa677f.png" alt="AEGIS 가이드 표준 제복" loading="lazy">
           </div>
           <div class="uniform-copy">
             <div class="uniform-code">UNIFORM CLASS / GUIDE</div>
@@ -3663,11 +3681,11 @@ body.rift-impact #archive{animation:riftViewportImpact 1.18s cubic-bezier(.36,.0
 
       <div class="attire-gallery">
         <figure class="attire-shot">
-          <img onclick="openImageViewer(this.src,event)" src="https://imgbs.com/uploads/91fad204a730e577.jpg" alt="윤시헌 성자 의전복 기록 이미지" loading="lazy">
+          <img class="zoomable-image" data-full="https://imgbs.com/uploads/91fad204a730e577.jpg" src="https://imgbs.com/uploads/91fad204a730e577.jpg" alt="윤시헌 성자 의전복 기록 이미지" loading="eager" decoding="async">
           <figcaption>ARCHIVE IMAGE / CEREMONIAL ATTIRE</figcaption>
         </figure>
         <figure class="attire-shot">
-          <img onclick="openImageViewer(this.src,event)" src="https://imgbs.com/uploads/from-pixai-475a43ca.png" alt="성자 의전복을 착용한 윤시헌" loading="lazy">
+          <img class="zoomable-image" data-full="https://imgbs.com/uploads/from-pixai-475a43ca.png" src="https://imgbs.com/uploads/from-pixai-475a43ca.png" alt="성자 의전복을 착용한 윤시헌" loading="eager" decoding="async">
           <figcaption>PUBLIC RECORD / YOON SIHEON</figcaption>
         </figure>
       </div>
@@ -4088,6 +4106,19 @@ function openImageViewer(src,event){
   viewer.classList.add('open');
   document.body.style.overflow='hidden';
 }
+
+let imageViewerLastTap=0;
+function handleZoomableImage(event){
+  const target=event.target.closest?.('.zoomable-image');
+  if(!target) return;
+  if(event.type==='click' && Date.now()-imageViewerLastTap<450) return;
+  if(event.type==='pointerup') imageViewerLastTap=Date.now();
+  event.preventDefault();
+  event.stopPropagation();
+  openImageViewer(target.dataset.full || target.currentSrc || target.src,event);
+}
+document.addEventListener('pointerup',handleZoomableImage,{passive:false});
+document.addEventListener('click',handleZoomableImage,false);
 
 function closeImageViewer(event,force){
   if(event) event.stopPropagation();
